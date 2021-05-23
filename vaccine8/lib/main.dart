@@ -21,7 +21,6 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: "/dash_board",
       onGenerateRoute: router.createRoute,
-// home :AppllicantDasboardScreen()
     );
   }
 }

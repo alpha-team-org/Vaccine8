@@ -33,7 +33,9 @@ class _gridview extends StatelessWidget {
       crossAxisSpacing: 19,
       children: <Widget>[
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Navigator.pushNamed(context, '/&pcrvac');
+          },
           child: _card(),
         ),
       ],

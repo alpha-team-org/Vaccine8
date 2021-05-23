@@ -7,7 +7,7 @@ class AppllicantDasboardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: Bar(),
+      appBar: Bar(Colors.white),
       body: Body(),
       drawer: Draw(),
     );
