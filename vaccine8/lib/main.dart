@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:vaccine8/screens/Applicant/Dashboard/dashborad.dart';
 
 
 import './app/router.dart' as router;
@@ -20,9 +19,9 @@ class MyApp extends StatelessWidget {
        ),
       //onGenerateRoute:RouteGenerator.generateRoute,
       debugShowCheckedModeBanner: false,
-      // initialRoute: "/appointment",
-      // onGenerateRoute: router.createRoute,
-home :AppllicantDasboardScreen()
+      initialRoute: "/dash_board",
+      onGenerateRoute: router.createRoute,
+// home :AppllicantDasboardScreen()
     );
   }
 }

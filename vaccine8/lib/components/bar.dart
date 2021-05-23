@@ -6,12 +6,9 @@ class Bar extends StatelessWidget implements PreferredSizeWidget {
 
   Widget build(BuildContext context) {
     return AppBar(
-      // toolbarHeight: 100,
+      
       backgroundColor: Colors.white,
-      leading: Icon(
-        Icons.menu,
-        color: Colors.black,
-      ),
+     
       title: Column(
         children: [
           Image.asset(

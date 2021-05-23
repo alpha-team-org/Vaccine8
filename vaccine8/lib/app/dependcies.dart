@@ -1,0 +1,1 @@
+export '../screens/Applicant/Dashboard/dash_board.dart';
