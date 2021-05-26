@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:vaccine8/models/Patient.dart';
+import 'package:vaccine8/models/mock_data.dart';
 
 class Draw extends StatelessWidget {
+  Patient pateint = new Patient(patientList[0].name,patientList[0].imageRoute,
+  patientList[0].address); 
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -50,7 +54,7 @@ class Draw extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           Image.asset(
-            'assets/user.jpg',
+            pateint.imageRoute,
             width: 80,
             height: 80,
           ),
@@ -59,14 +63,14 @@ class Draw extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("Abdalla",
+                Text(pateint.name,
                     style: TextStyle(
                         color: Color.fromRGBO(42, 42, 192, 1),
                         fontSize: 16,
                         fontWeight: FontWeight.bold)),
                 Padding(
                     padding: const EdgeInsets.only(top: 12.0),
-                    child: Text("Skudai",
+                    child: Text(pateint.address,
                         style: TextStyle(fontFamily: 'Raleway'))),
               ],
             ),
