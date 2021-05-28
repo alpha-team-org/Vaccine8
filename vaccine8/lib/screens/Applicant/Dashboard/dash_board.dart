@@ -23,23 +23,23 @@ class AppllicantDasboardScreen extends StatelessWidget {
               children: <Widget>[
                 BottomIcon(
                   onPressed: () {},
-                  icon: Icons.home,
+                  icon: Icons.home_outlined,
                   iconText: "Home",
                 ),
                 BottomIcon(
                   onPressed: () {},
-                  icon: Icons.mail,
-                  iconText: "Mail",
+                  icon: Icons.calendar_today_outlined,
+                  iconText: "Appointments",
                 ),
                 BottomIcon(
                   onPressed: () {},
-                  icon: Icons.map,
-                  iconText: "Map",
+                  icon: Icons.grid_view,
+                  iconText: "Services",
                 ),
                 BottomIcon(
                   onPressed: () {},
-                  icon: Icons.settings,
-                  iconText: "Settings",
+                  icon: Icons.account_circle_outlined,
+                  iconText: "Profile",
                 ),
               ],
             ),

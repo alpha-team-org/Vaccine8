@@ -26,14 +26,14 @@ class BottomIcon extends StatelessWidget {
               padding: EdgeInsets.all(0),
               icon: Icon(
                 _icon,
-                size: 40,
+                size: 45,
                 color: Colors.white,
               ),
             ),
           ),
           Text(
             _iconText,
-            style: TextStyle(fontSize: 15, color: Colors.white),
+            style: TextStyle(fontSize: 16, color: Colors.white),
           )
         ],
       ),
