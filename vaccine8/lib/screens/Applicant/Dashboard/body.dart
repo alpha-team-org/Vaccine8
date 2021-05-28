@@ -1,111 +1,139 @@
 import 'package:flutter/material.dart';
+import 'package:vaccine8/components/widgets/card_main.dart';
+import 'package:vaccine8/components/widgets/card_section.dart';
+import 'package:vaccine8/components/widgets/custom_clipper.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class Body extends StatelessWidget {
-  const Body({Key key}) : super(key: key);
-
+class Body extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        _cliprect(),
-        Container(
-          padding: const EdgeInsets.only(top: 20, left: 10, right: 10),
-          height: 621.4,
-          decoration: BoxDecoration(color: Color.fromRGBO(236, 241, 250, 1)),
-          child: _gridview(),
-        ),
-      ],
-    );
-  }
+  _BodyState createState() => _BodyState();
 }
 
-class _gridview extends StatelessWidget {
-  const _gridview({
-    Key key,
-  }) : super(key: key);
-
+class _BodyState extends State<Body> {
   @override
   Widget build(BuildContext context) {
-    return GridView.count(
-      crossAxisCount: 2,
-      mainAxisSpacing: 30,
-      primary: false,
-      crossAxisSpacing: 19,
+    double statusBarHeight = MediaQuery.of(context).padding.top;
+    return Stack(
       children: <Widget>[
-        GestureDetector(
-          onTap: () {
-            Navigator.pushNamed(context, '/&pcrvac');
-          },
-          child: _card(),
+        ClipPath(
+          clipper: MyCustomClipper(clipType: ClipType.bottom),
+          child: Container(
+            color: Color.fromRGBO(42, 42, 192, .7),
+            height: 228.5 + statusBarHeight,
+          ),
         ),
-      ],
-    );
-  }
-}
-
-class _card extends StatelessWidget {
-  const _card({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      child: Column(
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(top: 20.0),
-            child: Text(
-              "Pcr && Vaccine",
-              style: TextStyle(
-                  color: Color.fromRGBO(24, 20, 97, 1),
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold),
+        Positioned(
+          right: -45,
+          top: -30,
+          child: ClipOval(
+            child: Container(
+              color: Colors.black.withOpacity(0.05),
+              height: 220,
+              width: 220,
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 10.0),
-            child: Center(
-              child: Icon(Icons.assignment_sharp,
-                  size: 120, color: Color.fromRGBO(42, 42, 192, .7)),
-            ),
-          )
-        ],
-      ),
+        ),
+
+        // BODY
+        Padding(
+          padding: EdgeInsets.only(right: 30.0, bottom: 30, top: 30),
+          child: ListView(
+            children: <Widget>[
+              // Header - Greetings and Avatar
+              Row(
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20, right: 30),
+                    child: InkWell(
+                      onTap: () => Scaffold.of(context).openDrawer(),
+                      child: Icon(
+                        FontAwesomeIcons.stream,
+                        color: Colors.white,
+                        size: 30,
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Text(
+                      "Welcome Omar",
+                      style: TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.w900,
+                          color: Colors.white),
+                    ),
+                  ),
+                  CircleAvatar(
+                      radius: 26.0,
+                      backgroundImage: AssetImage('assets/profile_picture.png'))
+                ],
+              ),
+
+              SizedBox(height: 50),
+
+              Padding(
+                padding: EdgeInsets.only(left: 30),
+                child: Column(
+                  children: [
+                    Container(
+                      height: 140,
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        children: <Widget>[
+                          CardMain(
+                            icon: Icon(
+                              FontAwesomeIcons.heartbeat,
+                              color: Colors.blue[700],
+                              size: 35,
+                            ),
+                            title: "Heart beat",
+                            value: "66",
+                            unit: "bpm",
+                            color: Colors.white,
+                          ),
+                          CardMain(
+                              icon: Icon(
+                                FontAwesomeIcons.burn,
+                                color: Colors.red[900],
+                                size: 35,
+                              ),
+                              title: "Blood Pressure",
+                              value: "66/123",
+                              unit: "mmHg",
+                              color: Colors.white)
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 80),
+                    Column(
+                      children: <Widget>[
+                        CardSection(
+                          icon: Icon(
+                            FontAwesomeIcons.syringe,
+                            color: Colors.white,
+                            size: 30,
+                          ),
+                          title: "COVID-19 Vaccine",
+                          color: Colors.cyan[800],
+                        ),
+                        SizedBox(height: 20),
+                        CardSection(
+                          icon: Icon(
+                            Icons.coronavirus_outlined,
+                            color: Colors.white,
+                            size: 35,
+                          ),
+                          title: "COVID-19 Tests",
+                          color: Colors.purple[900],
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        )
+      ],
     );
-  }
-}
-
-class _cliprect extends StatelessWidget {
-  const _cliprect({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return ClipRect(
-        child: Container(
-      child: Padding(
-        padding: const EdgeInsets.only(top: 21.0, left: 25),
-        child: Text('Dashboard',
-            style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-                color: Color.fromRGBO(24, 20, 97, 1))),
-      ),
-      height: 100,
-      width: double.infinity,
-      decoration: BoxDecoration(
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(.8),
-            spreadRadius: 5,
-            blurRadius: 1,
-            // offset: Offset(4, 4),
-          )
-        ],
-        color: Colors.white,
-      ),
-    ));
   }
 }
