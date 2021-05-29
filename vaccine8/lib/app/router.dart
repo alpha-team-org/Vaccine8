@@ -14,10 +14,14 @@ Route<dynamic> createRoute(RouteSettings settings) {
     case '/vacboard':
       return MaterialPageRoute(builder: (context) => VaccineBoardScreen());
     case '/vacapp':
-      return MaterialPageRoute(builder: (context) => PickAppointmentScreen(settings.arguments));
+      return MaterialPageRoute(
+          builder: (context) => PickAppointmentScreen(settings.arguments));
     case '/succPicked':
       return MaterialPageRoute(builder: (context) => SuccessfullPickedScreen());
     case '/centers':
       return MaterialPageRoute(builder: (context) => CentersScreen());
+    case '/ApplicantAppointment':
+      return MaterialPageRoute(
+          builder: (context) => ApplicantAppointmentScreen());
   }
 }

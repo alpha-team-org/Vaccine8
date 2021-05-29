@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 import './app/router.dart' as router;
 
 void main() {
@@ -16,10 +15,10 @@ class MyApp extends StatelessWidget {
         primaryIconTheme: IconThemeData(
           color: Colors.black,
         ),
-       ),
+      ),
       //onGenerateRoute:RouteGenerator.generateRoute,
       debugShowCheckedModeBanner: false,
-      initialRoute: "/dash_board",
+      initialRoute: "/ApplicantAppointment",
       onGenerateRoute: router.createRoute,
     );
   }

@@ -3,7 +3,7 @@ import 'package:vaccine8/models/Patient.dart';
 
 import 'Centers.dart';
 
-final patientList = <Patient>[Patient("abdalla", "assets/user.jpg","skudai")];
+final patientList = <Patient>[Patient("abdalla", "assets/user.jpg","skudai" )];
 final centerList = <Centers>[
 Centers("skuai hospital", "skudai", [
   Appointment(DateTime.now().add(Duration(days:1)),[8,9,20]),
