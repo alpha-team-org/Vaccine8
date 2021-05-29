@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vaccine8/components/constants/const.dart';
 import 'package:vaccine8/components/widgets/bottom_icon.dart';
 
 class BottomBar extends StatelessWidget {
@@ -15,7 +16,7 @@ class BottomBar extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
               BottomIcon(
-                onPressed: () {},
+                onPressed: () => Navigator.pushNamed(context, dashboardRoute),
                 icon: Icons.home_outlined,
                 iconText: "Home",
               ),

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:vaccine8/components/constants/const.dart';
 import 'package:vaccine8/components/widgets/card_section.dart';
 import 'package:vaccine8/components/widgets/custom_clipper.dart';
 
@@ -20,7 +21,7 @@ class MainCard extends StatelessWidget {
     return Align(
       alignment: Alignment.topLeft,
       child: Container(
-        height: 250,
+        height: 300,
         margin: const EdgeInsets.only(right: 15.0),
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
@@ -36,7 +37,7 @@ class MainCard extends StatelessWidget {
           ],
           color: Colors.white,
         ),
-        child: Stack(
+        child: Column(
           children: <Widget>[
             Padding(
               padding: EdgeInsets.all(10.0),
@@ -69,21 +70,103 @@ class MainCard extends StatelessWidget {
                                   fontWeight: FontWeight.bold,
                                   color: Color(0xFF486581)),
                             ),
-                            // SizedBox(width: 20),
-                            // CardSection(title: title, icon: icon, color: color),
                           ],
                         ),
                       ),
-                      // Container(
-                      //   padding: EdgeInsets.only(top: 50),
-                      //   child: Text('data'),
-                      // )
                     ],
+                  ),
+                  SizedBox(height: 20),
+                  ButtonCard(
+                    onTap: () => Navigator.pushNamed(context, centersRoute),
+                    title: "Book and View COVID-19 Test\n Appointments",
+                  ),
+                  SizedBox(height: 20),
+                  ButtonCard(
+                    onTap: () {},
+                    title: "View Previous Results",
                   ),
                 ],
               ),
             )
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class ButtonCard extends StatelessWidget {
+  const ButtonCard({
+    Key key,
+    @required this.title,
+    @required this.onTap,
+  }) : super(key: key);
+
+  final String title;
+  final Function onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Align(
+        alignment: Alignment.topLeft,
+        child: Container(
+          height: 90,
+          margin: const EdgeInsets.only(right: 15.0),
+          width: MediaQuery.of(context).size.width,
+          decoration: new BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(10.0)),
+            shape: BoxShape.rectangle,
+            color: Color.fromRGBO(42, 42, 192, .7),
+          ),
+          child: Stack(
+            children: <Widget>[
+              Positioned(
+                child: ClipPath(
+                  clipper: MyCustomClipper(clipType: ClipType.semiCircle),
+                  child: Container(
+                    decoration: new BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                      color: Color(0xFF3EC6FF).withOpacity(0.1),
+                    ),
+                    height: 120,
+                    width: 120,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(10.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              Padding(padding: EdgeInsets.only(top: 12)),
+                              Text(
+                                title,
+                                overflow: TextOverflow.ellipsis,
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

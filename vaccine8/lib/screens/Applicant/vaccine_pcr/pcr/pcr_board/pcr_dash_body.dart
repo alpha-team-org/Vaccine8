@@ -33,7 +33,7 @@ class Body extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(left: 20, right: 80),
                     child: InkWell(
-                      onTap: () {}, //=> Scaffold.of(context).openDrawer(),
+                      onTap: () => Navigator.pop(context),
                       child: Icon(
                         FontAwesomeIcons.chevronLeft,
                         color: Colors.white,
