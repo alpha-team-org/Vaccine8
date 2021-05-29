@@ -1,123 +1,90 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:vaccine8/components/widgets/card_section.dart';
 import 'package:vaccine8/components/widgets/custom_clipper.dart';
 
-class CardItems extends StatelessWidget {
-  final Image image;
+class MainCard extends StatelessWidget {
   final String title;
-  final String value;
-  final String unit;
+  final Icon icon;
   final Color color;
-  final int progress;
 
-  CardItems({
+  MainCard({
     Key key,
-    @required this.image,
     @required this.title,
-    @required this.value,
-    @required this.unit,
+    @required this.icon,
     @required this.color,
-    @required this.progress,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(bottom: 20),
-      height: 100,
-      decoration: new BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(10.0)),
-        shape: BoxShape.rectangle,
-        color: Colors.white,
-      ),
-      child: Stack(
-        children: <Widget>[
-          Positioned(
-            child: ClipPath(
-              clipper: MyCustomClipper(clipType: ClipType.halfCircle),
-              child: Container(
-                decoration: new BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                  color: color.withOpacity(0.1),
-                ),
-                height: 100,
-                width: 100,
-              ),
+    return Align(
+      alignment: Alignment.topLeft,
+      child: Container(
+        height: 250,
+        margin: const EdgeInsets.only(right: 15.0),
+        width: MediaQuery.of(context).size.width,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(10.0)),
+          shape: BoxShape.rectangle,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.5),
+              spreadRadius: 5,
+              blurRadius: 7,
+              offset: Offset(0, 3), // changes position of shadow
             ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(20.0),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                // Icon and Hearbeat
-                image,
-                SizedBox(width: 30),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
+          ],
+          color: Colors.white,
+        ),
+        child: Stack(
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.all(10.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Text(
-                            '$title',
-                            style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                color: Color(0xFF486581)),
-                          ),
-                          Text(
-                            '$value $unit',
-                            style: TextStyle(
-                                fontSize: 15, color: Color(0xFF486581)),
-                          ),
-                        ],
+                      Container(
+                        height: 40,
+                        width: 40,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                          shape: BoxShape.rectangle,
+                          color: color,
+                        ),
+                        child: icon,
                       ),
-                      SizedBox(height: 15),
-                      (progress == 0 || progress == null)
-                          ? Text('Not started',
+                      SizedBox(width: 20),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text(
+                              title,
+                              overflow: TextOverflow.ellipsis,
                               style: TextStyle(
-                                  fontSize: 15, color: Color(0xFF486581)))
-                          : Container(
-                              height: 6,
-                              decoration: new BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10.0)),
-                                shape: BoxShape.rectangle,
-                                color: Color(0xFFD9E2EC),
-                              ),
-                              child: new LayoutBuilder(builder:
-                                  (BuildContext context,
-                                      BoxConstraints constraints) {
-                                return Stack(
-                                  children: <Widget>[
-                                    Positioned(
-                                      left: 0,
-                                      child: Container(
-                                          decoration: new BoxDecoration(
-                                            borderRadius: BorderRadius.all(
-                                                Radius.circular(10.0)),
-                                            shape: BoxShape.rectangle,
-                                            color: Color(0xFF50DE89),
-                                          ),
-                                          width: constraints.maxWidth *
-                                              (progress / 100),
-                                          height: 6),
-                                    )
-                                  ],
-                                );
-                              }),
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Color(0xFF486581)),
                             ),
+                            // SizedBox(width: 20),
+                            // CardSection(title: title, icon: icon, color: color),
+                          ],
+                        ),
+                      ),
+                      // Container(
+                      //   padding: EdgeInsets.only(top: 50),
+                      //   child: Text('data'),
+                      // )
                     ],
                   ),
-                )
-              ],
-            ),
-          )
-        ],
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

@@ -26,7 +26,7 @@ class BottomIcon extends StatelessWidget {
               padding: EdgeInsets.all(0),
               icon: Icon(
                 _icon,
-                size: 45,
+                size: 40,
                 color: Colors.white,
               ),
             ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vaccine8/components/constants/const.dart';
 import 'package:vaccine8/components/widgets/card_main.dart';
 import 'package:vaccine8/components/widgets/card_section.dart';
 import 'package:vaccine8/components/widgets/custom_clipper.dart';
@@ -116,15 +117,18 @@ class _BodyState extends State<Body> {
                           color: Colors.cyan[800],
                         ),
                         SizedBox(height: 20),
-                        CardSection(
-                          icon: Icon(
-                            Icons.coronavirus_outlined,
-                            color: Colors.white,
-                            size: 35,
+                        GestureDetector(
+                          onTap: () => Navigator.pushNamed(context, pcrRoute),
+                          child: CardSection(
+                            icon: Icon(
+                              Icons.coronavirus_outlined,
+                              color: Colors.white,
+                              size: 35,
+                            ),
+                            title: "COVID-19 Tests",
+                            color: Colors.purple[900],
                           ),
-                          title: "COVID-19 Tests",
-                          color: Colors.purple[900],
-                        )
+                        ),
                       ],
                     ),
                   ],

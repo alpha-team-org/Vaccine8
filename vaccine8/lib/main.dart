@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:vaccine8/components/constants/const.dart';
 
 import './app/router.dart' as router;
 
@@ -16,10 +16,10 @@ class MyApp extends StatelessWidget {
         primaryIconTheme: IconThemeData(
           color: Colors.black,
         ),
-       ),
+      ),
       //onGenerateRoute:RouteGenerator.generateRoute,
       debugShowCheckedModeBanner: false,
-      initialRoute: "/dash_board",
+      initialRoute: dashboardRoute,
       onGenerateRoute: router.createRoute,
     );
   }

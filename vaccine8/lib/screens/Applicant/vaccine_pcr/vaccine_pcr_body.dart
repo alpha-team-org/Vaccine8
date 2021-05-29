@@ -1,29 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:vaccine8/app/colors.dart';
+import 'package:vaccine8/components/constants/const.dart';
 
 class Body extends StatelessWidget {
-  String str1 , str2;
-  Body(this.str1,this.str2);
-  
+  String str1, str2;
+  Body(this.str1, this.str2);
+
   @override
   Widget build(BuildContext context) {
     return Column(
-      
       children: [
         _cliprect(),
-      // Center(
-         Container(
-           decoration: BoxDecoration(color:bacColor),
-           padding: EdgeInsets.only(top:200),
-           child: Column(
+        // Center(
+        Container(
+          decoration: BoxDecoration(color: bacColor),
+          padding: EdgeInsets.only(top: 200),
+          child: Column(
             children: <Widget>[
               Container(
                 width: double.infinity,
                 height: 46,
-                margin: EdgeInsets.symmetric(horizontal: 15,vertical: 30),
+                margin: EdgeInsets.symmetric(horizontal: 15, vertical: 30),
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, '/vacboard');
+                    Navigator.pushNamed(context, pcrRoute);
                   },
                   child: Text(
                     str1,
@@ -40,11 +40,7 @@ class Body extends StatelessWidget {
                 height: 46,
                 margin: EdgeInsets.symmetric(horizontal: 15),
                 child: ElevatedButton(
-                  
-                  onPressed: () {
-                    
-
-                  },
+                  onPressed: () {},
                   child: Text(
                     str2,
                     style: TextStyle(fontSize: 28),
@@ -56,18 +52,13 @@ class Body extends StatelessWidget {
                 ),
               ),
             ],
+          ),
         ),
-         ),
-      // ),
+        // ),
       ],
     );
   }
 }
-
-
-
-
-  
 
 class _cliprect extends StatelessWidget {
   const _cliprect({
