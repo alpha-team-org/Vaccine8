@@ -3,8 +3,10 @@ import 'package:vaccine8/models/Patient.dart';
 import 'package:vaccine8/models/mock_data.dart';
 
 class Draw extends StatelessWidget {
-  Patient pateint = new Patient(patientList[0].name,patientList[0].imageRoute,
-  patientList[0].address); 
+  Patient pateint = new Patient(
+      name: patientList[0].name,
+      imageRoute: patientList[0].imageRoute,
+      address: patientList[0].address);
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -22,7 +24,7 @@ class Draw extends StatelessWidget {
               border: Border(
                   bottom: BorderSide(color: Colors.grey.withOpacity(.5)))),
           child: GestureDetector(
-            onTap: (){},
+            onTap: () {},
             child: buildListTile(),
           ),
         ),
@@ -32,18 +34,18 @@ class Draw extends StatelessWidget {
 
   ListTile buildListTile() {
     return ListTile(
-            leading: Icon(
-              Icons.assessment_outlined,
-              color: Color.fromRGBO(42, 42, 192, 1),
-              size: 40,
-            ),
-            title: Text('Pcr && Vaccine',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Color.fromRGBO(24, 20, 97, 1),
-                )),
-          );
+      leading: Icon(
+        Icons.assessment_outlined,
+        color: Color.fromRGBO(42, 42, 192, 1),
+        size: 40,
+      ),
+      title: Text('Pcr && Vaccine',
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: Color.fromRGBO(24, 20, 97, 1),
+          )),
+    );
   }
 
   DrawerHeader buildDrawerHeader() {

@@ -1,7 +1,16 @@
+import 'package:flutter/material.dart';
+
 class Appointment {
-  DateTime date;
-  Appointment(
+  DateTime day;
+  List<TimeOfDay> date;
+  bool isSelected;
+  Appointment({
+    this.day,
     this.date,
-  );
-  Appointment.copy(Appointment from) : this(from.date);
+    this.isSelected = false,
+  });
+  Appointment.copy(Appointment from)
+      : this(day: from.day, date: [...from.date], isSelected: from.isSelected);
+
+  void toggleStatus() => isSelected = !isSelected;
 }
