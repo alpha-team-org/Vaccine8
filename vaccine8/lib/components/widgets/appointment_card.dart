@@ -9,6 +9,7 @@ class AppointmentCard extends StatelessWidget {
   final String time;
   final Icon icon;
   final bool isDone;
+  final Function onTap;
 
   AppointmentCard(
       {Key key,
@@ -17,6 +18,7 @@ class AppointmentCard extends StatelessWidget {
       @required this.date,
       @required this.time,
       @required this.icon,
+      @required this.onTap,
       this.isDone})
       : super(key: key);
 
@@ -92,22 +94,34 @@ class AppointmentCard extends StatelessWidget {
                       Expanded(
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
                             SizedBox(height: 40),
                             Padding(
-                                padding: EdgeInsets.only(top: 10, left: 50)),
+                                padding: EdgeInsets.only(top: 10, left: 40)),
                             Text(
                               '$date',
                               style: TextStyle(
                                   fontSize: 18, color: Color(0xFF486581)),
                             ),
-                            SizedBox(width: 40),
+                            SizedBox(width: 30),
                             Text(
                               '$time',
                               style: TextStyle(
                                   fontSize: 18, color: Color(0xFF486581)),
                             ),
+                            SizedBox(width: 30),
+                            ElevatedButton(
+                              onPressed: onTap,
+                              style: ButtonStyle(
+                                backgroundColor: MaterialStateProperty.all(
+                                    Color.fromRGBO(42, 42, 192, .7)),
+                              ),
+                              child: Text(
+                                'Edit',
+                                style: TextStyle(fontSize: 16),
+                              ),
+                            )
                           ],
                         ),
                       ),

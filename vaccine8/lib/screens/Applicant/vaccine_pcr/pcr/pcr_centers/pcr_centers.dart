@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:vaccine8/components/widgets/bar.dart';
 import 'package:vaccine8/components/widgets/bottom_navigation_bar.dart';
 import 'package:vaccine8/models/Patient.dart';
 import 'package:vaccine8/models/mock_data.dart';

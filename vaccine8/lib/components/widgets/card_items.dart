@@ -7,6 +7,7 @@ class MainCard extends StatelessWidget {
   final String title;
   final Icon icon;
   final Function onTap;
+  final Function onEditTap;
   final Color color;
   final String center;
   final String day;
@@ -21,6 +22,7 @@ class MainCard extends StatelessWidget {
     @required this.color,
     @required this.hasAppointment,
     @required this.onTap,
+    @required this.onEditTap,
     @required this.center,
     @required this.day,
     @required this.date,
@@ -99,6 +101,7 @@ class MainCard extends StatelessWidget {
                           time: time,
                           isDone: true,
                           icon: Icon(Icons.calendar_today),
+                          onTap: onEditTap,
                         ),
                   SizedBox(height: 20),
                   ButtonCard(

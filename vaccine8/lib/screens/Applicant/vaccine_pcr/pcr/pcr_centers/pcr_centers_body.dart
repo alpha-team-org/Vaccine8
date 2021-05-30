@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:vaccine8/components/constants/const.dart';
-import 'package:vaccine8/components/widgets/card_items.dart';
 import 'package:vaccine8/components/widgets/center_card.dart';
 import 'package:vaccine8/components/widgets/custom_clipper.dart';
 import 'package:vaccine8/models/Centers.dart';
 import 'package:vaccine8/models/Patient.dart';
-import 'package:vaccine8/models/mock_data.dart';
 import 'package:vaccine8/screens/Applicant/vaccine_pcr/pcr/pick_appontment/pick_ppointment.dart';
 
 class Body extends StatefulWidget {

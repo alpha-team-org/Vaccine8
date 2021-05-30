@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
-import 'package:vaccine8/app/colors.dart';
 import 'package:vaccine8/components/constants/const.dart';
 import 'package:vaccine8/components/widgets/card_items.dart';
-import 'package:vaccine8/components/widgets/card_main.dart';
-import 'package:vaccine8/components/widgets/card_section.dart';
 import 'package:vaccine8/components/widgets/custom_clipper.dart';
 import 'package:vaccine8/models/Patient.dart';
 
@@ -22,7 +19,16 @@ class _BodyState extends State<Body> {
   Widget build(BuildContext context) {
     void _navigate() async {
       final result = await Navigator.pushNamed(context, centersRoute,
-          arguments: Patient.copy(widget.patient));
+          arguments: widget.patient);
+
+      if (result != null) {
+        setState(() => widget.patient = result);
+      }
+    }
+
+    void _navigateEdit() async {
+      final result = await Navigator.pushNamed(context, centersRoute,
+          arguments: widget.patient);
 
       if (result != null) {
         setState(() => widget.patient = result);
@@ -76,6 +82,7 @@ class _BodyState extends State<Body> {
             Padding(
               padding: EdgeInsets.only(top: 300, left: 15),
               child: MainCard(
+                onEditTap: () => _navigateEdit(),
                 center: widget.patient.center != null
                     ? widget.patient.center
                     : 'error',
@@ -108,87 +115,3 @@ class _BodyState extends State<Body> {
     );
   }
 }
-
-class _cliprect extends StatelessWidget {
-  const _cliprect({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return ClipRect(
-        child: Container(
-      child: Padding(
-        padding: const EdgeInsets.only(top: 21.0, left: 25),
-        child: Text('Vaccine',
-            style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-                color: Color.fromRGBO(24, 20, 97, 1))),
-      ),
-      height: 100,
-      width: double.infinity,
-      decoration: BoxDecoration(
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(.8),
-            spreadRadius: 5,
-            blurRadius: 1,
-            // offset: Offset(4, 4),
-          )
-        ],
-        color: Colors.white,
-      ),
-    ));
-  }
-}
-
-// Column(
-//       children: [
-//         _cliprect(),
-//         // Center(
-//         Container(
-//           decoration: BoxDecoration(color: bacColor),
-//           padding: EdgeInsets.only(top: 200),
-//           child: Column(
-//             children: <Widget>[
-//               Container(
-//                 width: double.infinity,
-//                 height: 46,
-//                 margin: EdgeInsets.symmetric(horizontal: 15, vertical: 30),
-//                 child: ElevatedButton(
-//                   onPressed: () {
-//                     Navigator.pushNamed(context, centersRoute);
-//                   },
-//                   child: Text(
-//                     str1,
-//                     style: TextStyle(fontSize: 28),
-//                   ),
-//                   style: ElevatedButton.styleFrom(
-//                     primary: iconColor, // background
-//                     onPrimary: Colors.white, // foreground
-//                   ),
-//                 ),
-//               ),
-//               Container(
-//                 width: double.infinity,
-//                 height: 46,
-//                 margin: EdgeInsets.symmetric(horizontal: 15),
-//                 child: ElevatedButton(
-//                   onPressed: () {},
-//                   child: Text(
-//                     str2,
-//                     style: TextStyle(fontSize: 28),
-//                   ),
-//                   style: ElevatedButton.styleFrom(
-//                     primary: iconColor, // background
-//                     onPrimary: Colors.white, // foreground
-//                   ),
-//                 ),
-//               ),
-//             ],
-//           ),
-//         ),
-//         // ),
-//       ],
-//     );

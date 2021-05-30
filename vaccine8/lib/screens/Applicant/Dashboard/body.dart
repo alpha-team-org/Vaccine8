@@ -15,8 +15,8 @@ class Body extends StatefulWidget {
 
 class _BodyState extends State<Body> {
   void _navigate() async {
-    final result = await Navigator.pushNamed(context, pcrRoute,
-        arguments: Patient.copy(widget.patient));
+    final result =
+        await Navigator.pushNamed(context, pcrRoute, arguments: widget.patient);
 
     if (result != null) {
       setState(() => widget.patient = result);

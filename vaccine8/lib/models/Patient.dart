@@ -1,5 +1,3 @@
-import 'package:vaccine8/models/Centers.dart';
-
 class Patient {
   String name;
   String imageRoute;
