@@ -1,19 +1,30 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:vaccine8/components/constants/const.dart';
-import 'package:vaccine8/components/widgets/card_section.dart';
+import 'package:vaccine8/components/widgets/appointment_card.dart';
 import 'package:vaccine8/components/widgets/custom_clipper.dart';
 
 class MainCard extends StatelessWidget {
   final String title;
   final Icon icon;
+  final Function onTap;
   final Color color;
+  final String center;
+  final String day;
+  final String date;
+  final String time;
+  final bool hasAppointment;
 
   MainCard({
     Key key,
     @required this.title,
     @required this.icon,
     @required this.color,
+    @required this.hasAppointment,
+    @required this.onTap,
+    @required this.center,
+    @required this.day,
+    @required this.date,
+    @required this.time,
   }) : super(key: key);
 
   @override
@@ -21,7 +32,7 @@ class MainCard extends StatelessWidget {
     return Align(
       alignment: Alignment.topLeft,
       child: Container(
-        height: 300,
+        height: hasAppointment ? 320 : 300,
         margin: const EdgeInsets.only(right: 15.0),
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
@@ -76,10 +87,19 @@ class MainCard extends StatelessWidget {
                     ],
                   ),
                   SizedBox(height: 20),
-                  ButtonCard(
-                    onTap: () => Navigator.pushNamed(context, centersRoute),
-                    title: "Book and View COVID-19 Test\n Appointments",
-                  ),
+                  !hasAppointment
+                      ? ButtonCard(
+                          onTap: onTap,
+                          title: "Book and View COVID-19 Test\n Appointments",
+                        )
+                      : AppointmentCard(
+                          center: center,
+                          day: day,
+                          date: date,
+                          time: time,
+                          isDone: true,
+                          icon: Icon(Icons.calendar_today),
+                        ),
                   SizedBox(height: 20),
                   ButtonCard(
                     onTap: () {},

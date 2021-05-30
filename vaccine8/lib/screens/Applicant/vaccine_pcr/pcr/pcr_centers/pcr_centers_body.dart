@@ -5,11 +5,34 @@ import 'package:vaccine8/components/widgets/card_items.dart';
 import 'package:vaccine8/components/widgets/center_card.dart';
 import 'package:vaccine8/components/widgets/custom_clipper.dart';
 import 'package:vaccine8/models/Centers.dart';
+import 'package:vaccine8/models/Patient.dart';
 import 'package:vaccine8/models/mock_data.dart';
+import 'package:vaccine8/screens/Applicant/vaccine_pcr/pcr/pick_appontment/pick_ppointment.dart';
 
-class Body extends StatelessWidget {
+class Body extends StatefulWidget {
+  Patient patient;
   List<Centers> centers;
-  Body(this.centers);
+  Body(this.centers, {@required this.patient});
+
+  @override
+  _BodyState createState() => _BodyState();
+}
+
+class _BodyState extends State<Body> {
+  void _navigate(int index) async {
+    final result = await Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) =>
+                PickAppointmentScreen(widget.centers[index], widget.patient)));
+    // Navigator.pushNamed(context, pcrAppointmentRoute,
+    // arguments: widget.centers[index], Patient.copy(widget.patient) );
+
+    if (result != null) {
+      setState(() => widget.patient = result);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     double statusBarHeight = MediaQuery.of(context).padding.top;
@@ -32,7 +55,7 @@ class Body extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(left: 20, right: 80),
                     child: InkWell(
-                      onTap: () => Navigator.pop(context),
+                      onTap: () => Navigator.pop(context, widget.patient),
                       child: Icon(
                         FontAwesomeIcons.chevronLeft,
                         color: Colors.white,
@@ -61,15 +84,18 @@ class Body extends StatelessWidget {
                 child: Container(
                   padding: EdgeInsets.only(top: 120),
                   child: ListView.separated(
-                    itemCount: centers.length,
+                    itemCount: widget.centers.length,
                     itemBuilder: (context, index) {
                       return GestureDetector(
-                        onTap: () => Navigator.pushNamed(
-                            context, pcrAppointmentRoute,
-                            arguments: centers[index]),
+                        onTap: () {
+                          _navigate(index);
+                          setState(() {
+                            widget.patient.center = widget.centers[index].name;
+                          });
+                        },
                         child: CenterCard(
-                          image: Image.asset(centers[index].imgRout),
-                          title: centers[index].name,
+                          image: Image.asset(widget.centers[index].imgRout),
+                          title: widget.centers[index].name,
                           value: "750",
                           unit: "km",
                         ),

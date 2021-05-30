@@ -3,7 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:vaccine8/app/colors.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:vaccine8/components/constants/const.dart';
-import 'package:vaccine8/components/widgets/appointment_card.dart';
+import 'package:vaccine8/components/widgets/day_card.dart';
 import 'package:vaccine8/components/widgets/card_main.dart';
 import 'package:vaccine8/components/widgets/card_section.dart';
 import 'package:vaccine8/components/widgets/custom_clipper.dart';
@@ -15,7 +15,8 @@ import 'package:vaccine8/models/mock_data.dart';
 
 class Body extends StatefulWidget {
   Centers centers;
-  Body(this.centers);
+  Patient patient;
+  Body(this.centers, this.patient);
 
   @override
   _BodyState createState() => _BodyState();
@@ -45,7 +46,7 @@ class _BodyState extends State<Body> {
                   Padding(
                     padding: const EdgeInsets.only(left: 20, right: 70),
                     child: InkWell(
-                      onTap: () => Navigator.pop(context),
+                      onTap: () => Navigator.pop(context, widget.patient),
                       child: Icon(
                         FontAwesomeIcons.chevronLeft,
                         color: Colors.white,
@@ -170,7 +171,7 @@ class _BodyState extends State<Body> {
                   ),
                 ],
               ),
-              AppointmentDays(selectedAppointment, patientList[0])
+              AppointmentDays(selectedAppointment, widget.patient)
             ],
           ),
         ),
@@ -212,7 +213,7 @@ class _AppointmentDaysState extends State<AppointmentDays> {
                     widget.patient.hasPcrAppointment =
                         !widget.patient.hasPcrAppointment;
                   }),
-                  child: AppointmentCard(
+                  child: DayCard(
                     onTap: () => setState(
                       () {
                         widget.patient.pcrAppointment = DateTime.utc(

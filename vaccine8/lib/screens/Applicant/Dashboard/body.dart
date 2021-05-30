@@ -4,13 +4,25 @@ import 'package:vaccine8/components/widgets/card_main.dart';
 import 'package:vaccine8/components/widgets/card_section.dart';
 import 'package:vaccine8/components/widgets/custom_clipper.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:vaccine8/models/Patient.dart';
 
 class Body extends StatefulWidget {
+  Patient patient;
+  Body({@required this.patient});
   @override
   _BodyState createState() => _BodyState();
 }
 
 class _BodyState extends State<Body> {
+  void _navigate() async {
+    final result = await Navigator.pushNamed(context, pcrRoute,
+        arguments: Patient.copy(widget.patient));
+
+    if (result != null) {
+      setState(() => widget.patient = result);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     double statusBarHeight = MediaQuery.of(context).padding.top;
@@ -118,7 +130,7 @@ class _BodyState extends State<Body> {
                         ),
                         SizedBox(height: 20),
                         GestureDetector(
-                          onTap: () => Navigator.pushNamed(context, pcrRoute),
+                          onTap: () => _navigate(),
                           child: CardSection(
                             icon: Icon(
                               Icons.coronavirus_outlined,

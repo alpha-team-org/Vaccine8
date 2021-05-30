@@ -2,33 +2,31 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vaccine8/components/widgets/custom_clipper.dart';
 
-class AppointmentCard extends StatefulWidget {
-  final String title;
-  final String value;
-  final Function onTap;
+class AppointmentCard extends StatelessWidget {
+  final String center;
+  final String day;
+  final String date;
+  final String time;
+  final Icon icon;
   final bool isDone;
 
   AppointmentCard(
       {Key key,
-      @required this.title,
-      @required this.value,
-      this.isDone,
-      @required this.onTap})
+      @required this.center,
+      @required this.day,
+      @required this.date,
+      @required this.time,
+      @required this.icon,
+      this.isDone})
       : super(key: key);
 
-  @override
-  _AppointmentCardState createState() => _AppointmentCardState();
-}
-
-class _AppointmentCardState extends State<AppointmentCard> {
   @override
   Widget build(BuildContext context) {
     return Align(
       alignment: Alignment.topLeft,
       child: Container(
         margin: const EdgeInsets.only(right: 15.0),
-        width: 120,
-        height: 50,
+        width: MediaQuery.of(context).size.width,
         decoration: new BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(10.0)),
           shape: BoxShape.rectangle,
@@ -36,7 +34,7 @@ class _AppointmentCardState extends State<AppointmentCard> {
           boxShadow: [
             BoxShadow(
               color: Colors.grey.withOpacity(0.5),
-              spreadRadius: 2,
+              spreadRadius: 5,
               blurRadius: 7,
               offset: Offset(0, 3), // changes position of shadow
             ),
@@ -44,55 +42,75 @@ class _AppointmentCardState extends State<AppointmentCard> {
         ),
         child: Stack(
           children: <Widget>[
+            Positioned(
+              child: ClipPath(
+                clipper: MyCustomClipper(clipType: ClipType.semiCircle),
+                child: Container(
+                  decoration: new BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                    color: Color(0xFF3EC6FF).withOpacity(0.1),
+                  ),
+                  height: 120,
+                  width: 120,
+                ),
+              ),
+            ),
             Padding(
-              padding: EdgeInsets.all(10.0),
+              padding: EdgeInsets.all(20.0),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
+                      SizedBox(height: 10),
+                      icon,
+                      SizedBox(width: 2),
+                      Text(
+                        day,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFF486581)),
+                      ),
+                      SizedBox(width: 20),
+                      Text(
+                        center,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFF486581)),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
                       Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: <Widget>[
+                            SizedBox(height: 40),
+                            Padding(
+                                padding: EdgeInsets.only(top: 10, left: 50)),
                             Text(
-                              widget.title,
-                              overflow: TextOverflow.ellipsis,
+                              '$date',
                               style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                color: Color(0xFF486581),
-                              ),
+                                  fontSize: 18, color: Color(0xFF486581)),
+                            ),
+                            SizedBox(width: 40),
+                            Text(
+                              '$time',
+                              style: TextStyle(
+                                  fontSize: 18, color: Color(0xFF486581)),
                             ),
                           ],
                         ),
                       ),
-                      SizedBox(width: 5),
-                      InkWell(
-                        child: Container(
-                          decoration: new BoxDecoration(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(10.0)),
-                            shape: BoxShape.rectangle,
-                            color: widget.isDone
-                                ? Theme.of(context).accentColor
-                                : Color(0xFFF0F4F8),
-                          ),
-                          width: 30,
-                          height: 30,
-                          child: Center(
-                            child: Icon(
-                              Icons.check,
-                              color: widget.isDone
-                                  ? Colors.white
-                                  : Theme.of(context).accentColor,
-                            ),
-                          ),
-                        ),
-                        onTap: widget.onTap,
-                      )
                     ],
                   ),
                 ],

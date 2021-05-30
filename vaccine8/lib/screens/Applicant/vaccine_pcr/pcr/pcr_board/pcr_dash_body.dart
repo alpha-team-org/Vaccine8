@@ -1,18 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:intl/intl.dart';
 import 'package:vaccine8/app/colors.dart';
 import 'package:vaccine8/components/constants/const.dart';
 import 'package:vaccine8/components/widgets/card_items.dart';
 import 'package:vaccine8/components/widgets/card_main.dart';
 import 'package:vaccine8/components/widgets/card_section.dart';
 import 'package:vaccine8/components/widgets/custom_clipper.dart';
+import 'package:vaccine8/models/Patient.dart';
 
-class Body extends StatelessWidget {
-  String str1, str2;
-  Body(this.str1, this.str2);
+class Body extends StatefulWidget {
+  Patient patient;
+  Body({@required this.patient});
 
   @override
+  _BodyState createState() => _BodyState();
+}
+
+class _BodyState extends State<Body> {
+  @override
   Widget build(BuildContext context) {
+    void _navigate() async {
+      final result = await Navigator.pushNamed(context, centersRoute,
+          arguments: Patient.copy(widget.patient));
+
+      if (result != null) {
+        setState(() => widget.patient = result);
+      }
+    }
+
     double statusBarHeight = MediaQuery.of(context).padding.top;
     return Stack(
       children: <Widget>[
@@ -33,7 +49,7 @@ class Body extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(left: 20, right: 80),
                     child: InkWell(
-                      onTap: () => Navigator.pop(context),
+                      onTap: () => Navigator.pop(context, widget.patient),
                       child: Icon(
                         FontAwesomeIcons.chevronLeft,
                         color: Colors.white,
@@ -60,6 +76,24 @@ class Body extends StatelessWidget {
             Padding(
               padding: EdgeInsets.only(top: 300, left: 15),
               child: MainCard(
+                center: widget.patient.center != null
+                    ? widget.patient.center
+                    : 'error',
+                day: widget.patient.hasPcrAppointment == true
+                    ? DateFormat('EEEE').format(widget.patient.pcrAppointment)
+                    : 'error',
+                date: widget.patient.hasPcrAppointment == true
+                    ? DateFormat('yyyy-MM-dd')
+                        .format(widget.patient.pcrAppointment)
+                    : 'error',
+                time: widget.patient.hasPcrAppointment == true
+                    ? DateFormat('kk:mm').format(widget.patient.pcrAppointment)
+                    // ? widget.patient.pcrAppointment.hour < 12
+                    // ? "${DateFormat('kk:mm').format(widget.patient.pcrAppointment)} AM"
+                    // : "${DateFormat('kk:mm').format(widget.patient.pcrAppointment)} PM"
+                    : 'error',
+                hasAppointment: widget.patient.hasPcrAppointment,
+                onTap: () => _navigate(),
                 title: 'OMAR',
                 icon: Icon(
                   FontAwesomeIcons.userAlt,
