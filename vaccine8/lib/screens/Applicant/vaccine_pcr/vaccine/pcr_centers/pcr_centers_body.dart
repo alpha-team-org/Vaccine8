@@ -52,7 +52,7 @@ class _BodyState extends State<Body> {
                   Padding(
                     padding: const EdgeInsets.only(left: 20, right: 80),
                     child: InkWell(
-                      onTap: () => Navigator.pop(context),
+                      onTap: () => Navigator.pop(context, widget.patient),
                       child: Icon(
                         FontAwesomeIcons.chevronLeft,
                         color: Colors.white,

@@ -6,7 +6,8 @@ import 'package:vaccine8/models/Patient.dart';
 class AppointmentDays extends StatefulWidget {
   final Appointment appointment;
   final Patient patient;
-  AppointmentDays(this.appointment, this.patient);
+  final bool isPcr;
+  AppointmentDays(this.appointment, this.patient, this.isPcr);
 
   @override
   _AppointmentDaysState createState() => _AppointmentDaysState();
@@ -26,40 +27,70 @@ class _AppointmentDaysState extends State<AppointmentDays> {
               itemBuilder: (context, index) {
                 return GestureDetector(
                   onTap: () => setState(() {
-                    widget.patient.pcrAppointment = DateTime.utc(
+                    if (widget.isPcr) {
+                      widget.patient.pcrAppointment = DateTime.utc(
+                          widget.appointment.day.year,
+                          widget.appointment.day.month,
+                          widget.appointment.day.day,
+                          widget.appointment.date[index].hour,
+                          widget.appointment.date[index].minute);
+
+                      widget.patient.hasPcrAppointment =
+                          !widget.patient.hasPcrAppointment;
+                    }
+                    widget.patient.vaccineFirstDose = DateTime.utc(
                         widget.appointment.day.year,
                         widget.appointment.day.month,
                         widget.appointment.day.day,
                         widget.appointment.date[index].hour,
                         widget.appointment.date[index].minute);
 
-                    widget.patient.hasPcrAppointment =
-                        !widget.patient.hasPcrAppointment;
+                    widget.patient.hasVaccineAppointments =
+                        !widget.patient.hasVaccineAppointments;
                   }),
                   child: DayCard(
                     onTap: () => setState(
                       () {
-                        widget.patient.pcrAppointment = DateTime.utc(
+                        if (widget.isPcr) {
+                          widget.patient.pcrAppointment = DateTime.utc(
+                              widget.appointment.day.year,
+                              widget.appointment.day.month,
+                              widget.appointment.day.day,
+                              widget.appointment.date[index].hour,
+                              widget.appointment.date[index].minute);
+
+                          widget.patient.hasPcrAppointment =
+                              !widget.patient.hasPcrAppointment;
+                        }
+                        widget.patient.vaccineFirstDose = DateTime.utc(
                             widget.appointment.day.year,
                             widget.appointment.day.month,
                             widget.appointment.day.day,
                             widget.appointment.date[index].hour,
                             widget.appointment.date[index].minute);
 
-                        widget.patient.hasPcrAppointment =
-                            !widget.patient.hasPcrAppointment;
+                        widget.patient.hasVaccineAppointments =
+                            !widget.patient.hasVaccineAppointments;
                       },
                     ),
                     title:
                         '${widget.appointment.date[index].hour}:${widget.appointment.date[index].minute}',
                     value: '',
-                    isDone: widget.patient.hasPcrAppointment == true &&
-                            widget.patient.pcrAppointment.hour ==
-                                widget.appointment.date[index].hour &&
-                            widget.patient.pcrAppointment.minute ==
-                                widget.appointment.date[index].minute
-                        ? true
-                        : false,
+                    isDone: widget.isPcr
+                        ? widget.patient.hasPcrAppointment == true &&
+                                widget.patient.pcrAppointment.hour ==
+                                    widget.appointment.date[index].hour &&
+                                widget.patient.pcrAppointment.minute ==
+                                    widget.appointment.date[index].minute
+                            ? true
+                            : false
+                        : widget.patient.hasVaccineAppointments == true &&
+                                widget.patient.vaccineFirstDose.hour ==
+                                    widget.appointment.date[index].hour &&
+                                widget.patient.vaccineFirstDose.minute ==
+                                    widget.appointment.date[index].minute
+                            ? true
+                            : false,
                   ),
                 );
               },

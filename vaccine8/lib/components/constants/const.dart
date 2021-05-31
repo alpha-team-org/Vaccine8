@@ -1,6 +1,13 @@
 const String dashboardRoute = '/dashboard';
+
+// PCR Section
 const String pcrRoute = '/pcr';
-const String pcrAndVaccineRoute = '/pcr&vac';
+const String centersRoute = '/centers';
 const String pcrAppointmentRoute = '/pcrapp';
 const String successfullRoute = '/succPicked';
-const String centersRoute = '/centers';
+
+// Vaccine Section
+const String vaccineRoute = '/vaccine';
+const String vaccineCentersRoute = '/vaccineCenters';
+const String vaccineAppointmentRoute = '/vaccineAppointment';
+const String successfullVaccineRoute = '/succPicked';

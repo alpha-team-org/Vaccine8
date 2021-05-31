@@ -4,7 +4,7 @@ import 'package:vaccine8/components/widgets/center_card.dart';
 import 'package:vaccine8/components/widgets/custom_clipper.dart';
 import 'package:vaccine8/models/Centers.dart';
 import 'package:vaccine8/models/Patient.dart';
-import 'package:vaccine8/screens/Applicant/vaccine_pcr/pcr/pick_appontment/pick_ppointment.dart';
+import 'package:vaccine8/screens/Applicant/vaccine_pcr/vaccine/pick_appontment/pick_ppointment.dart';
 
 class Body extends StatefulWidget {
   Patient patient;
@@ -20,8 +20,8 @@ class _BodyState extends State<Body> {
     final result = await Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (context) =>
-                PickAppointmentScreen(widget.centers[index], widget.patient)));
+            builder: (context) => PickVaccineAppointmentScreen(
+                widget.centers[index], widget.patient)));
     // Navigator.pushNamed(context, pcrAppointmentRoute,
     // arguments: widget.centers[index], Patient.copy(widget.patient) );
 
@@ -87,7 +87,7 @@ class _BodyState extends State<Body> {
                         onTap: () {
                           _navigate(index);
                           setState(() {
-                            widget.patient.pcrCenter =
+                            widget.patient.vaccineCenter =
                                 widget.centers[index].name;
                           });
                         },

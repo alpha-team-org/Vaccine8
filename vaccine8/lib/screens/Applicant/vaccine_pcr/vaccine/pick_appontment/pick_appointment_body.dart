@@ -168,7 +168,7 @@ class _BodyState extends State<Body> {
                   ),
                 ],
               ),
-              AppointmentDays(selectedAppointment, widget.patient, true),
+              AppointmentDays(selectedAppointment, widget.patient, false),
               ElevatedButton(
                 onPressed: () => _navigate(),
                 style: ButtonStyle(

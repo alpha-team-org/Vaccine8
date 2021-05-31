@@ -14,9 +14,18 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
-  void _navigate() async {
+  void _pcrNavigate() async {
     final result =
         await Navigator.pushNamed(context, pcrRoute, arguments: widget.patient);
+
+    if (result != null) {
+      setState(() => widget.patient = result);
+    }
+  }
+
+  void _vaccineNavigate() async {
+    final result = await Navigator.pushNamed(context, vaccineRoute,
+        arguments: widget.patient);
 
     if (result != null) {
       setState(() => widget.patient = result);
@@ -119,18 +128,21 @@ class _BodyState extends State<Body> {
                     SizedBox(height: 80),
                     Column(
                       children: <Widget>[
-                        CardSection(
-                          icon: Icon(
-                            FontAwesomeIcons.syringe,
-                            color: Colors.white,
-                            size: 30,
+                        GestureDetector(
+                          onTap: () => _vaccineNavigate(),
+                          child: CardSection(
+                            icon: Icon(
+                              FontAwesomeIcons.syringe,
+                              color: Colors.white,
+                              size: 30,
+                            ),
+                            title: "COVID-19 Vaccine",
+                            color: Colors.cyan[800],
                           ),
-                          title: "COVID-19 Vaccine",
-                          color: Colors.cyan[800],
                         ),
                         SizedBox(height: 20),
                         GestureDetector(
-                          onTap: () => _navigate(),
+                          onTap: () => _pcrNavigate(),
                           child: CardSection(
                             icon: Icon(
                               Icons.coronavirus_outlined,

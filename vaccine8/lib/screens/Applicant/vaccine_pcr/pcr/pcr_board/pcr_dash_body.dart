@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:vaccine8/components/constants/const.dart';
+import 'package:vaccine8/components/widgets/appointment_card.dart';
 import 'package:vaccine8/components/widgets/card_items.dart';
 import 'package:vaccine8/components/widgets/custom_clipper.dart';
 import 'package:vaccine8/models/Patient.dart';
@@ -55,7 +56,7 @@ class _BodyState extends State<Body> {
                   Padding(
                     padding: const EdgeInsets.only(left: 20, right: 80),
                     child: InkWell(
-                      onTap: () => Navigator.pop(context, widget.patient),
+                      onTap: () => Navigator.pop(context),
                       child: Icon(
                         FontAwesomeIcons.chevronLeft,
                         color: Colors.white,
@@ -80,27 +81,44 @@ class _BodyState extends State<Body> {
         Column(
           children: [
             Padding(
-              padding: EdgeInsets.only(top: 300, left: 15),
+              padding: EdgeInsets.only(top: 280, left: 15),
               child: MainCard(
-                onEditTap: () => _navigateEdit(),
-                center: widget.patient.center != null
-                    ? widget.patient.center
-                    : 'error',
-                day: widget.patient.hasPcrAppointment == true
-                    ? DateFormat('EEEE').format(widget.patient.pcrAppointment)
-                    : 'error',
-                date: widget.patient.hasPcrAppointment == true
-                    ? DateFormat('yyyy-MM-dd')
-                        .format(widget.patient.pcrAppointment)
-                    : 'error',
-                time: widget.patient.hasPcrAppointment == true
-                    ? DateFormat('kk:mm').format(widget.patient.pcrAppointment)
-                    // ? widget.patient.pcrAppointment.hour < 12
-                    // ? "${DateFormat('kk:mm').format(widget.patient.pcrAppointment)} AM"
-                    // : "${DateFormat('kk:mm').format(widget.patient.pcrAppointment)} PM"
-                    : 'error',
-                hasAppointment: widget.patient.hasPcrAppointment,
-                onTap: () => _navigate(),
+                height: widget.patient.hasPcrAppointment ? 320 : 300,
+                children: [
+                  !widget.patient.hasPcrAppointment
+                      ? ButtonCard(
+                          onTap: () => _navigate(),
+                          title: "Book and View COVID-19 Test\n Appointments",
+                        )
+                      : AppointmentCard(
+                          center: widget.patient.pcrCenter != null
+                              ? widget.patient.pcrCenter
+                              : 'error',
+                          day: widget.patient.hasPcrAppointment == true
+                              ? DateFormat('EEEE')
+                                  .format(widget.patient.pcrAppointment)
+                              : 'error',
+                          date: widget.patient.hasPcrAppointment == true
+                              ? DateFormat('yyyy-MM-dd')
+                                  .format(widget.patient.pcrAppointment)
+                              : 'error',
+                          time: widget.patient.hasPcrAppointment == true
+                              ? DateFormat('kk:mm')
+                                  .format(widget.patient.pcrAppointment)
+                              // ? widget.patient.pcrAppointment.hour < 12
+                              // ? "${DateFormat('kk:mm').format(widget.patient.pcrAppointment)} AM"
+                              // : "${DateFormat('kk:mm').format(widget.patient.pcrAppointment)} PM"
+                              : 'error',
+                          isDone: true,
+                          icon: Icon(Icons.calendar_today),
+                          onTap: () => _navigateEdit(),
+                        ),
+                  SizedBox(height: 20),
+                  ButtonCard(
+                    onTap: () {},
+                    title: "View Previous Results",
+                  ),
+                ],
                 title: 'OMAR',
                 icon: Icon(
                   FontAwesomeIcons.userAlt,

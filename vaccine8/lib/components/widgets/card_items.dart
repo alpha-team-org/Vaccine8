@@ -4,37 +4,26 @@ import 'package:vaccine8/components/widgets/appointment_card.dart';
 import 'package:vaccine8/components/widgets/custom_clipper.dart';
 
 class MainCard extends StatelessWidget {
+  final List<Widget> children;
   final String title;
   final Icon icon;
-  final Function onTap;
-  final Function onEditTap;
   final Color color;
-  final String center;
-  final String day;
-  final String date;
-  final String time;
-  final bool hasAppointment;
+  final double height;
 
   MainCard({
-    Key key,
+    @required this.children,
     @required this.title,
     @required this.icon,
     @required this.color,
-    @required this.hasAppointment,
-    @required this.onTap,
-    @required this.onEditTap,
-    @required this.center,
-    @required this.day,
-    @required this.date,
-    @required this.time,
-  }) : super(key: key);
+    @required this.height,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Align(
       alignment: Alignment.topLeft,
       child: Container(
-        height: hasAppointment ? 320 : 300,
+        height: height,
         margin: const EdgeInsets.only(right: 15.0),
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
@@ -89,25 +78,7 @@ class MainCard extends StatelessWidget {
                     ],
                   ),
                   SizedBox(height: 20),
-                  !hasAppointment
-                      ? ButtonCard(
-                          onTap: onTap,
-                          title: "Book and View COVID-19 Test\n Appointments",
-                        )
-                      : AppointmentCard(
-                          center: center,
-                          day: day,
-                          date: date,
-                          time: time,
-                          isDone: true,
-                          icon: Icon(Icons.calendar_today),
-                          onTap: onEditTap,
-                        ),
-                  SizedBox(height: 20),
-                  ButtonCard(
-                    onTap: () {},
-                    title: "View Previous Results",
-                  ),
+                  Column(children: children),
                 ],
               ),
             )
