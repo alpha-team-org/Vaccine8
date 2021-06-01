@@ -83,7 +83,7 @@ class _BodyState extends State<Body> {
             Padding(
               padding: EdgeInsets.only(top: 200, left: 15),
               child: MainCard(
-                height: widget.patient.hasVaccineAppointments ? 460 : 300,
+                height: widget.patient.hasVaccineAppointments ? 460 : 220,
                 children: [
                   !widget.patient.hasVaccineAppointments
                       ? ButtonCard(
@@ -118,71 +118,52 @@ class _BodyState extends State<Body> {
                               icon: Icon(Icons.calendar_today),
                               onTap: () => _navigateEdit(),
                             ),
-                            // AppointmentCard(
-                            //   center: widget.patient.pcrCenter != null
-                            //       ? widget.patient.pcrCenter
-                            //       : 'error',
-                            //   day: widget.patient.hasVaccineAppointments == true
-                            //       ? DateFormat('EEEE')
-                            //           .format(widget.patient.vaccineSecondDose)
-                            //       : 'error',
-                            //   date: widget.patient.hasVaccineAppointments ==
-                            //           true
-                            //       ? DateFormat('yyyy-MM-dd')
-                            //           .format(widget.patient.vaccineSecondDose)
-                            //       : 'error',
-                            //   time: widget.patient.hasVaccineAppointments ==
-                            //           true
-                            //       ? DateFormat('kk:mm')
-                            //           .format(widget.patient.vaccineSecondDose)
-                            //       // ? widget.patient.vaccineSecondDose.hour < 12
-                            //       // ? "${DateFormat('kk:mm').format(widget.patient.vaccineSecondDose)} AM"
-                            //       // : "${DateFormat('kk:mm').format(widget.patient.vaccineSecondDose)} PM"
-                            //       : 'error',
-                            //   isDone: true,
-                            //   icon: Icon(Icons.calendar_today),
-                            //   onTap: () => _navigateEdit(),
-                            // ),
                           ],
                         ),
                   SizedBox(height: 40),
-                  ElevatedButton(
-                    onPressed: () => _navigate(),
-                    style: ButtonStyle(
-                      minimumSize: MaterialStateProperty.all(
-                          Size(MediaQuery.of(context).size.width, 90)),
-                      backgroundColor: MaterialStateProperty.all(
-                          Color.fromRGBO(42, 42, 192, .7)),
-                      shape: MaterialStateProperty.all(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12.0),
-                        ),
-                      ),
-                    ),
-                    child: Text(
-                      'Register Symptoms',
-                      style: TextStyle(fontSize: 25),
-                    ),
-                  ),
-                  SizedBox(height: 20),
-                  ElevatedButton(
-                    onPressed: () => _navigate(),
-                    style: ButtonStyle(
-                      minimumSize: MaterialStateProperty.all(
-                          Size(MediaQuery.of(context).size.width, 90)),
-                      backgroundColor: MaterialStateProperty.all(
-                          Color.fromRGBO(42, 42, 192, .7)),
-                      shape: MaterialStateProperty.all(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12.0),
-                        ),
-                      ),
-                    ),
-                    child: Text(
-                      'View Medical Report',
-                      style: TextStyle(fontSize: 25),
-                    ),
-                  ),
+                  widget.patient.hasVaccineAppointments
+                      ? Column(
+                          children: [
+                            ElevatedButton(
+                              onPressed: () {},
+                              style: ButtonStyle(
+                                minimumSize: MaterialStateProperty.all(Size(
+                                    MediaQuery.of(context).size.width, 90)),
+                                backgroundColor: MaterialStateProperty.all(
+                                    Color.fromRGBO(42, 42, 192, .7)),
+                                shape: MaterialStateProperty.all(
+                                  RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(12.0),
+                                  ),
+                                ),
+                              ),
+                              child: Text(
+                                'Register Symptoms',
+                                style: TextStyle(fontSize: 25),
+                              ),
+                            ),
+                            SizedBox(height: 20),
+                            ElevatedButton(
+                              onPressed: () {},
+                              style: ButtonStyle(
+                                minimumSize: MaterialStateProperty.all(Size(
+                                    MediaQuery.of(context).size.width, 90)),
+                                backgroundColor: MaterialStateProperty.all(
+                                    Color.fromRGBO(42, 42, 192, .7)),
+                                shape: MaterialStateProperty.all(
+                                  RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(12.0),
+                                  ),
+                                ),
+                              ),
+                              child: Text(
+                                'View Medical Report',
+                                style: TextStyle(fontSize: 25),
+                              ),
+                            ),
+                          ],
+                        )
+                      : Container(),
 
                   // ButtonCard(
                   //   onTap: () {},

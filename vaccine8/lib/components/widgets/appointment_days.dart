@@ -37,16 +37,17 @@ class _AppointmentDaysState extends State<AppointmentDays> {
 
                       widget.patient.hasPcrAppointment =
                           !widget.patient.hasPcrAppointment;
-                    }
-                    widget.patient.vaccineFirstDose = DateTime.utc(
-                        widget.appointment.day.year,
-                        widget.appointment.day.month,
-                        widget.appointment.day.day,
-                        widget.appointment.date[index].hour,
-                        widget.appointment.date[index].minute);
+                    } else {
+                      widget.patient.vaccineFirstDose = DateTime.utc(
+                          widget.appointment.day.year,
+                          widget.appointment.day.month,
+                          widget.appointment.day.day,
+                          widget.appointment.date[index].hour,
+                          widget.appointment.date[index].minute);
 
-                    widget.patient.hasVaccineAppointments =
-                        !widget.patient.hasVaccineAppointments;
+                      widget.patient.hasVaccineAppointments =
+                          !widget.patient.hasVaccineAppointments;
+                    }
                   }),
                   child: DayCard(
                     onTap: () => setState(
@@ -61,16 +62,17 @@ class _AppointmentDaysState extends State<AppointmentDays> {
 
                           widget.patient.hasPcrAppointment =
                               !widget.patient.hasPcrAppointment;
-                        }
-                        widget.patient.vaccineFirstDose = DateTime.utc(
-                            widget.appointment.day.year,
-                            widget.appointment.day.month,
-                            widget.appointment.day.day,
-                            widget.appointment.date[index].hour,
-                            widget.appointment.date[index].minute);
+                        } else {
+                          widget.patient.vaccineFirstDose = DateTime.utc(
+                              widget.appointment.day.year,
+                              widget.appointment.day.month,
+                              widget.appointment.day.day,
+                              widget.appointment.date[index].hour,
+                              widget.appointment.date[index].minute);
 
-                        widget.patient.hasVaccineAppointments =
-                            !widget.patient.hasVaccineAppointments;
+                          widget.patient.hasVaccineAppointments =
+                              !widget.patient.hasVaccineAppointments;
+                        }
                       },
                     ),
                     title:
