@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       ),
       //onGenerateRoute:RouteGenerator.generateRoute,
       debugShowCheckedModeBanner: false,
-      initialRoute: dashboardRoute,
+      initialRoute: introScreenRoute,
       onGenerateRoute: router.createRoute,
     );
   }

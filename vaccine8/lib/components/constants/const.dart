@@ -1,4 +1,6 @@
 const String dashboardRoute = '/dashboard';
+const String logindRoute = '/login';
+const String introScreenRoute = '/introScreen';
 
 // PCR Section
 const String pcrRoute = '/pcr';

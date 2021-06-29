@@ -6,10 +6,18 @@ import 'package:vaccine8/screens/Applicant/vaccine_pcr/vaccine/pick_appontment/p
 import 'package:vaccine8/screens/Applicant/vaccine_pcr/vaccine/successful_picked/successful_picked.dart';
 import 'package:vaccine8/screens/Applicant/vaccine_pcr/vaccine/vaccine_board/vaccine_dashboard.dart';
 import 'package:vaccine8/screens/Applicant/vaccine_pcr/vaccine/vaccine_centers/vaccine_centers.dart';
-import 'dependcies.dart';
+import 'package:vaccine8/screens/intro_screen/intro_screen.dart';
+import 'package:vaccine8/screens/login/login_screen.dart';
+import 'dependencies.dart';
 
 Route<dynamic> createRoute(RouteSettings settings) {
   switch (settings.name) {
+    case introScreenRoute:
+      return MaterialPageRoute(builder: (context) => IntroScreenState());
+
+    case logindRoute:
+      return MaterialPageRoute(builder: (context) => LoginScreen());
+
     case dashboardRoute:
       return MaterialPageRoute(
           builder: (context) =>
