@@ -1,0 +1,45 @@
+export '../screens/Applicant/Dashboard/dash_board.dart';
+export '../screens/Applicant/vaccine_pcr/pcr/pcr_board/pcr_dashboard.dart';
+export '../screens/Applicant/vaccine_pcr/pcr/pick_appontment/pick_ppointment.dart';
+export '../screens/Applicant/vaccine_pcr/pcr/successful_picked/successful_picked.dart';
+export '../screens/Applicant/vaccine_pcr/pcr/pcr_centers/pcr_centers.dart';
+
+import 'package:get_it/get_it.dart';
+
+import '../services/rest.dart';
+
+import '../services/auth/auth_service.dart';
+
+// import '../services/auth/auth_service_rest.dart';
+// import '../services/counter/counter_service_rest.dart';
+import '../services/auth/auth_service_secured_rest.dart';
+
+// import '../services/auth/auth_service_mock.dart';
+// import '../services/counter/counter_service_mock.dart';
+
+GetIt dependency = GetIt.instance;
+
+void init() {
+  // Services
+
+  dependency.registerLazySingleton<RestService>(
+    () => RestService(
+        // baseUrl: 'http://192.168.0.5:3000',  // with Local JSON-server
+        baseUrl:
+            'http://192.168.100.40:5001/vaccine8-dcf02/us-central1/api', // Firebase emulator
+        // baseUrl:
+        //     'https://us-central1-mvvm-frontend-and-mvc-backend.cloudfunctions.net/api',
+        enableSession: true // Firebase REST live
+        ),
+  );
+
+  dependency.registerLazySingleton<AuthService>(() => AuthServiceSecuredRest());
+  // dependency.registerLazySingleton<CounterService>(() => CounterServiceSecuredRest());
+  // dependency.registerLazySingleton<CounterService>(() => CounterServiceRest());
+  // dependency.registerLazySingleton<AuthService>(() => AuthServiceRest());
+  // dependency.registerLazySingleton<CounterService>(() => CounterServiceMock());
+  // dependency.registerLazySingleton<AuthService>(() => AuthServiceMock());
+
+  // Viewmodels
+  // dependency.registerLazySingleton(() => UserViewmodel());
+}
