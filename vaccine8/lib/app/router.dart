@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:vaccine8/components/constants/const.dart';
@@ -6,6 +7,9 @@ import 'package:vaccine8/screens/Applicant/vaccine_pcr/vaccine/pick_appontment/p
 import 'package:vaccine8/screens/Applicant/vaccine_pcr/vaccine/successful_picked/successful_picked.dart';
 import 'package:vaccine8/screens/Applicant/vaccine_pcr/vaccine/vaccine_board/vaccine_dashboard.dart';
 import 'package:vaccine8/screens/Applicant/vaccine_pcr/vaccine/vaccine_centers/vaccine_centers.dart';
+import 'package:vaccine8/screens/JdJk/Appointments/appointment_view.dart';
+import 'package:vaccine8/screens/JdJk/medicine_list/medicine_view.dart';
+import 'package:vaccine8/screens/JdJk/symptoms/symptoms_view.dart';
 import 'dependcies.dart';
 
 Route<dynamic> createRoute(RouteSettings settings) {
@@ -45,6 +49,15 @@ Route<dynamic> createRoute(RouteSettings settings) {
     case successfullVaccineRoute:
       return MaterialPageRoute(
           builder: (context) => SuccessfullPickedVaccineScreen());
-  }
+    case jdjkdashboardRout :
+            return MaterialPageRoute(builder: 
+            (context) => JDJKDasboardScreen());
+    case jdjkAppointment:
+    return MaterialPageRoute(builder: (context)=>AppointmentScreen());
+    case jdjkSymptoms :
+    return MaterialPageRoute(builder: (context)=>SymptomsScreem());
+    case medicine:
+    return MaterialPageRoute(builder: (context)=>MedicieScreen());
   return null;
+}
 }

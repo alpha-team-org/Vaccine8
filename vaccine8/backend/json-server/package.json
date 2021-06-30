@@ -1,0 +1,10 @@
+{
+    "description": "Seekers Group Project",
+    "scripts": {
+
+
+        "test": "json-server --host 192.168.0.101 db.json",
+        "server": "json-server --host 192.168.68.103 db.json"
+
+    }
+}
