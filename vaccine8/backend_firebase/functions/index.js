@@ -14,6 +14,7 @@ const { authsRouter, verifyAccessToken } = require('./api/controllers/auth_contr
 app.use(express.json())
 app.use('/auths', authsRouter)
 
+
 // app.use('/users', verifyAccessToken, usersRouter)
 // app.use('/counters', verifyAccessToken, countersRouter)
 

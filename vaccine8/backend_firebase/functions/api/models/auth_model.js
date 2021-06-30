@@ -12,8 +12,8 @@ const _firebase = require('./firebase/firebase_admin')
 const _axios = require('axios').default
 const _AUTH_BASE_URL = 'https://identitytoolkit.googleapis.com/v1/accounts'
     // const API_KEY = _functions.config().api.key
-const API_KEY = require('../_config')
-    // const API_KEY=null;
+    // const API_KEY = require('../_config')
+const API_KEY = 'AIzaSyDbmIDXDU_MHaOTGh-JIP6ROjTXE4Ocugw';
 
 // Resource: Setting Up Firebase Environment configuration
 //   https://firebase.google.com/doc/functions/config-env

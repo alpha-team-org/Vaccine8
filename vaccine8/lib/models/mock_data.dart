@@ -5,7 +5,7 @@ import 'package:vaccine8/models/Patient.dart';
 import 'Centers.dart';
 
 final patientList = <Patient>[
-  Patient(name: "abdalla", imageRoute: "assets/user.jpg", address: "skudai")
+  Patient(name: "abdalla", photoUrl: "assets/user.jpg", address: "skudai")
 ];
 final centerList = <Centers>[
   Centers(

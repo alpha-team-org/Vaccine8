@@ -21,9 +21,9 @@ class RestService {
 
   final SessionService _session;
 
-  RestService({@required String baseUrl, bool enableSession = false})
+  RestService({@required String baseUrl, bool enableSession = true})
       : _baseUrl = baseUrl,
-        _session = enableSession ? SessionService() : null;
+        _session = SessionService();
 
   Future<void> openSession(token) async {
     if (_session == null) return;

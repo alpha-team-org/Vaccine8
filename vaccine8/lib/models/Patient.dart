@@ -1,7 +1,8 @@
 class Patient {
+  dynamic id;
   String name;
   String _password;
-  String imageRoute;
+  String _photoUrl;
   String address;
   DateTime pcrAppointment;
   DateTime vaccineFirstDose;
@@ -14,10 +15,14 @@ class Patient {
   get password => _password;
   set password(value) => _password = value;
 
+  get photoUrl => _photoUrl;
+  set photoUrl(value) => _photoUrl = value;
+
   Patient({
+    dynamic id,
     this.name,
     String password = '',
-    this.imageRoute,
+    String photoUrl = '',
     this.address,
     this.pcrAppointment,
     this.vaccineFirstDose,
@@ -26,22 +31,26 @@ class Patient {
     this.vaccineCenter,
     this.hasPcrAppointment = false,
     this.hasVaccineAppointments = false,
-  }) : _password = password;
+  })  : id = id,
+        _photoUrl = photoUrl,
+        _password = password;
 
   Patient.copy(Patient from)
       : this(
+            id: from.id,
             name: from.name,
             password: from.password,
-            imageRoute: from.imageRoute,
+            photoUrl: from.photoUrl,
             address: from.address,
             pcrAppointment: from.pcrAppointment,
             hasPcrAppointment: from.hasPcrAppointment);
 
   Patient.fromJson(Map<String, dynamic> json)
       : this(
+          id: json['id'],
           name: json['name'],
           password: json['password'],
-          imageRoute: json['imageRoute'],
+          photoUrl: json['photoUrl'],
           address: json['address'],
           pcrAppointment: json['pcrAppointment'],
           vaccineFirstDose: json['vaccineFirstDose'],
@@ -53,9 +62,10 @@ class Patient {
         );
 
   Map<String, dynamic> toJson() => {
+        'id': id,
         'name': name,
         'password': password,
-        'imageRoute': imageRoute,
+        'photoUrl': photoUrl,
         'address': address,
         'pcrAppointment': pcrAppointment,
         'vaccineFirstDose': vaccineFirstDose,

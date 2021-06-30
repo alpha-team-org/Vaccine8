@@ -2,13 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:vaccine8/components/constants/const.dart';
 import 'package:vaccine8/models/mock_data.dart';
+import 'package:vaccine8/screens/Applicant/Dashboard/dash_board.dart';
+import 'package:vaccine8/screens/Applicant/vaccine_pcr/pcr/pcr_board/pcr_dashboard.dart';
+import 'package:vaccine8/screens/Applicant/vaccine_pcr/pcr/pcr_centers/pcr_centers.dart';
+import 'package:vaccine8/screens/Applicant/vaccine_pcr/pcr/pick_appontment/pick_ppointment.dart';
+import 'package:vaccine8/screens/Applicant/vaccine_pcr/pcr/successful_picked/successful_picked.dart';
 import 'package:vaccine8/screens/Applicant/vaccine_pcr/vaccine/pick_appontment/pick_ppointment.dart';
 import 'package:vaccine8/screens/Applicant/vaccine_pcr/vaccine/successful_picked/successful_picked.dart';
 import 'package:vaccine8/screens/Applicant/vaccine_pcr/vaccine/vaccine_board/vaccine_dashboard.dart';
 import 'package:vaccine8/screens/Applicant/vaccine_pcr/vaccine/vaccine_centers/vaccine_centers.dart';
 import 'package:vaccine8/screens/intro_screen/intro_screen.dart';
 import 'package:vaccine8/screens/login/login_screen.dart';
-import 'dependencies.dart';
 
 Route<dynamic> createRoute(RouteSettings settings) {
   switch (settings.name) {

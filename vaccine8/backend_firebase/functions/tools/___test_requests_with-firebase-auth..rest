@@ -3,7 +3,8 @@
 #   -baseUrl: API base URL
 #   -API KEY: project API key obtained from Firebase console (website)
 #   -accountUrl: base URL for authentication from Firebase
-@baseUrl = http://192.168.100.40:5001/vaccine8-dcf02/us-central1/api
+@baseUrl = http://localhost:5001/vaccine8-dcf02/us-central1/api
+# @baseUrl = http://192.168.100.40:5001/vaccine8-dcf02/us-central1/api
 @API_KEY = AIzaSyDbmIDXDU_MHaOTGh-JIP6ROjTXE4Ocugw
 @accountUrl = https://identitytoolkit.googleapis.com/v1/accounts
 
@@ -26,7 +27,7 @@ POST {{accountUrl}}:signUp?key={{API_KEY}}
 Content-Type: application/json
 
 {
-    "email": "jessica2@mockmail.com",
+    "email": "omar@mockmail.com",
     "password": "abc123",
     "returnSecureToken": true
 }
@@ -56,7 +57,7 @@ POST {{baseUrl}}/auths/signup
 Content-Type: application/json
 
 {
-    "email": "anytwo@anywhere.com",
+    "email": "ommm@any.com",
     "password": "abc123"
 }
 
@@ -65,9 +66,10 @@ POST {{baseUrl}}/auths/signin
 Content-Type: application/json
 
 {
-    "email": "anyone@anywhere.com",
+    "email": "omar@any.com",
     "password": "abc123"
 }
+
 
 ### Request 3 : Accessing profile for the signed in user
 GET {{baseUrl}}/users/{{userId}}
