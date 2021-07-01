@@ -26,8 +26,8 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return View(
-      viewmodel: LoginViewmodel(),
+    return View<LoginViewmodel>(
+      
       builder: (context, viewmodel, _) => Center(
         child: SingleChildScrollView(
           child: Column(

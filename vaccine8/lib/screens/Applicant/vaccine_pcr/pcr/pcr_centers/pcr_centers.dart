@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vaccine8/app/dependencies.dart';
 import 'package:vaccine8/components/widgets/bottom_navigation_bar.dart';
 import 'package:vaccine8/models/Patient.dart';
 import 'package:vaccine8/models/mock_data.dart';
@@ -17,15 +18,16 @@ class CentersScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFF5F5F7),
-      body: View(
-        viewmodel: PcrViewModel(),
+      body: View<PcrViewModel>(
+        initViewmodel:(viewmodel)=>dependency<PcrViewModel>().getHospital(),
 
               builder:
 
-              (__,viewmodel,___){
-                final centerlist = viewmodel.getHospital();
+              (context,viewmodel,___){
                 
-                 Body(
+                final centerlist = viewmodel.centers;
+                
+               return    Body(
           centerlist,
           patient: patient,
         );}

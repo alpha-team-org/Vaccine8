@@ -1,10 +1,13 @@
 import 'package:get_it/get_it.dart';
 import 'package:vaccine8/screens/Applicant/vaccine_pcr/pcr/pcr_centers/pcr_viewmodel.dart';
+import 'package:vaccine8/screens/Applicant/vaccine_pcr/vaccine/vaccine_centers/vaccine_viewmodel.dart';
+import 'package:vaccine8/screens/login/login_viewmodel.dart';
 import 'package:vaccine8/services/auth/auth_service.dart';
 import 'package:vaccine8/services/auth/auth_service_secured_rest.dart';
 import 'package:vaccine8/services/centers/centers_service.dart';
 import 'package:vaccine8/services/centers/centers_service_rest.dart';
 import 'package:vaccine8/services/rest.dart';
+
 
 GetIt dependency = GetIt.instance;
 
@@ -38,4 +41,6 @@ void init() {
   // Viewmodels
   // dependency.registerLazySingleton(() => UserViewmodel());
   dependency.registerLazySingleton(() => PcrViewModel());
+  dependency.registerLazySingleton(() => LoginViewmodel());
+  dependency.registerLazySingleton(() => VaccineViewModel());
 }

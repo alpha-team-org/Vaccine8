@@ -14,5 +14,3 @@ class Appointment {
 
   void toggleStatus() => isSelected = !isSelected;
 }
-
-

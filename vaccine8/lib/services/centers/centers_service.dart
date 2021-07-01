@@ -4,7 +4,7 @@ import 'package:vaccine8/models/Centers.dart';
 
 abstract class CenterService {
 
-Future<List<Centers>> getPcrCenters();
+Future<List<Centers>> getCenters();
 
 
 

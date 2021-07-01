@@ -5,7 +5,7 @@ import 'package:vaccine8/screens/viewmodel.dart';
 import 'package:vaccine8/services/centers/centers_service.dart';
 // import 'package:vaccine8/viewmodel.dart';
 
-class PcrViewModel extends Viewmodel{
+class VaccineViewModel extends Viewmodel{
 
 CenterService get service => dependency();
 

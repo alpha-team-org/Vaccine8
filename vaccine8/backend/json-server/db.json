@@ -14,16 +14,11 @@
         "hasPcrAppointment": false,
         "hasVaccineAppointments": false
     }],
-    "pcrCenters": [{
+    "Centers": [{
         "id": 1,
         "name": "perdana hospital",
         "address": "perdana",
-        "imgRoute": "assets / hospital.jpg"
-    }],
-    "vacCenters": [{
-        "id": 1,
-        "name": "perdana hospital",
-        "address": "perdana",
-        "imgRoute": "assets / hospital.jpg"
+        "imgRoute": "assets/hospital.jpg"
     }]
+
 }
