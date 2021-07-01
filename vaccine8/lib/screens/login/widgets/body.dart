@@ -11,7 +11,7 @@ class Body extends StatelessWidget {
   void _onLogin(BuildContext context, LoginViewmodel viewmodel) async {
     final Patient _user = await viewmodel.authenticateLogin();
 
-    if (_user != null) print(_user);
+    if (_user != null) print(_user.name);
     if (_user == null) print('user null');
   }
 

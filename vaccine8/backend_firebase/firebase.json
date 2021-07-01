@@ -1,30 +1,32 @@
 {
-  "firestore": {
-    "rules": "firestore.rules",
-    "indexes": "firestore.indexes.json"
-  },
-  "functions": {
-    "source": "functions"
-  },
-  "database": {
-    "rules": "database.rules.json"
-  },
-  "emulators": {
-    "auth": {
-      "port": 9099
+    "firestore": {
+        "rules": "firestore.rules",
+        "indexes": "firestore.indexes.json"
     },
     "functions": {
-      "port": 5001
-    },
-    "firestore": {
-      "host": "192.168.100.40",
-      "port": 8080
+        "source": "functions"
     },
     "database": {
-      "port": 9000
+        "rules": "database.rules.json"
     },
-    "ui": {
-      "enabled": true
+    "emulators": {
+        "auth": {
+            "host": "192.168.100.40",
+            "port": 9099
+        },
+        "functions": {
+            "host": "192.168.100.40",
+            "port": 5001
+        },
+        "firestore": {
+            "host": "192.168.100.40",
+            "port": 8080
+        },
+        "database": {
+            "port": 9000
+        },
+        "ui": {
+            "enabled": true
+        }
     }
-  }
 }
