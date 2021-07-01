@@ -5,13 +5,13 @@ import 'package:vaccine8/models/Patient.dart';
 import 'Centers.dart';
 
 final patientList = <Patient>[
-  Patient(name: "abdalla", imageRoute: "assets/user.jpg", address: "skudai")
+  Patient(name: "abdalla", photoUrl: "assets/user.jpg", address: "skudai")
 ];
 final centerList = <Centers>[
   Centers(
-      "skuai hospital",
-      "skudai",
-      [
+    name:  "skuai hospital",
+    address:  "skudai",
+    appointments:  [
         Appointment(
           day: DateTime.utc(DateTime.now().year, DateTime.now().month,
               DateTime.now().day + 1),
@@ -52,11 +52,11 @@ final centerList = <Centers>[
           ],
         ),
       ],
-      'assets/hospital.jpg'),
+    imgRout:  'assets/hospital.jpg'),
   Centers(
-      "utm hospital",
-      "utm",
-      [
+     name: "utm hospital",
+      address: "utm",
+      appointments:[
         Appointment(
           day: DateTime.utc(DateTime.now().year, DateTime.now().month,
               DateTime.now().day + 1),
@@ -97,11 +97,11 @@ final centerList = <Centers>[
           ],
         ),
       ],
-      'assets/hospital.jpg'),
+    imgRout:  'assets/hospital.jpg'),
   Centers(
-      "perdana hospital",
-      "perdana",
-      [
+      name: "perdana hospital",
+      address:"perdana",
+     appointments: [
         Appointment(
           day: DateTime.utc(DateTime.now().year, DateTime.now().month,
               DateTime.now().day + 1),
@@ -142,5 +142,5 @@ final centerList = <Centers>[
           ],
         ),
       ],
-      'assets/hospital.jpg'),
+     imgRout: 'assets/hospital.jpg'),
 ];

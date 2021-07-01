@@ -5,7 +5,7 @@ import 'package:vaccine8/models/mock_data.dart';
 class Draw extends StatelessWidget {
   Patient pateint = new Patient(
       name: patientList[0].name,
-      imageRoute: patientList[0].imageRoute,
+      photoUrl: patientList[0].photoUrl,
       address: patientList[0].address);
   @override
   Widget build(BuildContext context) {
@@ -56,7 +56,7 @@ class Draw extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           Image.asset(
-            pateint.imageRoute,
+            pateint.photoUrl,
             width: 80,
             height: 80,
           ),

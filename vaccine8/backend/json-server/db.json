@@ -1,3 +1,29 @@
 {
+    "Applicant": [{
 
+        "id": 1,
+        "name": "omar",
+        "password": "123",
+        "photoUrl": "",
+        "address": "",
+        "pcrAppointment": "",
+        "vaccineFirstDose": "",
+        "vaccineSecondDose": "",
+        "pcrCenter": "",
+        "vaccineCenter": "",
+        "hasPcrAppointment": false,
+        "hasVaccineAppointments": false
+    }],
+    "pcrCenters": [{
+        "id": 1,
+        "name": "perdana hospital",
+        "address": "perdana",
+        "imgRoute": "assets / hospital.jpg"
+    }],
+    "vacCenters": [{
+        "id": 1,
+        "name": "perdana hospital",
+        "address": "perdana",
+        "imgRoute": "assets / hospital.jpg"
+    }]
 }

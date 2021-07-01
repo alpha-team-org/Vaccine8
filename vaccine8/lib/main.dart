@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:vaccine8/components/constants/const.dart';
+import 'app/dependencies.dart' as di;
 
 import './app/router.dart' as router;
 
-void main() {
+void main() async {
+  di.init();
   runApp(MyApp());
 }
 
@@ -19,7 +21,7 @@ class MyApp extends StatelessWidget {
       ),
       //onGenerateRoute:RouteGenerator.generateRoute,
       debugShowCheckedModeBanner: false,
-      initialRoute: jdjkdashboardRout,
+      initialRoute: introScreenRoute,
       onGenerateRoute: router.createRoute,
     );
   }

@@ -1,11 +1,11 @@
 ### Use this file to test out your REST call before implementing them in the code
 
 ### Change the IP address below to your PC's IP address. Remain the port number 3000 unchanged
-@baseUrl = http://192.168.68.103:3000
+@baseUrl = http://192.168.68.107:3000
 
 ### Request 1 : Get a user whose correct 'login' and 'password'
 ### Purpose   : To simulate the authentication process. 
-Get {{baseUrl}}/users?login=arsu&password=123
+Get {{baseUrl}}/Applicant?name=omar&password=123
 
 ### Request 3 : Create a new todo for a given user
 PUT {{baseUrl}}/users?id=2

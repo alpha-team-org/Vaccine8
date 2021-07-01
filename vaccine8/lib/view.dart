@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:vaccine8/app/dependencies.dart';
 
 
 import 'app/dependcies.dart';
