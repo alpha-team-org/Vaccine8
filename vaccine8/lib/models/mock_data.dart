@@ -9,13 +9,13 @@ final patientList = <Patient>[
 ];
 final centerList = <Centers>[
   Centers(
-    name:  "skuai hospital",
-    address:  "skudai",
-    appointments:  [
+      name: "skuai hospital",
+      address: "skudai",
+      appointments: [
         Appointment(
           day: DateTime.utc(DateTime.now().year, DateTime.now().month,
               DateTime.now().day + 1),
-          date: [
+          time: [
             TimeOfDay(hour: 13, minute: 00),
             TimeOfDay(hour: 09, minute: 30),
             TimeOfDay(hour: 10, minute: 00),
@@ -28,7 +28,7 @@ final centerList = <Centers>[
         Appointment(
           day: DateTime.utc(DateTime.now().year, DateTime.now().month,
               DateTime.now().day + 2),
-          date: [
+          time: [
             TimeOfDay(hour: 09, minute: 00),
             TimeOfDay(hour: 13, minute: 30),
             TimeOfDay(hour: 10, minute: 00),
@@ -41,7 +41,7 @@ final centerList = <Centers>[
         Appointment(
           day: DateTime.utc(DateTime.now().year, DateTime.now().month,
               DateTime.now().day + 3),
-          date: [
+          time: [
             TimeOfDay(hour: 09, minute: 00),
             TimeOfDay(hour: 09, minute: 30),
             TimeOfDay(hour: 10, minute: 00),
@@ -52,15 +52,15 @@ final centerList = <Centers>[
           ],
         ),
       ],
-    imgRout:  'assets/hospital.jpg'),
+      imgRout: 'assets/hospital.jpg'),
   Centers(
-     name: "utm hospital",
+      name: "utm hospital",
       address: "utm",
-      appointments:[
+      appointments: [
         Appointment(
           day: DateTime.utc(DateTime.now().year, DateTime.now().month,
               DateTime.now().day + 1),
-          date: [
+          time: [
             TimeOfDay(hour: 13, minute: 00),
             TimeOfDay(hour: 09, minute: 30),
             TimeOfDay(hour: 10, minute: 00),
@@ -73,7 +73,7 @@ final centerList = <Centers>[
         Appointment(
           day: DateTime.utc(DateTime.now().year, DateTime.now().month,
               DateTime.now().day + 2),
-          date: [
+          time: [
             TimeOfDay(hour: 09, minute: 00),
             TimeOfDay(hour: 13, minute: 30),
             TimeOfDay(hour: 10, minute: 00),
@@ -86,7 +86,7 @@ final centerList = <Centers>[
         Appointment(
           day: DateTime.utc(DateTime.now().year, DateTime.now().month,
               DateTime.now().day + 3),
-          date: [
+          time: [
             TimeOfDay(hour: 09, minute: 00),
             TimeOfDay(hour: 09, minute: 30),
             TimeOfDay(hour: 10, minute: 00),
@@ -97,15 +97,15 @@ final centerList = <Centers>[
           ],
         ),
       ],
-    imgRout:  'assets/hospital.jpg'),
+      imgRout: 'assets/hospital.jpg'),
   Centers(
       name: "perdana hospital",
-      address:"perdana",
-     appointments: [
+      address: "perdana",
+      appointments: [
         Appointment(
           day: DateTime.utc(DateTime.now().year, DateTime.now().month,
               DateTime.now().day + 1),
-          date: [
+          time: [
             TimeOfDay(hour: 13, minute: 00),
             TimeOfDay(hour: 09, minute: 30),
             TimeOfDay(hour: 10, minute: 00),
@@ -118,7 +118,7 @@ final centerList = <Centers>[
         Appointment(
           day: DateTime.utc(DateTime.now().year, DateTime.now().month,
               DateTime.now().day + 2),
-          date: [
+          time: [
             TimeOfDay(hour: 09, minute: 00),
             TimeOfDay(hour: 13, minute: 30),
             TimeOfDay(hour: 10, minute: 00),
@@ -131,7 +131,7 @@ final centerList = <Centers>[
         Appointment(
           day: DateTime.utc(DateTime.now().year, DateTime.now().month,
               DateTime.now().day + 3),
-          date: [
+          time: [
             TimeOfDay(hour: 09, minute: 00),
             TimeOfDay(hour: 09, minute: 30),
             TimeOfDay(hour: 10, minute: 00),
@@ -142,5 +142,5 @@ final centerList = <Centers>[
           ],
         ),
       ],
-     imgRout: 'assets/hospital.jpg'),
+      imgRout: 'assets/hospital.jpg'),
 ];

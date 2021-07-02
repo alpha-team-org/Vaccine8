@@ -21,7 +21,7 @@ class _AppointmentDaysState extends State<AppointmentDays> {
       height: 190,
       child: widget.appointment != null
           ? ListView.separated(
-              itemCount: widget.appointment.date.length,
+              itemCount: widget.appointment.time.length,
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
@@ -32,8 +32,8 @@ class _AppointmentDaysState extends State<AppointmentDays> {
                           widget.appointment.day.year,
                           widget.appointment.day.month,
                           widget.appointment.day.day,
-                          widget.appointment.date[index].hour,
-                          widget.appointment.date[index].minute);
+                          widget.appointment.time[index].hour,
+                          widget.appointment.time[index].minute);
 
                       widget.patient.hasPcrAppointment =
                           !widget.patient.hasPcrAppointment;
@@ -42,8 +42,8 @@ class _AppointmentDaysState extends State<AppointmentDays> {
                           widget.appointment.day.year,
                           widget.appointment.day.month,
                           widget.appointment.day.day,
-                          widget.appointment.date[index].hour,
-                          widget.appointment.date[index].minute);
+                          widget.appointment.time[index].hour,
+                          widget.appointment.time[index].minute);
 
                       widget.patient.hasVaccineAppointments =
                           !widget.patient.hasVaccineAppointments;
@@ -57,8 +57,8 @@ class _AppointmentDaysState extends State<AppointmentDays> {
                               widget.appointment.day.year,
                               widget.appointment.day.month,
                               widget.appointment.day.day,
-                              widget.appointment.date[index].hour,
-                              widget.appointment.date[index].minute);
+                              widget.appointment.time[index].hour,
+                              widget.appointment.time[index].minute);
 
                           widget.patient.hasPcrAppointment =
                               !widget.patient.hasPcrAppointment;
@@ -67,8 +67,8 @@ class _AppointmentDaysState extends State<AppointmentDays> {
                               widget.appointment.day.year,
                               widget.appointment.day.month,
                               widget.appointment.day.day,
-                              widget.appointment.date[index].hour,
-                              widget.appointment.date[index].minute);
+                              widget.appointment.time[index].hour,
+                              widget.appointment.time[index].minute);
 
                           widget.patient.hasVaccineAppointments =
                               !widget.patient.hasVaccineAppointments;
@@ -76,21 +76,21 @@ class _AppointmentDaysState extends State<AppointmentDays> {
                       },
                     ),
                     title:
-                        '${widget.appointment.date[index].hour}:${widget.appointment.date[index].minute}',
+                        '${widget.appointment.time[index].hour}:${widget.appointment.time[index].minute}',
                     value: '',
                     isDone: widget.isPcr
                         ? widget.patient.hasPcrAppointment == true &&
                                 widget.patient.pcrAppointment.hour ==
-                                    widget.appointment.date[index].hour &&
+                                    widget.appointment.time[index].hour &&
                                 widget.patient.pcrAppointment.minute ==
-                                    widget.appointment.date[index].minute
+                                    widget.appointment.time[index].minute
                             ? true
                             : false
                         : widget.patient.hasVaccineAppointments == true &&
                                 widget.patient.vaccineFirstDose.hour ==
-                                    widget.appointment.date[index].hour &&
+                                    widget.appointment.time[index].hour &&
                                 widget.patient.vaccineFirstDose.minute ==
-                                    widget.appointment.date[index].minute
+                                    widget.appointment.time[index].minute
                             ? true
                             : false,
                   ),

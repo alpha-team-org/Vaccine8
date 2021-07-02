@@ -4,7 +4,7 @@
 
 
         "test": "json-server --host 192.168.0.101 db.json",
-        "server": "json-server --host 192.168.68.107 db.json"
+        "server": "json-server --host 192.168.100.40 db.json"
 
     }
 }

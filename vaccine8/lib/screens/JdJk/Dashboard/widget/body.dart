@@ -9,17 +9,15 @@ import 'package:vaccine8/models/Patient.dart';
 class Body extends StatefulWidget {
   // Patient patient;
   Body(
-    // {@required this.patient}
-    );
+      // {@required this.patient}
+      );
   @override
   _BodyState createState() => _BodyState();
 }
 
 class _BodyState extends State<Body> {
-
   void _symptom() async {
-    final result =
-        await Navigator.pushNamed(context, jdjkSymptoms);
+    final result = await Navigator.pushNamed(context, jdjkSymptoms);
 
     // if (result != null) {
     //   setState(() => widget.patient = result);
@@ -27,8 +25,10 @@ class _BodyState extends State<Body> {
   }
 
   void _appointment() async {
-    final result = await Navigator.pushNamed(context, jdjkAppointment,
-        );
+    final result = await Navigator.pushNamed(
+      context,
+      jdjkAppointment,
+    );
 
     // if (result != null) {
     //   setState(() => widget.patient = result);
@@ -135,7 +135,7 @@ class _BodyState extends State<Body> {
                           onTap: () => _appointment(),
                           child: CardSection(
                             icon: Icon(
-                              Icons.assignment ,
+                              Icons.assignment,
                               color: Colors.white,
                               size: 30,
                             ),
@@ -148,7 +148,7 @@ class _BodyState extends State<Body> {
                           onTap: () => _symptom(),
                           child: CardSection(
                             icon: Icon(
-                              Icons.medication_outlined,
+                              Icons.medical_services_outlined,
                               color: Colors.white,
                               size: 35,
                             ),
@@ -156,7 +156,7 @@ class _BodyState extends State<Body> {
                             color: Colors.purple[900],
                           ),
                         ),
-                           SizedBox(height: 20),
+                        SizedBox(height: 20),
                         GestureDetector(
                           // onTap: () => _pcrNavigate(),
                           child: CardSection(
