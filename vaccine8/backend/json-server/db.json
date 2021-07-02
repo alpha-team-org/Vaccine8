@@ -19,6 +19,9 @@
         "name": "perdana hospital",
         "address": "perdana",
         "imgRoute": "assets/hospital.jpg"
-    }]
+    }],
+    "Appointment": [
+
+    ]
 
 }
