@@ -42,7 +42,6 @@ class Patient {
             password: from.password,
             photoUrl: from.photoUrl,
             address: from.address,
-            pcrAppointment: from.pcrAppointment,
             hasPcrAppointment: from.hasPcrAppointment);
 
   Patient.fromJson(Map<String, dynamic> json)
@@ -52,9 +51,9 @@ class Patient {
           password: json['password'],
           photoUrl: json['photoUrl'],
           address: json['address'],
-          pcrAppointment: json['pcrAppointment'],
-          vaccineFirstDose: json['vaccineFirstDose'],
-          vaccineSecondDose: json['vaccineSecondDose'],
+          // pcrAppointment: DateTime.parse(json[['pcrAppointment']]),
+          // vaccineFirstDose: DateTime.parse(json['vaccineFirstDose']),
+          // vaccineSecondDose: DateTime.parse(json['vaccineSecondDose']),
           pcrCenter: json['pcrCenter'],
           vaccineCenter: json['vaccineCenter'],
           hasPcrAppointment: json['hasPcrAppointment'],

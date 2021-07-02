@@ -21,9 +21,10 @@ class RestService {
 
   final SessionService _session;
 
-  RestService({@required String baseUrl, bool enableSession = true})
+  RestService({@required String baseUrl, bool enableSession = false})
       : _baseUrl = baseUrl,
-        _session = SessionService();
+        _session =enableSession? SessionService() : null;
+
 
   Future<void> openSession(token) async {
     if (_session == null) return;
@@ -38,7 +39,8 @@ class RestService {
   Future<Map<String, String>> get _defaultHeaders async {
     final headers = {'Content-Type': 'application/json'};
 
-    if (_session != null) {
+    if (_session != null)
+    {
       //_session != null if enableSession is True
 
       final token = await _session.getToken();

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
+import 'package:vaccine8/components/constants/const.dart';
 import 'package:vaccine8/models/Patient.dart';
 
 // import '../../../models/user.dart';
@@ -9,9 +10,11 @@ import '../login_viewmodel.dart';
 
 class Body extends StatelessWidget {
   void _onLogin(BuildContext context, LoginViewmodel viewmodel) async {
-    final Patient _user = await viewmodel.authenticateLogin();
+    final Patient _user = await viewmodel.login();
 
-    if (_user != null) print(_user.name);
+    if (_user != null) {
+      Navigator.pushNamed(context, dashboardRoute);
+    }
     if (_user == null) print('user null');
   }
 
@@ -22,8 +25,7 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return View(
-      viewmodel: LoginViewmodel(),
+    return View<LoginViewmodel>(
       builder: (context, viewmodel, _) => Center(
         child: SingleChildScrollView(
           child: Column(

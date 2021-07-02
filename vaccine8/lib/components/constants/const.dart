@@ -13,3 +13,7 @@ const String vaccineRoute = '/vaccine';
 const String vaccineCentersRoute = '/vaccineCenters';
 const String vaccineAppointmentRoute = '/vaccineAppointment';
 const String successfullVaccineRoute = '/succPicked';
+const String jdjkdashboardRout ='/jdjk_dash_board';
+const String jdjkAppointment = '/AppointmentScreen';
+const String jdjkSymptoms = '/SymptomsScreem';
+const String medicine = '/MedicieScreen';
