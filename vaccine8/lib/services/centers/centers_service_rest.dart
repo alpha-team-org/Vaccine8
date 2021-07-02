@@ -1,4 +1,5 @@
 import 'package:vaccine8/app/dependencies.dart';
+import 'package:vaccine8/models/Appointment.dart';
 import 'package:vaccine8/models/Centers.dart';
 
 import 'package:vaccine8/services/centers/centers_service.dart';
@@ -14,6 +15,13 @@ Future<List<Centers>> getCenters()async{
   final List json = await rest.get("Centers");
   final p = json.map((e)=>Centers.fromJson(e)).toList();
   return p;
+}
+Future<Appointment> pickapp(appointment)async {
+
+final json = await rest.post("Appointment",data:appointment);
+
+
+
 }
 
 

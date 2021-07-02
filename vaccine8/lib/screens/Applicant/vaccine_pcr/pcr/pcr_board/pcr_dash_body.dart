@@ -83,36 +83,40 @@ class _BodyState extends State<Body> {
             Padding(
               padding: EdgeInsets.only(top: 280, left: 15),
               child: MainCard(
-                height: widget.patient.hasPcrAppointment ? 320 : 300,
+                height: 
+                // widget.patient.hasPcrAppointment ? 320:
+                  300,
                 children: [
-                  !widget.patient.hasPcrAppointment
-                      ? ButtonCard(
+                  // !widget.patient.hasPcrAppointment
+                  //     ? 
+                      ButtonCard(
                           onTap: () => _navigate(),
                           title: "Book and View COVID-19 Test\n Appointments",
                         )
-                      : AppointmentCard(
-                          center: widget.patient.pcrCenter != null
-                              ? widget.patient.pcrCenter
-                              : 'error',
-                          day: widget.patient.hasPcrAppointment == true
-                              ? DateFormat('EEEE')
-                                  .format(widget.patient.pcrAppointment)
-                              : 'error',
-                          date: widget.patient.hasPcrAppointment == true
-                              ? DateFormat('yyyy-MM-dd')
-                                  .format(widget.patient.pcrAppointment)
-                              : 'error',
-                          time: widget.patient.hasPcrAppointment == true
-                              ? DateFormat('kk:mm')
-                                  .format(widget.patient.pcrAppointment)
-                              // ? widget.patient.pcrAppointment.hour < 12
-                              // ? "${DateFormat('kk:mm').format(widget.patient.pcrAppointment)} AM"
-                              // : "${DateFormat('kk:mm').format(widget.patient.pcrAppointment)} PM"
-                              : 'error',
-                          isDone: true,
-                          icon: Icon(Icons.calendar_today),
-                          onTap: () => _navigateEdit(),
-                        ),
+                      // : AppointmentCard(
+                      //     center: widget.patient.pcrCenter != null
+                      //         ? widget.patient.pcrCenter
+                      //         : 'error',
+                      //     day: widget.patient.hasPcrAppointment == true
+                      //         ? DateFormat('EEEE')
+                      //             .format(widget.patient.pcrAppointment)
+                      //         : 'error',
+                      //     date: widget.patient.hasPcrAppointment == true
+                      //         ? DateFormat('yyyy-MM-dd')
+                      //             .format(widget.patient.pcrAppointment)
+                      //         : 'error',
+                      //     time: widget.patient.hasPcrAppointment == true
+                      //         ? DateFormat('kk:mm')
+                      //             .format(widget.patient.pcrAppointment)
+                      //         // ? widget.patient.pcrAppointment.hour < 12
+                      //         // ? "${DateFormat('kk:mm').format(widget.patient.pcrAppointment)} AM"
+                      //         // : "${DateFormat('kk:mm').format(widget.patient.pcrAppointment)} PM"
+                      //         : 'error',
+                      //     isDone: true,
+                      //     icon: Icon(Icons.calendar_today),
+                      //     onTap: () => _navigateEdit(),
+                      //   )
+                      ,
                   SizedBox(height: 20),
                   ButtonCard(
                     onTap: () {},

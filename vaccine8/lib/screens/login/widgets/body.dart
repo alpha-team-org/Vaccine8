@@ -58,7 +58,8 @@ class Body extends StatelessWidget {
               _buildTextField(
                   hint: 'Username',
                   icon: Icons.people,
-                  onChanged: (value) => viewmodel.username = value),
+                  onChanged: (value) => 
+                  viewmodel.username = value),
               _buildTextField(
                   hint: 'Password',
                   isObsecure: !viewmodel.showPassword,
@@ -67,7 +68,8 @@ class Body extends StatelessWidget {
                       icon: Icon(Icons.visibility),
                       onPressed: () =>
                           viewmodel.showPassword = !viewmodel.showPassword),
-                  onChanged: (value) => viewmodel.password = value),
+                  onChanged: (value) =>
+                   viewmodel.password = value),
               if (viewmodel.showErrorMessage)
                 Text(
                   'Invalid username or password!',

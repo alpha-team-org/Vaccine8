@@ -19,10 +19,10 @@ class Centers {
             imgRout: from.imgRout);
 
   void selectAppointment(int index) {
-    for (var i = 0; i < appointments.length; i++) {
-      appointments[i].isSelected = false;
-    }
-    appointments[index].toggleStatus();
+    // for (var i = 0; i < appointments.length; i++) {
+    //   appointments[i].isSelected = false;
+    // }
+    // appointments[index].toggleStatus();
   }
 
   Centers.fromJson(Map<String, dynamic> json)

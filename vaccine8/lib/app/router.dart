@@ -30,16 +30,16 @@ Route<dynamic> createRoute(RouteSettings settings) {
     case dashboardRoute:
       return MaterialPageRoute(
           builder: (context) =>
-              AppllicantDasboardScreen(patient: patientList[0]));
+              AppllicantDasboardScreen());
 
 // PCR Section
     case pcrRoute:
       return MaterialPageRoute(
           builder: (context) => PcrBoardScreen(patient: settings.arguments));
-    case pcrAppointmentRoute:
-      return MaterialPageRoute(
-          builder: (context) =>
-              PickAppointmentScreen(settings.arguments, settings.arguments));
+    // case pcrAppointmentRoute:
+    //   return MaterialPageRoute(
+    //       builder: (context) =>
+    //           PickAppointmentScreen(settings.arguments, settings.arguments));
     case successfullRoute:
       return MaterialPageRoute(builder: (context) => SuccessfullPickedScreen());
     case centersRoute:
