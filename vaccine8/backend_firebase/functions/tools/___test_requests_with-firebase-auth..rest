@@ -57,7 +57,7 @@ POST {{baseUrl}}/auths/signup
 Content-Type: application/json
 
 {
-    "email": "ommm@any.com",
+    "email": "omar@any.com",
     "password": "abc123"
 }
 

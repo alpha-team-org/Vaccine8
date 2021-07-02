@@ -13,20 +13,20 @@ GetIt dependency = GetIt.instance;
 void init() {
   // Services
 
-  // dependency.registerLazySingleton<RestService>(
-  //   () => RestService(
-  //       baseUrl: 'http://192.168.68.107:3000',  // with Local JSON-server
-  //       // baseUrl:
-  //           // 'http://192.168.100.40:5001/vaccine8-dcf02/us-central1/api', // Firebase emulator
-  //       // baseUrl: 'https://us-central1-mvvm-frontend-and-mvc-backend.cloudfunctions.net/api',
-  //       enableSession: false // Firebase REST live
-  //       ),
-  // );
   dependency.registerLazySingleton<RestService>(
     () => RestService(
-      baseUrl: 'http://192.168.100.40:3000', //with Local Json-server
-    ),
+        // baseUrl: 'http://192.168.68.107:3000',  // with Local JSON-server
+        baseUrl:
+            'http://192.168.100.40:5001/vaccine8-dcf02/us-central1/api', // Firebase emulator
+        // baseUrl: 'https://us-central1-mvvm-frontend-and-mvc-backend.cloudfunctions.net/api',
+        enableSession: true // Firebase REST live
+        ),
   );
+  // dependency.registerLazySingleton<RestService>(
+  //   () => RestService(
+  //     baseUrl: 'http://192.168.100.40:3000', //with Local Json-server
+  //   ),
+  // );
 
   dependency.registerLazySingleton<AuthService>(() => AuthServiceSecuredRest());
   dependency.registerLazySingleton<CenterService>(() => CenterServiceRest());
