@@ -6,48 +6,50 @@ import '../viewmodel.dart';
 
 class LoginViewmodel extends Viewmodel {
   AuthService get _service => dependency();
-  Patient _patient = Patient();
+  Patient _patient;
   bool _showPassword = false;
   bool _showErrorMessage = false;
-
+  String name ;
+  String _password;
   get user => _patient;
   set user(value) => _patient = value;
 
   get showPassword => _showPassword;
   set showPassword(value) {
-    turnBusy();
+  
     _showPassword = value;
-    turnIdle();
+    
   }
 
   get showErrorMessage => _showErrorMessage;
   set showErrorMessage(value) {
-    turnBusy();
+   
     _showErrorMessage = value;
-    turnIdle();
+  
   }
 
-  get username => _patient.name;
+  get username => name;
   set username(value) {
-    turnBusy();
+   
     _showErrorMessage = false;
-    _patient.name = value;
-    turnIdle();
+    name = value;
+    
   }
 
-  get password => _patient.password;
+  get password =>_password;
   set password(value) {
-    turnBusy();
+  
     _showErrorMessage = false;
-    _patient.password = value;
-    turnIdle();
+    _password = value;
+    
   }
 
 
 Future<Patient> login() async{
   turnBusy();
-final p = _service.login(username, password);
-
+final p  =await _service.login(username, password);
+// print(user.id);
+_patient = p;
   turnIdle();
 return p;
 }

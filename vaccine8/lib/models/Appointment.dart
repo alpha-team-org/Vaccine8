@@ -6,19 +6,18 @@ class Appointment {
   dynamic applicantId;
   String type;
   DateTime day;
-  List<DateTime> time ;
-  bool isSelected;
+  set userId(value) => applicantId = value;
   Appointment({
-    this.day,
-    this.time,
+    this.day=null,
     this.id,
     this.centerId,
     this.applicantId,
-    this.type,
-    this.isSelected = false,
+    this.type="",
   });
   Appointment.copy(Appointment from)
-      : this(day: from.day, time: [...from.time], isSelected: from.isSelected);
+      : this(
+          day: from.day,
+        );
 
   Appointment.fromJson(Map<String, dynamic> json)
       : this(
@@ -26,9 +25,7 @@ class Appointment {
           centerId: json["centerId"],
           applicantId: json["applicantId"],
           type: json["type"],
-          day: json["day"],
-          time: [...json["date"]],
-          isSelected: json["isSelected"],
+          day: DateTime.parse(json["day"]),
         );
 
   Map<String, dynamic> toJson() => {
@@ -36,10 +33,8 @@ class Appointment {
         "centerId": centerId,
         "applicantId": applicantId,
         "type": type,
-        "day": day,
-        "time": time.toString(),
-        "isSelected": isSelected,
+        "day": day.toString(),
       };
 
-  void toggleStatus() => isSelected = !isSelected;
+  // void toggleStatus() => isSelected = !isSelected;
 }

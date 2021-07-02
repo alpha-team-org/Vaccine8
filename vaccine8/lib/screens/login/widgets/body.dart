@@ -13,8 +13,7 @@ class Body extends StatelessWidget {
     final Patient _user = await viewmodel.login();
 
     if (_user != null) {
-      Navigator.pushNamed(context,dashboardRoute );
-
+      Navigator.pushNamed(context, dashboardRoute);
     }
     if (_user == null) print('user null');
   }
@@ -27,7 +26,6 @@ class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return View<LoginViewmodel>(
-      
       builder: (context, viewmodel, _) => Center(
         child: SingleChildScrollView(
           child: Column(
@@ -60,7 +58,8 @@ class Body extends StatelessWidget {
               _buildTextField(
                   hint: 'Username',
                   icon: Icons.people,
-                  onChanged: (value) => viewmodel.username = value),
+                  onChanged: (value) => 
+                  viewmodel.username = value),
               _buildTextField(
                   hint: 'Password',
                   isObsecure: !viewmodel.showPassword,
@@ -69,7 +68,8 @@ class Body extends StatelessWidget {
                       icon: Icon(Icons.visibility),
                       onPressed: () =>
                           viewmodel.showPassword = !viewmodel.showPassword),
-                  onChanged: (value) => viewmodel.password = value),
+                  onChanged: (value) =>
+                   viewmodel.password = value),
               if (viewmodel.showErrorMessage)
                 Text(
                   'Invalid username or password!',

@@ -83,46 +83,51 @@ class _BodyState extends State<Body> {
             Padding(
               padding: EdgeInsets.only(top: 200, left: 15),
               child: MainCard(
-                height: widget.patient.hasVaccineAppointments ? 460 : 220,
+                height:
+                //  widget.patient.hasVaccineAppointments ? 460 : 
+                220,
                 children: [
-                  !widget.patient.hasVaccineAppointments
-                      ? ButtonCard(
+                  // !widget.patient.hasVaccineAppointments
+                      // ? 
+                      ButtonCard(
                           onTap: () => _navigate(),
                           title:
                               "Book and View COVID-19 Vaccine\n Appointments",
-                        )
-                      : Column(
-                          children: [
-                            AppointmentCard(
-                              center: widget.patient.vaccineCenter != null
-                                  ? widget.patient.vaccineCenter
-                                  : 'error',
-                              day: widget.patient.hasVaccineAppointments == true
-                                  ? DateFormat('EEEE')
-                                      .format(widget.patient.vaccineFirstDose)
-                                  : 'error',
-                              date: widget.patient.hasVaccineAppointments ==
-                                      true
-                                  ? DateFormat('yyyy-MM-dd')
-                                      .format(widget.patient.vaccineFirstDose)
-                                  : 'error',
-                              time: widget.patient.hasVaccineAppointments ==
-                                      true
-                                  ? DateFormat('kk:mm')
-                                      .format(widget.patient.vaccineFirstDose)
-                                  // ? widget.patient.pcrAppointment.hour < 12
-                                  // ? "${DateFormat('kk:mm').format(widget.patient.pcrAppointment)} AM"
-                                  // : "${DateFormat('kk:mm').format(widget.patient.pcrAppointment)} PM"
-                                  : 'error',
-                              isDone: true,
-                              icon: Icon(Icons.calendar_today),
-                              onTap: () => _navigateEdit(),
-                            ),
-                          ],
                         ),
+                      // :
+                      //  Column(
+                      //     children: [
+                      //       AppointmentCard(
+                      //         center: widget.patient.vaccineCenter != null
+                      //             ? widget.patient.vaccineCenter
+                      //             : 'error',
+                      //         day: widget.patient.hasVaccineAppointments == true
+                      //             ? DateFormat('EEEE')
+                      //                 .format(widget.patient.vaccineFirstDose)
+                      //             : 'error',
+                      //         date: widget.patient.hasVaccineAppointments ==
+                      //                 true
+                      //             ? DateFormat('yyyy-MM-dd')
+                      //                 .format(widget.patient.vaccineFirstDose)
+                      //             : 'error',
+                      //         time: widget.patient.hasVaccineAppointments ==
+                      //                 true
+                      //             ? DateFormat('kk:mm')
+                      //                 .format(widget.patient.vaccineFirstDose)
+                      //             // ? widget.patient.pcrAppointment.hour < 12
+                      //             // ? "${DateFormat('kk:mm').format(widget.patient.pcrAppointment)} AM"
+                      //             // : "${DateFormat('kk:mm').format(widget.patient.pcrAppointment)} PM"
+                      //             : 'error',
+                      //         isDone: true,
+                      //         icon: Icon(Icons.calendar_today),
+                      //         onTap: () => _navigateEdit(),
+                      //       ),
+                      //     ],
+                      //   ),
                   SizedBox(height: 40),
-                  widget.patient.hasVaccineAppointments
-                      ? Column(
+                  // widget.patient.hasVaccineAppointments
+                  //     ? 
+                      Column(
                           children: [
                             ElevatedButton(
                               onPressed: () {},
@@ -163,7 +168,7 @@ class _BodyState extends State<Body> {
                             ),
                           ],
                         )
-                      : Container(),
+                      // : Container(),
 
                   // ButtonCard(
                   //   onTap: () {},

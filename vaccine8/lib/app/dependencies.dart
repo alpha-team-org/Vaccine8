@@ -8,7 +8,6 @@ import 'package:vaccine8/services/centers/centers_service.dart';
 import 'package:vaccine8/services/centers/centers_service_rest.dart';
 import 'package:vaccine8/services/rest.dart';
 
-
 GetIt dependency = GetIt.instance;
 
 void init() {
@@ -23,8 +22,8 @@ void init() {
   //       enableSession: false // Firebase REST live
   //       ),
   // );
-    dependency.registerLazySingleton<RestService>(
-    () => RestService( 
+  dependency.registerLazySingleton<RestService>(
+    () => RestService(
       baseUrl: 'http://192.168.68.107:3000', //with Local Json-server
     ),
   );

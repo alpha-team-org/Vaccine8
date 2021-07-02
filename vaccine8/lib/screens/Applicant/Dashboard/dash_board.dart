@@ -5,13 +5,13 @@ import 'package:vaccine8/screens/Applicant/Dashboard/body.dart';
 import 'Drawer.dart';
 
 class AppllicantDasboardScreen extends StatelessWidget {
-  final Patient patient;
-  AppllicantDasboardScreen({@required this.patient});
+  // final Patient patient;
+  // AppllicantDasboardScreen();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFF5F5F7),
-      body: Body(patient: patient),
+      body: Body(),
       drawer: Draw(),
       bottomNavigationBar: BottomBar(),
     );

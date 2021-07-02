@@ -16,19 +16,19 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
-  void _navigate(int index) async {
-    final result = await Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) =>
-                PickAppointmentScreen(widget.centers[index], widget.patient)));
+  // void _navigate(int index) async {
+  //   final result = await Navigator.push(
+  //       context,
+  //       MaterialPageRoute(
+  //           builder: (context) =>
+  //               PickAppointmentScreen(widget.centers[index], widget.patient)));
     // Navigator.pushNamed(context, pcrAppointmentRoute,
     // arguments: widget.centers[index], Patient.copy(widget.patient) );
 
-    if (result != null) {
-      setState(() => widget.patient = result);
-    }
-  }
+    // if (result != null) {
+    //   setState(() => widget.patient = result);
+    // }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -85,10 +85,10 @@ class _BodyState extends State<Body> {
                     itemBuilder: (context, index) {
                       return GestureDetector(
                         onTap: () {
-                          _navigate(index);
+                          // _navigate(index);
                           setState(() {
-                            widget.patient.pcrCenter =
-                                widget.centers[index].name;
+                            // widget.patient.pcrCenter =
+                            //     widget.centers[index].name;
                           });
                         },
                         child: CenterCard(

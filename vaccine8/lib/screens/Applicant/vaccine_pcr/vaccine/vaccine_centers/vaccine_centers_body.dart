@@ -1,33 +1,47 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:vaccine8/components/constants/const.dart';
 import 'package:vaccine8/components/widgets/center_card.dart';
 import 'package:vaccine8/components/widgets/custom_clipper.dart';
+import 'package:vaccine8/models/Appointment.dart';
 import 'package:vaccine8/models/Centers.dart';
 import 'package:vaccine8/models/Patient.dart';
 import 'package:vaccine8/screens/Applicant/vaccine_pcr/vaccine/pick_appontment/pick_ppointment.dart';
+import 'package:vaccine8/screens/Applicant/vaccine_pcr/vaccine/vaccine_centers/vaccine_viewmodel.dart';
 
 class Body extends StatefulWidget {
-  Patient patient;
+  // Patient patient;
   List<Centers> centers;
-  Body(this.centers, {@required this.patient});
+  VaccineViewModel viewmodel;
+  Body(this.centers, 
+  // {@required this.patient}
+  this.viewmodel
+  );
 
   @override
   _BodyState createState() => _BodyState();
 }
 
 class _BodyState extends State<Body> {
-  void _navigate(int index) async {
-    final result = await Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => PickVaccineAppointmentScreen(
-                widget.centers[index], widget.patient)));
-    // Navigator.pushNamed(context, pcrAppointmentRoute,
-    // arguments: widget.centers[index], Patient.copy(widget.patient) );
 
-    if (result != null) {
-      setState(() => widget.patient = result);
-    }
+  void _navigate(int index) async {
+
+
+                 
+
+
+    // final result = await Navigator.push(
+    //     context,
+    //     MaterialPageRoute(
+    //         builder: (context) => PickVaccineAppointmentScreen(
+    //             widget.centers[index], widget.patient)));
+    // // Navigator.pushNamed(context, pcrAppointmentRoute,
+    // // arguments: widget.centers[index], Patient.copy(widget.patient) );
+
+    // if (result != null) {
+    //   setState(() => widget.patient = result);
+    // }
   }
 
   @override
@@ -85,10 +99,26 @@ class _BodyState extends State<Body> {
                     itemBuilder: (context, index) {
                       return GestureDetector(
                         onTap: () {
-                          _navigate(index);
+                           DatePicker.showDateTimePicker(context,
+                        showTitleActions: true,
+                         onChanged: (date) {
+                      // print('change $date in time zone ' +
+                      //     date.timeZoneOffset.inHours.toString());
+                      
+                    }, 
+                    onConfirm: (date) {
+                      widget.viewmodel.appointment.day = date;
+                      widget.viewmodel.appointment.centerId = index+1;
+                      widget.viewmodel.appointment.type = "vaccine";
+                      widget.viewmodel.appointment.userId = widget.viewmodel.userId;
+                      widget.viewmodel.addAppointment();
+                      Navigator.pushNamed(context, successfullRoute);
+                    },
+                     currentTime: DateTime(2008, 12, 31, 23, 12, 34));
+                  
                           setState(() {
-                            widget.patient.vaccineCenter =
-                                widget.centers[index].name;
+                            // widget.patient.vaccineCenter =
+                            //     widget.centers[index].name;
                           });
                         },
                         child: CenterCard(

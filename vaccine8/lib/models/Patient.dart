@@ -4,13 +4,13 @@ class Patient {
   String _password;
   String _photoUrl;
   String address;
-  DateTime pcrAppointment;
-  DateTime vaccineFirstDose;
-  DateTime vaccineSecondDose;
-  String pcrCenter;
-  String vaccineCenter;
-  bool hasPcrAppointment;
-  bool hasVaccineAppointments;
+  // DateTime pcrAppointment;
+  // DateTime vaccineFirstDose;
+  // DateTime vaccineSecondDose;
+  // String pcrCenter;
+  // String vaccineCenter;
+  // bool hasPcrAppointment;
+  // bool hasVaccineAppointments;
 
   get password => _password;
   set password(value) => _password = value;
@@ -24,13 +24,13 @@ class Patient {
     String password = '',
     String photoUrl = '',
     this.address,
-    this.pcrAppointment,
-    this.vaccineFirstDose,
-    this.vaccineSecondDose,
-    this.pcrCenter,
-    this.vaccineCenter,
-    this.hasPcrAppointment = false,
-    this.hasVaccineAppointments = false,
+    // this.pcrAppointment,
+    // this.vaccineFirstDose,
+    // this.vaccineSecondDose,
+    // this.pcrCenter,
+    // this.vaccineCenter,
+    // this.hasPcrAppointment = false,
+    // this.hasVaccineAppointments = false,
   })  : id = id,
         _photoUrl = photoUrl,
         _password = password;
@@ -42,7 +42,8 @@ class Patient {
             password: from.password,
             photoUrl: from.photoUrl,
             address: from.address,
-            hasPcrAppointment: from.hasPcrAppointment);
+            // hasPcrAppointment: from.hasPcrAppointment
+            );
 
   Patient.fromJson(Map<String, dynamic> json)
       : this(
@@ -54,10 +55,10 @@ class Patient {
           // pcrAppointment: DateTime.parse(json[['pcrAppointment']]),
           // vaccineFirstDose: DateTime.parse(json['vaccineFirstDose']),
           // vaccineSecondDose: DateTime.parse(json['vaccineSecondDose']),
-          pcrCenter: json['pcrCenter'],
-          vaccineCenter: json['vaccineCenter'],
-          hasPcrAppointment: json['hasPcrAppointment'],
-          hasVaccineAppointments: json['hasVaccineAppointments'],
+          // pcrCenter: json['pcrCenter'],
+          // vaccineCenter: json['vaccineCenter'],
+          // hasPcrAppointment: json['hasPcrAppointment'],
+          // hasVaccineAppointments: json['hasVaccineAppointments'],
         );
 
   Map<String, dynamic> toJson() => {
@@ -66,13 +67,13 @@ class Patient {
         'password': password,
         'photoUrl': photoUrl,
         'address': address,
-        'pcrAppointment': pcrAppointment,
-        'vaccineFirstDose': vaccineFirstDose,
-        'vaccineSecondDose': vaccineSecondDose,
-        'pcrCenter': pcrCenter,
-        'vaccineCenter': vaccineCenter,
-        'hasPcrAppointment': hasPcrAppointment,
-        'hasVaccineAppointments': hasVaccineAppointments,
+        // 'pcrAppointment': pcrAppointment,
+        // 'vaccineFirstDose': vaccineFirstDose,
+        // 'vaccineSecondDose': vaccineSecondDose,
+        // 'pcrCenter': pcrCenter,
+        // 'vaccineCenter': vaccineCenter,
+        // 'hasPcrAppointment': hasPcrAppointment,
+        // 'hasVaccineAppointments': hasVaccineAppointments,
       };
   // get appointment => pcrAppointment;
   // set appointment(value) => pcrAppointment = value;
