@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:vaccine8/components/constants/const.dart';
@@ -29,8 +28,7 @@ Route<dynamic> createRoute(RouteSettings settings) {
 
     case dashboardRoute:
       return MaterialPageRoute(
-          builder: (context) =>
-              AppllicantDasboardScreen());
+          builder: (context) => AppllicantDasboardScreen());
 
 // PCR Section
     case pcrRoute:
@@ -62,15 +60,20 @@ Route<dynamic> createRoute(RouteSettings settings) {
     case successfullVaccineRoute:
       return MaterialPageRoute(
           builder: (context) => SuccessfullPickedVaccineScreen());
-    case jdjkdashboardRout :
-            return MaterialPageRoute(builder: 
-            (context) => JDJKDasboardScreen());
+
+// JDJK Section
+    case jdjkdashboardRout:
+      return MaterialPageRoute(builder: (context) => JDJKDasboardScreen());
+
     case jdjkAppointment:
-    return MaterialPageRoute(builder: (context)=>AppointmentScreen());
-    case jdjkSymptoms :
-    return MaterialPageRoute(builder: (context)=>SymptomsScreem());
+      return MaterialPageRoute(builder: (context) => AppointmentScreen());
+
+    case jdjkSymptoms:
+      return MaterialPageRoute(builder: (context) => SymptomsScreem());
+
     case medicine:
-    return MaterialPageRoute(builder: (context)=>MedicieScreen());
-  return null;
-}
+      return MaterialPageRoute(builder: (context) => MedicieScreen());
+
+      return null;
+  }
 }

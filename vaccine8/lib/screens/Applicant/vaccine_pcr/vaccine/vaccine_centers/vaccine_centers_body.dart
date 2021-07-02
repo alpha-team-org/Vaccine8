@@ -14,23 +14,17 @@ class Body extends StatefulWidget {
   // Patient patient;
   List<Centers> centers;
   VaccineViewModel viewmodel;
-  Body(this.centers, 
-  // {@required this.patient}
-  this.viewmodel
-  );
+  Body(
+      this.centers,
+      // {@required this.patient}
+      this.viewmodel);
 
   @override
   _BodyState createState() => _BodyState();
 }
 
 class _BodyState extends State<Body> {
-
   void _navigate(int index) async {
-
-
-                 
-
-
     // final result = await Navigator.push(
     //     context,
     //     MaterialPageRoute(
@@ -99,23 +93,33 @@ class _BodyState extends State<Body> {
                     itemBuilder: (context, index) {
                       return GestureDetector(
                         onTap: () {
-                           DatePicker.showDateTimePicker(context,
-                        showTitleActions: true,
-                         onChanged: (date) {
-                      // print('change $date in time zone ' +
-                      //     date.timeZoneOffset.inHours.toString());
-                      
-                    }, 
-                    onConfirm: (date) {
-                      widget.viewmodel.appointment.day = date;
-                      widget.viewmodel.appointment.centerId = index+1;
-                      widget.viewmodel.appointment.type = "vaccine";
-                      widget.viewmodel.appointment.userId = widget.viewmodel.userId;
-                      widget.viewmodel.addAppointment();
-                      Navigator.pushNamed(context, successfullRoute);
-                    },
-                     currentTime: DateTime(2008, 12, 31, 23, 12, 34));
-                  
+                          DatePicker.showDateTimePicker(
+                            context,
+                            showTitleActions: true,
+                            onChanged: (date) {},
+                            onConfirm: (date) {
+                              widget.viewmodel.appointment.day = date;
+                              widget.viewmodel.appointment.centerId = index + 1;
+                              widget.viewmodel.appointment.type = "vaccine";
+                              widget.viewmodel.appointment.userId =
+                                  widget.viewmodel.userId;
+                              widget.viewmodel.addAppointment();
+                              Navigator.pushNamed(context, successfullRoute);
+                            },
+                            minTime: DateTime.utc(
+                                DateTime.now().year,
+                                DateTime.now().month,
+                                DateTime.now().day + 1,
+                                09,
+                                00),
+                            maxTime: DateTime.utc(
+                                DateTime.now().year,
+                                DateTime.now().month + 1,
+                                DateTime.now().day,
+                                20,
+                                00),
+                          );
+
                           setState(() {
                             // widget.patient.vaccineCenter =
                             //     widget.centers[index].name;
