@@ -29,7 +29,7 @@ class CentersScreen extends StatelessWidget {
                 
                return    Body(
           centerlist,
-          patient: patient,
+           viewmodel,
         );}
       ),
       bottomNavigationBar: BottomBar(),

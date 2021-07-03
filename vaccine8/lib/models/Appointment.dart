@@ -6,27 +6,34 @@ class Appointment {
   dynamic applicantId;
   String type;
   DateTime day;
+  String symptoms;
+  String reply;
+
+  get getSymptoms => symptoms;
+  set setSymptoms(value) => symptoms = value;
   set userId(value) => applicantId = value;
-  Appointment({
-    this.day=null,
-    this.id,
-    this.centerId,
-    this.applicantId,
-    this.type="",
-  });
-  Appointment.copy(Appointment from)
-      : this(
-          day: from.day,
-        );
+  Appointment(
+      {this.day = null,
+      this.id,
+      this.centerId,
+      this.applicantId,
+      this.type = "",
+      this.symptoms,
+      this.reply});
+  // Appointment.copy(Appointment from)
+  //     : this(
+  //         day: from.day,
+  //       );
 
   Appointment.fromJson(Map<String, dynamic> json)
       : this(
-          id: json["id"],
-          centerId: json["centerId"],
-          applicantId: json["applicantId"],
-          type: json["type"],
-          day: DateTime.parse(json["day"]),
-        );
+            id: json["id"],
+            centerId: json["centerId"],
+            applicantId: json["applicantId"],
+            type: json["type"],
+            day: DateTime.parse(json["day"]),
+            symptoms: json['symptoms'],
+            reply: json['reply']);
 
   Map<String, dynamic> toJson() => {
         "id": id,
@@ -34,6 +41,8 @@ class Appointment {
         "applicantId": applicantId,
         "type": type,
         "day": day.toString(),
+        "symptoms": symptoms,
+        "reply": reply,
       };
 
   // void toggleStatus() => isSelected = !isSelected;
