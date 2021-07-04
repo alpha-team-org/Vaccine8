@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:vaccine8/app/colors.dart';
-import 'package:vaccine8/components/bar.dart';
+import 'package:vaccine8/components/widgets/bar.dart';
 
-class SuccessfullPickedScreen extends StatelessWidget {
+class SuccessfullPickedVaccineScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -81,38 +81,42 @@ class SuccessfullPickedScreen extends StatelessWidget {
                 child: Divider(color: Colors.grey),
               ),
               Padding(
-                padding: const EdgeInsets.only(top:20.0),
+                padding: const EdgeInsets.only(top: 20.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset('assets/subm.png',width: 300,height: 200,),
+                    Image.asset(
+                      'assets/subm.png',
+                      width: 300,
+                      height: 200,
+                    ),
                   ],
                 ),
               ),
               Container(
-      padding: EdgeInsets.only(top: 19),
-      width: double.infinity,
-      height: 70,
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
-      // margin: EdgeInsets.symmetric(horizontal: 15),
-      child: ElevatedButton(
-        onPressed: () {
-          // Navigator.pushNamed(context, '/succPicked');
-        },
-        child: Text(
-          "Appointments",
-          style: TextStyle(fontSize: 28,
-          fontWeight: FontWeight.normal),
-          
-        ),
-        style: ElevatedButton.styleFrom(
-          primary: iconColor, // background
-          onPrimary: Colors.white, // foreground
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10.0),
-          ),
-        ),
-      ),
+                padding: EdgeInsets.only(top: 19),
+                width: double.infinity,
+                height: 70,
+                decoration:
+                    BoxDecoration(borderRadius: BorderRadius.circular(20)),
+                // margin: EdgeInsets.symmetric(horizontal: 15),
+                child: ElevatedButton(
+                  onPressed: () {
+                    // Navigator.pushNamed(context, '/succPicked');
+                  },
+                  child: Text(
+                    "Appointments",
+                    style:
+                        TextStyle(fontSize: 28, fontWeight: FontWeight.normal),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    primary: iconColor, // background
+                    onPrimary: Colors.white, // foreground
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                  ),
+                ),
               )
             ],
           )),

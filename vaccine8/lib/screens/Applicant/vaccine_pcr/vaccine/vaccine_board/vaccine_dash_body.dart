@@ -1,94 +1,231 @@
 import 'package:flutter/material.dart';
-import 'package:vaccine8/app/colors.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:intl/intl.dart';
+import 'package:vaccine8/components/constants/const.dart';
+import 'package:vaccine8/components/widgets/appointment_card.dart';
+import 'package:vaccine8/components/widgets/card_items.dart';
+import 'package:vaccine8/components/widgets/custom_clipper.dart';
+import 'package:vaccine8/models/Patient.dart';
+import 'package:vaccine8/screens/Applicant/vaccine_pcr/vaccine/vaccine_board/vaccine_dash_viewmodel.dart';
 
-class Body extends StatelessWidget {
-  String str1, str2;
-  Body(this.str1, this.str2);
+class Body extends StatefulWidget {
+  VaccineDashboardViewmodel viewmodel;
+  Body({@required this.viewmodel});
 
   @override
+  _BodyState createState() => _BodyState();
+}
+
+class _BodyState extends State<Body> {
+  @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        _cliprect(),
-        // Center(
-        Container(
-          decoration: BoxDecoration(color: bacColor),
-          padding: EdgeInsets.only(top: 200),
-          child: Column(
+    void _navigate() async {
+      final result = await Navigator.pushNamed(
+        context,
+        vaccineCentersRoute,
+      );
+
+      // if (result != null) {
+      //   setState(() => widget.patient = result);
+      // }
+    }
+
+    // void _navigateEdit() async {
+    //   final result = await Navigator.pushNamed(context, vaccineCentersRoute,
+    //       arguments: widget.patient);
+
+    //   if (result != null) {
+    //     setState(() => widget.patient = result);
+    //   }
+    // }
+
+    double statusBarHeight = MediaQuery.of(context).padding.top;
+    return Stack(
+      children: <Widget>[
+        ClipPath(
+          clipper: MyCustomClipper(clipType: ClipType.bottom),
+          child: Container(
+            color: Color.fromRGBO(42, 42, 192, .7),
+            height: 100.5 + statusBarHeight,
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.only(right: 30.0, bottom: 30, top: 20),
+          child: ListView(
             children: <Widget>[
-              Container(
-                width: double.infinity,
-                height: 46,
-                margin: EdgeInsets.symmetric(horizontal: 15, vertical: 30),
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/centers');
-                  },
-                  child: Text(
-                    str1,
-                    style: TextStyle(fontSize: 28),
+              // Header - Greetings and Avatar
+              Row(
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.only(left: 15, right: 80),
+                    child: InkWell(
+                      onTap: () => Navigator.pop(context),
+                      child: Icon(
+                        FontAwesomeIcons.chevronLeft,
+                        color: Colors.white,
+                        size: 30,
+                      ),
+                    ),
                   ),
-                  style: ElevatedButton.styleFrom(
-                    primary: iconColor, // background
-                    onPrimary: Colors.white, // foreground
+                  Expanded(
+                    child: Text(
+                      "COVID-19 Vaccine",
+                      style: TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.w900,
+                          color: Colors.white),
+                    ),
                   ),
-                ),
-              ),
-              Container(
-                width: double.infinity,
-                height: 46,
-                margin: EdgeInsets.symmetric(horizontal: 15),
-                child: ElevatedButton(
-                  onPressed: () {},
-                  child: Text(
-                    str2,
-                    style: TextStyle(fontSize: 28),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    primary: iconColor, // background
-                    onPrimary: Colors.white, // foreground
-                  ),
-                ),
+                ],
               ),
             ],
           ),
         ),
-        // ),
+        Column(
+          children: [
+            Padding(
+              padding: EdgeInsets.only(top: 200, left: 15),
+              child: MainCard(
+                height: widget.viewmodel.appointment!=null ? 460 : 220,
+                children: [
+                  (widget.viewmodel.appointment==null)
+                      ? ButtonCard(
+                          onTap: () => _navigate(),
+                          title:
+                              "Book and View COVID-19 Vaccine\n Appointments",
+                        )
+                      : Column(
+                          children: [
+                            AppointmentCard(
+                              center: widget.viewmodel.appointment[0].centerId,
+                              day: DateFormat('EEEE').format(
+                                
+                                    widget.viewmodel.appointment[0].day,
+                              ),
+                              date:
+                                 
+                                   DateFormat('yyyy-MM-dd')
+                                      .format(widget.viewmodel.appointment[0].day)
+                                 ,
+                              time:  DateFormat('kk:mm')
+                                      .format(widget.viewmodel.appointment[0].day)
+                                  // ? widget.patient.pcrAppointment.hour < 12
+                                  // ? "${DateFormat('kk:mm').format(widget.patient.pcrAppointment)} AM"
+                                  // : "${DateFormat('kk:mm').format(widget.patient.pcrAppointment)} PM"
+                                  ,
+                              isDone: true,
+                              icon: Icon(Icons.calendar_today),
+                              onTap: () => _navigate(),
+                            ),
+                          ],
+                        ),
+                  SizedBox(height: 40),
+                  widget.viewmodel.checkAppointmentType()
+                      ?
+                  Column(
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {
+                          showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) =>
+                                        _buildPopupDialog(context,widget.viewmodel),
+                                  );
+                        },
+                        style: ButtonStyle(
+                          minimumSize: MaterialStateProperty.all(
+                              Size(MediaQuery.of(context).size.width, 90)),
+                          backgroundColor: MaterialStateProperty.all(
+                              Color.fromRGBO(42, 42, 192, .7)),
+                          shape: MaterialStateProperty.all(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                          ),
+                        ),
+                        child: Text(
+                          'Register Symptoms',
+                          style: TextStyle(fontSize: 25),
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      ElevatedButton(
+                        onPressed: () {},
+                        style: ButtonStyle(
+                          minimumSize: MaterialStateProperty.all(
+                              Size(MediaQuery.of(context).size.width, 90)),
+                          backgroundColor: MaterialStateProperty.all(
+                              Color.fromRGBO(42, 42, 192, .7)),
+                          shape: MaterialStateProperty.all(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                          ),
+                        ),
+                        child: Text(
+                          'View Medical Report',
+                          style: TextStyle(fontSize: 25),
+                        ),
+                      ),
+                    ],
+                  )
+                  : Container(),
+
+                  // ButtonCard(
+                  //   onTap: () {},
+                  //   title: "View Medical Report",
+                  // ),
+                ],
+                title: 'OMAR',
+                icon: Icon(
+                  FontAwesomeIcons.userAlt,
+                  size: 28,
+                ),
+                color: Colors.white,
+              ),
+            ),
+          ],
+        ),
       ],
     );
   }
 }
-
-class _cliprect extends StatelessWidget {
-  const _cliprect({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return ClipRect(
-        child: Container(
-      child: Padding(
-        padding: const EdgeInsets.only(top: 21.0, left: 25),
-        child: Text('Vaccine',
-            style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-                color: Color.fromRGBO(24, 20, 97, 1))),
-      ),
-      height: 100,
-      width: double.infinity,
-      decoration: BoxDecoration(
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(.8),
-            spreadRadius: 5,
-            blurRadius: 1,
-            // offset: Offset(4, 4),
-          )
-        ],
-        color: Colors.white,
-      ),
-    ));
-  }
+Widget _buildPopupDialog(BuildContext context,VaccineDashboardViewmodel viewmodel) {
+  return Dialog(
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
+    elevation: 16,
+    child: Container(
+        height: 400.0,
+        width: 360.0,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TextFormField(
+              decoration: InputDecoration(
+                  border: UnderlineInputBorder(),
+                  labelText: 'what  is your symptoms'),
+                  onChanged: (value) =>viewmodel.appointment[0].symptoms = value ,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top:8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ElevatedButton(onPressed: () => {
+                    viewmodel.updateApp(),
+                    Navigator.pop(context,null)
+                  }, child: Text("Save")),
+                  ElevatedButton(
+                      onPressed: () => {},
+                      style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all<Color>(Colors.red)),
+                      child: Text("Cancel"))
+                ],
+              ),
+            ),
+          ],
+        )),
+  );
 }

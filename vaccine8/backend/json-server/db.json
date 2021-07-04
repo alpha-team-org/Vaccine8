@@ -1,0 +1,46 @@
+{
+  "Applicant": [
+    {
+      "id": 1,
+      "name": "omar",
+      "password": "123",
+      "photoUrl": "",
+      "address": "",
+      "pcrAppointment": "",
+      "vaccineFirstDose": "",
+      "vaccineSecondDose": "",
+      "pcrCenter": "",
+      "vaccineCenter": "",
+      "hasPcrAppointment": false,
+      "hasVaccineAppointments": false
+    }
+  ],
+  "Centers": [
+    {
+      "id": 1,
+      "name": "perdana hospital",
+      "address": "perdana",
+      "imgRoute": "assets/hospital.jpg"
+    }
+  ],
+  "Appointment": [
+    {
+      "id": 1,
+      "centerId": "perdana hospital",
+      "applicantId": 1,
+      "type": "vaccine",
+      "day": "2021-07-11 00:00:00.000Z",
+      "symptoms": "blood",
+      "reply": null
+    },
+    {
+      "id": 2,
+      "centerId": "perdana hospital",
+      "applicantId": null,
+      "type": "pcr",
+      "day": "2021-07-04 09:00:00.000Z",
+      "symptoms": null,
+      "reply": null
+    }
+  ]
+}
