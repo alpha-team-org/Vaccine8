@@ -18,7 +18,7 @@ Content-Type: application/json
   
 }
 ### Request 4 : delte user
-GET {{baseUrl}}/recorded
+GET {{baseUrl}}/Applicant?email=abdalla@gmail.com&password=1234
 
 
 ###
