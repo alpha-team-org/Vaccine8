@@ -59,5 +59,17 @@
       "approve": true,
       "disapprove": true
     }
+  ],
+  "medicine": [
+    {
+      "id": 1,
+      "appointmentId": 2,
+      "name": "panadol"
+    },
+    {
+      "id": 2,
+      "appointmentId": 2,
+      "name": "prophine"
+    }
   ]
 }

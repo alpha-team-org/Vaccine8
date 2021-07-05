@@ -27,7 +27,7 @@ class _SymptomsScreemState extends State<SymptomsScreem> {
 
 
 body :ConsumerView<SymptomsViewmodel>(
-  initViewmodel: (viewmodel)=>dependency<SymptomsViewmodel>(),
+  initViewmodel: (viewmodel)=>dependency<SymptomsViewmodel>().getAppointments(),
   builder: (context,viewmodel,___)=>Body(viewmodel)),
 
 

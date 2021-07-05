@@ -114,7 +114,7 @@ class AppointmentCard extends StatelessWidget {
                                   fontSize: 18, color: Color(0xFF486581)),
                             ),
                             SizedBox(width: 30),
-                            !((appointment.day.isAfter(DateTime.now()) && appointment.type=="vaccine")&& appointment.approve || !appointment.disapprove )?
+                            !((appointment.day.isAfter(DateTime.now()) && appointment.type=="vaccine")&& appointment.approve || appointment.disapprove )?
 
                             ElevatedButton(
                               onPressed: onTap,

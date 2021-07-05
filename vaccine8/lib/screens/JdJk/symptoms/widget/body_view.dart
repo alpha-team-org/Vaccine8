@@ -108,10 +108,10 @@ class Body extends StatelessWidget {
                                       padding: const EdgeInsets.all(8.0),
                                       child: CircleAvatar(
                                         backgroundImage: AssetImage(
-                                            viewmodel.users[index+1].photoUrl),
+                                            viewmodel.user[index+1].photoUrl),
                                       ),
                                     ),
-                                    Text(viewmodel.users[index+1].name)
+                                    Text(viewmodel.user[index+1].name)
                                   ],
                                 ),
                                 
@@ -122,6 +122,7 @@ class Body extends StatelessWidget {
                                       .format(viewmodel.appointments[index].day)),
 
                                   onTap: () async {
+                                    viewmodel.index = index;
                                     await Navigator.pushNamed(
                                         context, medicine);
                                   },
