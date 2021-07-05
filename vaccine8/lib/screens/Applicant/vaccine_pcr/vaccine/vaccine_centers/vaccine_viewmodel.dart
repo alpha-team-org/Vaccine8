@@ -29,7 +29,7 @@ class VaccineViewModel extends Viewmodel {
     return pcrCenters;
   }
 
-  int userId;
+  int userId ;
   get id => userId;
     Appointment  app =  dependency<VaccineDashboardViewmodel>().checkAppointment;
 

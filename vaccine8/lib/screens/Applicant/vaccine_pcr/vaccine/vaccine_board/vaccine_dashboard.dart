@@ -9,7 +9,7 @@ import 'package:vaccine8/screens/Applicant/vaccine_pcr/vaccine/vaccine_board/vac
 import '../../../../view.dart';
 
 class VaccineBoardScreen extends StatelessWidget {
-  final Patient patient;
+  final User patient;
   VaccineBoardScreen({@required this.patient});
   @override
   Widget build(BuildContext context) {

@@ -8,7 +8,7 @@ import 'auth_service.dart';
 class AuthServiceSecuredRest implements AuthService {
   RestService get rest => dependency();
 
-  Future<Patient> authenticate({String login, String password}) async {
+  Future<User> authenticate({String login, String password}) async {
     try {
       final json = await rest
           .post('auths/signin', data: {'email': login, 'password': password});
@@ -23,7 +23,7 @@ class AuthServiceSecuredRest implements AuthService {
       // Get the access token and let the rest object stores that
       rest.openSession(json['idToken']);
 
-      final _patient = Patient.fromJson(json);
+      final _patient = User.fromJson(json);
       return _patient;
     } catch (e) {
       return null;
@@ -31,9 +31,10 @@ class AuthServiceSecuredRest implements AuthService {
   }
 
   Future<void> signout() async => rest.closeSession();
-  Future<Patient>login(String username , String passwrod) async{
+  Future<User>login(String username , String passwrod) async{
     final json = await rest.get('Applicant?name=${username}&password=${passwrod}');
-    final p =Patient.fromJson(json[0]);
+    if (json.length ==0 )return null;
+    final p =User.fromJson(json[0]);
     return p;
 
   }

@@ -6,7 +6,7 @@ import '../viewmodel.dart';
 
 class LoginViewmodel extends Viewmodel {
   AuthService get _service => dependency();
-  Patient _patient;
+  User _patient;
   bool _showPassword = false;
   bool _showErrorMessage = false;
   String name;
@@ -36,7 +36,7 @@ class LoginViewmodel extends Viewmodel {
     _password = value;
   }
 
-  Future<Patient> login() async {
+  Future<User> login() async {
     turnBusy();
     final p = await _service.login(username, password);
     _patient = p;
@@ -44,9 +44,9 @@ class LoginViewmodel extends Viewmodel {
     return p;
   }
 
-  Future<Patient> authenticate() async {
+  Future<User> authenticate() async {
     turnBusy();
-    final Patient _patient =
+    final User _patient =
         await _service.authenticate(login: username, password: password);
     if (_patient == null) _showErrorMessage = true;
     turnIdle();

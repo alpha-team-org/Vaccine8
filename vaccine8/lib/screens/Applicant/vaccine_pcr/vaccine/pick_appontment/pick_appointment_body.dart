@@ -12,7 +12,7 @@ import 'package:vaccine8/models/Patient.dart';
 
 class Body extends StatefulWidget {
   Centers centers;
-  Patient patient;
+  User patient;
   Body(this.centers, this.patient);
 
   @override
