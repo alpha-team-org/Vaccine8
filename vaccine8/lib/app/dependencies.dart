@@ -3,6 +3,8 @@ import 'package:vaccine8/screens/Applicant/vaccine_pcr/pcr/pcr_board/pcr_dash_vi
 import 'package:vaccine8/screens/Applicant/vaccine_pcr/pcr/pcr_centers/pcr_viewmodel.dart';
 import 'package:vaccine8/screens/Applicant/vaccine_pcr/vaccine/vaccine_board/vaccine_dash_viewmodel.dart';
 import 'package:vaccine8/screens/Applicant/vaccine_pcr/vaccine/vaccine_centers/vaccine_viewmodel.dart';
+import 'package:vaccine8/screens/JdJk/Appointments/appointment_vewimodel.dart';
+import 'package:vaccine8/screens/JdJk/symptoms/symptoms_viewmodel.dart';
 import 'package:vaccine8/screens/login/login_viewmodel.dart';
 import 'package:vaccine8/services/appointments/appointments_service.dart';
 import 'package:vaccine8/services/appointments/appointments_service_rest.dart';
@@ -46,4 +48,6 @@ void init() {
   dependency.registerLazySingleton(() => PcrViewModel());
   dependency.registerLazySingleton(() => VaccineDashboardViewmodel());
   dependency.registerLazySingleton(() => PcrDashboardViewmodel());
+  dependency.registerLazySingleton(() => DrAppointmentViewmodel());
+  dependency.registerLazySingleton(() => SymptomsViewmodel());
 }

@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:intl/intl.dart';
 import 'package:vaccine8/components/constants/const.dart';
 import 'package:vaccine8/components/widgets/custom_clipper.dart';
+import 'package:vaccine8/models/Appointment.dart';
+
+import '../symptoms_viewmodel.dart';
 
 class Body extends StatelessWidget {
+  
+  SymptomsViewmodel viewmodel;
+  Body(this.viewmodel);
+  
   @override
   Widget build(BuildContext context) {
     double statusBarHeight = MediaQuery.of(context).padding.top;
@@ -50,7 +58,7 @@ class Body extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(top: 185, left: 10, right: 10),
+          padding: const EdgeInsets.only(top: 135, left: 10, right: 10),
           child: Column(
             // mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -75,9 +83,11 @@ class Body extends StatelessWidget {
                 children: [
                   Expanded(
                     child: ListView.builder(
-                      itemCount: 4,
-                      itemBuilder: (context, index) {
-                        return Padding(
+                      itemCount: viewmodel.appointments.length,
+                      itemBuilder: (context, index)=>
+                        
+                        
+                        Padding(
                           padding: const EdgeInsets.only(top: 14.0),
                           child: Card(
                             elevation: 4,
@@ -87,7 +97,9 @@ class Body extends StatelessWidget {
                               side: BorderSide(color: Colors.white70, width: 1),
                               borderRadius: BorderRadius.circular(10),
                             ),
-                            child: Column(
+                            child:
+                        (viewmodel.appointments[index].getSymptoms!=null)?
+                             Column(
                               mainAxisSize: MainAxisSize.min,
                               children: <Widget>[
                                 Row(
@@ -96,16 +108,18 @@ class Body extends StatelessWidget {
                                       padding: const EdgeInsets.all(8.0),
                                       child: CircleAvatar(
                                         backgroundImage: AssetImage(
-                                            'assets/profile_picture.png'),
+                                            viewmodel.users[index+1].photoUrl),
                                       ),
                                     ),
-                                    Text("abdalla mahmoud amin ")
+                                    Text(viewmodel.users[index+1].name)
                                   ],
                                 ),
+                                
                                 ListTile(
                                   // leading: Icon(Icons.assignment),
-                                  title: Text('Abdalla - dose 1'),
-                                  subtitle: Text('14-9-2021'),
+                                  title: Text(viewmodel.appointments[index].symptoms),
+                                  subtitle: Text(DateFormat('yyyy-MM-dd')
+                                      .format(viewmodel.appointments[index].day)),
 
                                   onTap: () async {
                                     await Navigator.pushNamed(
@@ -118,15 +132,17 @@ class Body extends StatelessWidget {
                                     showDialog(
                                       context: context,
                                       builder: (BuildContext context) =>
-                                          _buildPopupDialog(context),
+                                          _buildPopupDialog(context,viewmodel,viewmodel.appointments[index]),
                                     );
                                   },
                                 )
                               ],
-                            ),
+                            ):
+                            
+                        Container(),
                           ),
-                        );
-                      },
+                        )
+                      
                     ),
                   )
                 ],
@@ -139,7 +155,7 @@ class Body extends StatelessWidget {
   }
 }
 
-Widget _buildPopupDialog(BuildContext context) {
+Widget _buildPopupDialog(BuildContext context,SymptomsViewmodel viewmodel,Appointment appointment) {
   return Dialog(
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
     elevation: 16,
@@ -154,13 +170,17 @@ Widget _buildPopupDialog(BuildContext context) {
               child: TextField(
                 maxLines: null,
                 expands: true,
-                onChanged: (value) => {},
+                onChanged: ( value) => {
+                  appointment.reply =value
+                },
               ),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                ElevatedButton(onPressed: () => {}, child: Text("reply")),
+                ElevatedButton(onPressed: () => {
+                  viewmodel.updateSymptoms(appointment)
+                }, child: Text("reply")),
                 ElevatedButton(
                     onPressed: () => {},
                     style: ButtonStyle(

@@ -8,18 +8,23 @@ class Appointment {
   DateTime day;
   String symptoms;
   String reply;
+  bool approve;
+  bool disapprove;
 
   get getSymptoms => symptoms;
   set setSymptoms(value) => symptoms = value;
   set userId(value) => applicantId = value;
-  Appointment(
-      {this.day = null,
-      this.id,
-      this.centerId,
-      this.applicantId,
-      this.type = "",
-      this.symptoms,
-      this.reply});
+  Appointment({
+    this.day = null,
+    this.id,
+    this.centerId,
+    this.applicantId,
+    this.type = "",
+    this.symptoms,
+    this.reply,
+    this.approve = false,
+    this.disapprove = true,
+  });
   // Appointment.copy(Appointment from)
   //     : this(
   //         day: from.day,
@@ -33,7 +38,9 @@ class Appointment {
             type: json["type"],
             day: DateTime.parse(json["day"]),
             symptoms: json['symptoms'],
-            reply: json['reply']);
+            reply: json['reply'],
+            approve: json['approve'],
+            disapprove: json['disapprove']);
 
   Map<String, dynamic> toJson() => {
         "id": id,
@@ -43,6 +50,8 @@ class Appointment {
         "day": day.toString(),
         "symptoms": symptoms,
         "reply": reply,
+        "approve": approve,
+        "disapprove": disapprove
       };
 
   // void toggleStatus() => isSelected = !isSelected;

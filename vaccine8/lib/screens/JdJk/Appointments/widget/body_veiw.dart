@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:intl/intl.dart';
 import 'package:vaccine8/components/widgets/custom_clipper.dart';
+import 'package:vaccine8/models/Appointment.dart';
+
+import '../appointment_vewimodel.dart';
 
 class Body extends StatelessWidget {
+  DrAppointmentViewmodel viewmodel;
+  Body(this.viewmodel);
   @override
   Widget build(BuildContext context) {
     double statusBarHeight = MediaQuery.of(context).padding.top;
@@ -49,7 +55,7 @@ class Body extends StatelessWidget {
           ),
         ),
           Padding(
-            padding: const EdgeInsets.only(top:185,left:10,right:10),
+            padding: const EdgeInsets.only(top:135,left:10,right:10),
             child: Column(
               // mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -76,7 +82,7 @@ class Body extends StatelessWidget {
                 
                   Expanded(
                     child: ListView.builder(
-                      itemCount: 4,
+                      itemCount: viewmodel.appointments.length,
                       itemBuilder: (context, index) {
                         return Padding(
                           padding: const EdgeInsets.only(bottom: 8.0),
@@ -88,18 +94,30 @@ class Body extends StatelessWidget {
                             child: Column(
                               mainAxisSize: MainAxisSize.min,
                               children: <Widget>[
-                                ListTile(
+                              (!viewmodel.appointments[index].approve && viewmodel.appointments[index].disapprove)?
+                                
+                                   ListTile(
                                   leading: Icon(Icons.assignment,color: Colors.purple[900]),
-                                  title: Text('Abdalla - dose 1',style: TextStyle(color: Colors.purple[900])),
-                                  subtitle: Text('14-9-2021'),
+                                  title: Text(
+                                   "${viewmodel.user[index+1].name}-${viewmodel.appointments[index].type}"
+                                     
+                                    
+                                  
+                                  ,style: TextStyle(color: Colors.purple[900])),
+                                  subtitle: Text(DateFormat('yyyy-MM-dd')
+                                      .format(viewmodel.appointments[index].day)),
                                   onTap: () {
                                     showDialog(
                                       context: context,
-                                      builder: (BuildContext context) =>
-                                          _buildPopupDialog(context),
+                                      builder: (BuildContext context) {
+  
+                                         return  _buildPopupDialog(context,viewmodel.appointments[index], viewmodel);
+                                          
+                                          
+                                          },
                                     );
                                   },
-                                ),
+                                ) :Container()
                               ],
                             ),
                           ),
@@ -117,7 +135,7 @@ class Body extends StatelessWidget {
   }
 }
 
-Widget _buildPopupDialog(BuildContext context) {
+Widget _buildPopupDialog(BuildContext context,Appointment app,DrAppointmentViewmodel viewmodel) {
   return Dialog(
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
     elevation: 16,
@@ -137,9 +155,16 @@ Widget _buildPopupDialog(BuildContext context) {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                ElevatedButton(onPressed: () => {}, child: Text("approve")),
+                ElevatedButton(onPressed: () => {
+                  app.approve=true,
+                  viewmodel.updateAppointment(app)
+
+                }, child: Text("approve")),
                 ElevatedButton(
-                    onPressed: () => {},
+                    onPressed: () => {
+                      app.disapprove=false,
+                  viewmodel.updateAppointment(app)
+                    },
                     style: ButtonStyle(
                         backgroundColor:
                             MaterialStateProperty.all<Color>(Colors.red)),

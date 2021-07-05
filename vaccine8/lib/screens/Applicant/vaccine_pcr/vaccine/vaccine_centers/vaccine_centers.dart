@@ -11,7 +11,7 @@ import 'package:vaccine8/screens/view.dart';
 
 
 class VaccineCentersScreen extends StatelessWidget {
-  Patient patient;
+  User patient;
   VaccineCentersScreen({@required this.patient});
 
   @override

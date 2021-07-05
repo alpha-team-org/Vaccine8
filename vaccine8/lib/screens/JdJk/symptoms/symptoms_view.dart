@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:vaccine8/app/colors.dart';
+import 'package:vaccine8/app/dependencies.dart';
+import 'package:vaccine8/screens/JdJk/symptoms/symptoms_viewmodel.dart';
 import 'package:vaccine8/screens/JdJk/symptoms/widget/body_view.dart';
+
+import '../../view.dart';
 
 class SymptomsScreem extends StatefulWidget {
 
@@ -22,7 +26,9 @@ class _SymptomsScreemState extends State<SymptomsScreem> {
       // ]),
 
 
-body :Body(),
+body :ConsumerView<SymptomsViewmodel>(
+  initViewmodel: (viewmodel)=>dependency<SymptomsViewmodel>(),
+  builder: (context,viewmodel,___)=>Body(viewmodel)),
 
 
     );

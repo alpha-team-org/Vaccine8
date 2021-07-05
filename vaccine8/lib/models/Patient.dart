@@ -1,16 +1,14 @@
-class Patient {
+// import 'package:vaccine8/models/user.dart';
+
+class User  {
   dynamic id;
   String name;
+  String email;
   String _password;
   String _photoUrl;
   String address;
-  // DateTime pcrAppointment;
-  // DateTime vaccineFirstDose;
-  // DateTime vaccineSecondDose;
-  // String pcrCenter;
-  // String vaccineCenter;
-  // bool hasPcrAppointment;
-  // bool hasVaccineAppointments;
+  bool isDr;
+
 
   get password => _password;
   set password(value) => _password = value;
@@ -18,47 +16,42 @@ class Patient {
   get photoUrl => _photoUrl;
   set photoUrl(value) => _photoUrl = value;
 
-  Patient({
-    dynamic id,
-    this.name,
-    String password = '',
-    String photoUrl = '',
-    this.address,
-    // this.pcrAppointment,
-    // this.vaccineFirstDose,
-    // this.vaccineSecondDose,
-    // this.pcrCenter,
-    // this.vaccineCenter,
-    // this.hasPcrAppointment = false,
-    // this.hasVaccineAppointments = false,
-  })  : id = id,
+  User(
+      {dynamic id,
+      this.name,
+      String password = '',
+      String photoUrl = '',
+      this.address,
+      this.email,
+      this.isDr,
+
+      })
+      : id = id,
         _photoUrl = photoUrl,
         _password = password;
 
-  Patient.copy(Patient from)
+  User.copy(User from)
       : this(
-            id: from.id,
-            name: from.name,
-            password: from.password,
-            photoUrl: from.photoUrl,
-            address: from.address,
-            // hasPcrAppointment: from.hasPcrAppointment
-            );
+          id: from.id,
+          name: from.name,
+          password: from.password,
+          photoUrl: from.photoUrl,
+          address: from.address,
+          email :from.email,
+          isDr:from.isDr,
+          
+        );
 
-  Patient.fromJson(Map<String, dynamic> json)
+  User.fromJson(Map<String, dynamic> json)
       : this(
           id: json['id'],
           name: json['name'],
           password: json['password'],
           photoUrl: json['photoUrl'],
           address: json['address'],
-          // pcrAppointment: DateTime.parse(json[['pcrAppointment']]),
-          // vaccineFirstDose: DateTime.parse(json['vaccineFirstDose']),
-          // vaccineSecondDose: DateTime.parse(json['vaccineSecondDose']),
-          // pcrCenter: json['pcrCenter'],
-          // vaccineCenter: json['vaccineCenter'],
-          // hasPcrAppointment: json['hasPcrAppointment'],
-          // hasVaccineAppointments: json['hasVaccineAppointments'],
+          email:json['email'],
+          isDr:json['isDr']
+    
         );
 
   Map<String, dynamic> toJson() => {
@@ -67,20 +60,10 @@ class Patient {
         'password': password,
         'photoUrl': photoUrl,
         'address': address,
-        // 'pcrAppointment': pcrAppointment,
-        // 'vaccineFirstDose': vaccineFirstDose,
-        // 'vaccineSecondDose': vaccineSecondDose,
-        // 'pcrCenter': pcrCenter,
-        // 'vaccineCenter': vaccineCenter,
-        // 'hasPcrAppointment': hasPcrAppointment,
-        // 'hasVaccineAppointments': hasVaccineAppointments,
-      };
-  // get appointment => pcrAppointment;
-  // set appointment(value) => pcrAppointment = value;
+        'email': email,
+        'isDr': isDr,
 
-  // get appointment => pcrAppointment;
-  // set appointment(value) => pcrAppointment = value;
-  // get appointment => pcrAppointment;
-  // set appointment(value) => pcrAppointment = value;
+      };
+
 
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vaccine8/components/widgets/custom_clipper.dart';
+import 'package:vaccine8/models/Appointment.dart';
 
 class AppointmentCard extends StatelessWidget {
   final String center;
@@ -10,6 +11,7 @@ class AppointmentCard extends StatelessWidget {
   final Icon icon;
   final bool isDone;
   final Function onTap;
+  Appointment appointment;
 
   AppointmentCard(
       {Key key,
@@ -19,7 +21,8 @@ class AppointmentCard extends StatelessWidget {
       @required this.time,
       @required this.icon,
       @required this.onTap,
-      this.isDone})
+      this.isDone,
+      this.appointment})
       : super(key: key);
 
   @override
@@ -111,6 +114,8 @@ class AppointmentCard extends StatelessWidget {
                                   fontSize: 18, color: Color(0xFF486581)),
                             ),
                             SizedBox(width: 30),
+                            !((appointment.day.isAfter(DateTime.now()) && appointment.type=="vaccine")&& appointment.approve || !appointment.disapprove )?
+
                             ElevatedButton(
                               onPressed: onTap,
                               style: ButtonStyle(
@@ -121,7 +126,8 @@ class AppointmentCard extends StatelessWidget {
                                 'Edit',
                                 style: TextStyle(fontSize: 16),
                               ),
-                            )
+                            ):
+                            Container()
                           ],
                         ),
                       ),
