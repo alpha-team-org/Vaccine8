@@ -31,9 +31,9 @@ class AuthServiceSecuredRest implements AuthService {
   }
 
   Future<void> signout() async => rest.closeSession();
-  Future<User>login(String username , String passwrod) async{
-    final json = await rest.get('Applicant?name=${username}&password=${passwrod}');
-    if (json.length ==0 )return null;
+  Future<User>login(String email , String passwrod) async{
+    final json = await rest.get('Applicant?email=${email}&password=${passwrod}');
+    if(json.length==0) return null;
     final p =User.fromJson(json[0]);
     return p;
 

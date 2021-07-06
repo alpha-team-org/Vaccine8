@@ -114,14 +114,22 @@ class _BodyState extends State<Body> {
                                   // : "${DateFormat('kk:mm').format(widget.patient.pcrAppointment)} PM"
                                   ,
                               isDone: true,
-                              icon: Icon(Icons.calendar_today),
+                              icon: 
+                            (!(widget.viewmodel.appointment[0].day.isAfter(DateTime.now()) && widget.viewmodel.appointment[0].type=="vaccine")||widget.viewmodel.appointment[0].approve)?
+                              Icon(Icons.check_circle,color: Colors.green,)
+                              :
+                              widget.viewmodel.appointment[0].disapprove ?
+                              Icon(Icons.calendar_today):
+                              Icon(Icons.cancel_outlined,color: Colors.red,),
                               onTap: () => _navigate(),
+                              appointment : widget.viewmodel.appointment[0]
                             ),
                           ],
                         ),
                   SizedBox(height: 40),
                   widget.viewmodel.checkAppointmentType()
                       ?
+                      (widget.viewmodel.appointment[0].day.isBefore(DateTime.now()) )?
                   Column(
                     children: [
                       ElevatedButton(
@@ -169,7 +177,9 @@ class _BodyState extends State<Body> {
                       ),
                     ],
                   )
-                  : Container(),
+                  : Container():
+                  Container(),
+
 
                   // ButtonCard(
                   //   onTap: () {},

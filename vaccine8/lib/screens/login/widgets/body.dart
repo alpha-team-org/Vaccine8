@@ -13,6 +13,8 @@ class Body extends StatelessWidget {
     final User _user = await viewmodel.login();
 
     if (_user != null) {
+      (_user.isDr)?
+      Navigator.pushNamed(context, jdjkdashboardRout):
       Navigator.pushNamed(context, dashboardRoute);
     }
     if (_user == null) print('user null');
