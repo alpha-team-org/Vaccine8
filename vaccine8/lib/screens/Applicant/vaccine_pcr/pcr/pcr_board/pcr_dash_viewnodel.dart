@@ -37,6 +37,7 @@ class PcrDashboardViewmodel extends Viewmodel {
 
   Future<void> updateApp() async {
     turnBusy();
+    // appointment[0].id = 
     final p = await service.updateApp(appointment[0]);
     turnIdle();
   }

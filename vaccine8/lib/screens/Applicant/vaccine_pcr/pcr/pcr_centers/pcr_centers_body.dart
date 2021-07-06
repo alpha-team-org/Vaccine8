@@ -101,7 +101,7 @@ class _BodyState extends State<Body> {
                               widget.viewmodel.appointment.day = date;
                               widget.viewmodel.appointment.centerId = widget.viewmodel.center.name;
                               widget.viewmodel.appointment.type = "pcr";
-                              widget.viewmodel.appointment.userId =
+                              widget.viewmodel.appointment.applicantId =
                                   widget.viewmodel.userId;
                               widget.viewmodel.addAppointment();
                               Navigator.pushNamed(context, pcrRoute);

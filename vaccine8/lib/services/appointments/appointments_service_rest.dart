@@ -10,7 +10,7 @@ class AppointmentServiceRest implements AppointmentService {
   RestService get rest => dependency();
 
   Future<List<Appointment>> getPcrAppoinments(userId) async {
-    final List json = await rest.get("Appointment?type=pcr");
+    final List json = await rest.get("Appointment?type=pcr&applicantId=${userId}");
     if (json.length == 0) return null;
     return json.map((e) => Appointment.fromJson(e)).toList();
   }

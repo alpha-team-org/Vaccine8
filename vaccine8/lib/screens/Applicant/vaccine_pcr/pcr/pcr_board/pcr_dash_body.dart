@@ -87,37 +87,48 @@ class _BodyState extends State<Body> {
             Padding(
               padding: EdgeInsets.only(top: 200, left: 15),
               child: MainCard(
-                height: widget.viewmodel.appointment!=null ? 460 : 220,
+                height: widget.viewmodel.appointment != null ? 460 : 220,
                 children: [
-                  (widget.viewmodel.appointment==null)
+                  (widget.viewmodel.appointment == null)
                       ? ButtonCard(
                           onTap: () => _navigate(),
-                          title:
-                              "Book and View COVID-19 Test\n Appointments",
+                          title: "Book and View COVID-19 Test\n Appointments",
                         )
                       : Column(
                           children: [
                             AppointmentCard(
-                              center: widget.viewmodel.appointment[0].centerId,
-                              day: DateFormat('EEEE').format(
-                                
-                                    widget.viewmodel.appointment[0].day,
-                              ),
-                              date:
-                                 
-                                   DateFormat('yyyy-MM-dd')
-                                      .format(widget.viewmodel.appointment[0].day)
-                                 ,
-                              time:  DateFormat('kk:mm')
-                                      .format(widget.viewmodel.appointment[0].day)
-                                  // ? widget.patient.pcrAppointment.hour < 12
-                                  // ? "${DateFormat('kk:mm').format(widget.patient.pcrAppointment)} AM"
-                                  // : "${DateFormat('kk:mm').format(widget.patient.pcrAppointment)} PM"
-                                  ,
-                              isDone: true,
-                              icon: Icon(Icons.calendar_today),
-                              onTap: () => _navigate(),
-                            ),
+                                center:
+                                    widget.viewmodel.appointment[0].centerId,
+                                day: DateFormat('EEEE').format(
+                                  widget.viewmodel.appointment[0].day,
+                                ),
+                                date: DateFormat('yyyy-MM-dd').format(
+                                    widget.viewmodel.appointment[0].day),
+                                time: DateFormat('kk:mm')
+                                    .format(widget.viewmodel.appointment[0].day)
+                                // ? widget.patient.pcrAppointment.hour < 12
+                                // ? "${DateFormat('kk:mm').format(widget.patient.pcrAppointment)} AM"
+                                // : "${DateFormat('kk:mm').format(widget.patient.pcrAppointment)} PM"
+                                ,
+                                isDone: true,
+                                icon: (!(widget.viewmodel.appointment[0].day
+                                                .isAfter(DateTime.now()) &&
+                                            widget.viewmodel.appointment[0]
+                                                    .type ==
+                                                "pcr") ||
+                                        widget.viewmodel.appointment[0].approve)
+                                    ? Icon(
+                                        Icons.check_circle,
+                                        color: Colors.green,
+                                      )
+                                    : widget.viewmodel.appointment[0].disapprove
+                                        ? Icon(Icons.calendar_today)
+                                        : Icon(
+                                            Icons.cancel_outlined,
+                                            color: Colors.red,
+                                          ),
+                                onTap: () => _navigate(),
+                                appointment: widget.viewmodel.appointment[0]),
                           ],
                         ),
                   SizedBox(height: 40),
