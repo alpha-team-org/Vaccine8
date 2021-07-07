@@ -10,7 +10,7 @@ import '../login_viewmodel.dart';
 
 class Body extends StatelessWidget {
   void _onLogin(BuildContext context, LoginViewmodel viewmodel) async {
-    final Patient _user = await viewmodel.authenticate();
+    final Patient _user = await viewmodel.login();
 
     if (_user != null) {
       Navigator.pushNamed(context, dashboardRoute);

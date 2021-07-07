@@ -8,7 +8,7 @@ import 'package:vaccine8/models/Patient.dart';
 
 class Body extends StatefulWidget {
   Patient patient;
-  Body({@required this.patient});
+  Body({this.patient});
   @override
   _BodyState createState() => _BodyState();
 }

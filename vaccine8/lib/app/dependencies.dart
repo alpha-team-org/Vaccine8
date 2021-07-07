@@ -15,12 +15,12 @@ void init() {
 
   dependency.registerLazySingleton<RestService>(
     () => RestService(
-        // baseUrl: 'http://192.168.100.40:3000', // with Local JSON-server
-        // baseUrl: 'https://us-central1-mvvm-frontend-and-mvc-backend.cloudfunctions.net/api',
-        baseUrl:
-            'http://192.168.100.40:5001/vaccine8-dcf02/us-central1/api', // Firebase emulator
-        enableSession: true // Firebase REST live
-        ),
+      baseUrl: 'http://192.168.100.40:3000', // with Local JSON-server
+      // baseUrl: 'https://us-central1-mvvm-frontend-and-mvc-backend.cloudfunctions.net/api',
+      // baseUrl:
+      // 'http://192.168.100.40:5001/vaccine8-dcf02/us-central1/api', // Firebase emulator
+      // enableSession: true // Firebase REST live
+    ),
   );
   // dependency.registerLazySingleton<RestService>(
   //   () => RestService(
