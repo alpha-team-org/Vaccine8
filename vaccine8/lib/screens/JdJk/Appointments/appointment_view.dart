@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:vaccine8/app/colors.dart';
+import 'package:vaccine8/app/dependencies.dart';
+import 'package:vaccine8/screens/JdJk/Appointments/appointment_vewimodel.dart';
 
 
+import '../../view.dart';
 import 'widget/body_veiw.dart';
 
 class AppointmentScreen extends StatefulWidget {
@@ -22,7 +25,14 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
       //   ),
       // ]),
       backgroundColor: bacColor,
-      body :Body(),
+      body :ConsumerView<DrAppointmentViewmodel>
+      (
+        initViewmodel: (viewmodel)=>dependency<DrAppointmentViewmodel>().getAppointments(),
+        builder:(context,viewmodel,___) {
+          // final apps = viewmodel.appointments;
+          // final users = viewmodel.user;
+          return Body(viewmodel);
+          }),
     );
   }
 }

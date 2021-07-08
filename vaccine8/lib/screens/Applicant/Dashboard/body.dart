@@ -7,8 +7,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:vaccine8/models/Patient.dart';
 
 class Body extends StatefulWidget {
-  Patient patient;
-  Body({this.patient});
+  User patient;
+  Body({@required this.patient});
   @override
   _BodyState createState() => _BodyState();
 }
@@ -77,7 +77,7 @@ class _BodyState extends State<Body> {
                   ),
                   Expanded(
                     child: Text(
-                      "Welcome Omar",
+                      "Welcome ",
                       style: TextStyle(
                           fontSize: 25,
                           fontWeight: FontWeight.w900,

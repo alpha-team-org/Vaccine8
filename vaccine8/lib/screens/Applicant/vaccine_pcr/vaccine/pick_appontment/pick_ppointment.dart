@@ -5,7 +5,7 @@ import 'package:vaccine8/models/Patient.dart';
 import 'package:vaccine8/screens/Applicant/vaccine_pcr/vaccine/pick_appontment/pick_appointment_body.dart';
 
 class PickVaccineAppointmentScreen extends StatelessWidget {
-  Patient patient;
+  User patient;
   Centers centers;
   PickVaccineAppointmentScreen(this.centers, this.patient);
   @override

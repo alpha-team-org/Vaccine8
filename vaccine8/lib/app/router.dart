@@ -33,7 +33,7 @@ Route<dynamic> createRoute(RouteSettings settings) {
 // PCR Section
     case pcrRoute:
       return MaterialPageRoute(
-          builder: (context) => PcrBoardScreen(patient: settings.arguments));
+          builder: (context) => PcrBoardScreen());
     // case pcrAppointmentRoute:
     //   return MaterialPageRoute(
     //       builder: (context) =>

@@ -93,18 +93,19 @@ class _BodyState extends State<Body> {
                     itemBuilder: (context, index) {
                       return GestureDetector(
                         onTap: () {
+                          widget.viewmodel.index = index;
                           DatePicker.showDateTimePicker(
                             context,
                             showTitleActions: true,
                             onChanged: (date) {},
                             onConfirm: (date) {
                               widget.viewmodel.appointment.day = date;
-                              widget.viewmodel.appointment.centerId = index + 1;
+                              widget.viewmodel.appointment.centerId = widget.viewmodel.center.name;
                               widget.viewmodel.appointment.type = "vaccine";
-                              widget.viewmodel.appointment.userId =
+                              widget.viewmodel.appointment.applicantId =
                                   widget.viewmodel.userId;
                               widget.viewmodel.addAppointment();
-                              Navigator.pushNamed(context, successfullRoute);
+                              Navigator.pushNamed(context, vaccineRoute);
                             },
                             minTime: DateTime.utc(
                                 DateTime.now().year,

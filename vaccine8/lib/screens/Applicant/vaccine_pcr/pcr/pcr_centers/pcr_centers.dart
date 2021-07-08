@@ -4,6 +4,7 @@ import 'package:vaccine8/components/widgets/bottom_navigation_bar.dart';
 import 'package:vaccine8/models/Patient.dart';
 import 'package:vaccine8/models/mock_data.dart';
 import 'package:vaccine8/screens/Applicant/vaccine_pcr/pcr/pcr_centers/pcr_centers_body.dart';
+import 'package:vaccine8/screens/login/login_viewmodel.dart';
 import 'package:vaccine8/screens/view.dart';
 // import 'package:vaccine8/view.dart';
 
@@ -11,7 +12,7 @@ import 'package:vaccine8/screens/view.dart';
 import 'pcr_viewmodel.dart';
 
 class CentersScreen extends StatelessWidget {
-  Patient patient;
+  User patient;
   CentersScreen({@required this.patient});
 
   @override
@@ -24,12 +25,13 @@ class CentersScreen extends StatelessWidget {
               builder:
 
               (context,viewmodel,___){
+              viewmodel.userId =  dependency<LoginViewmodel>().user.id;
                 
                 final centerlist = viewmodel.centers;
                 
                return    Body(
           centerlist,
-          patient: patient,
+           viewmodel,
         );}
       ),
       bottomNavigationBar: BottomBar(),

@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:vaccine8/components/widgets/custom_clipper.dart';
 
+import '../medicine_viewmodel.dart';
+
 class Body extends StatefulWidget {
+  MedicineViewmodel viemodel ;
+  Body(this.viemodel);
   @override
   _BodyState createState() => _BodyState();
 }
@@ -20,7 +24,7 @@ class _BodyState extends State<Body> {
         ),
       ),
       Padding(
-        padding: EdgeInsets.only(right: 30.0, bottom: 30, top: 20),
+        padding: EdgeInsets.only(right: 30.0, bottom: 30, top: 30),
         child: ListView(
           children: <Widget>[
             // Header - Greetings and Avatar
@@ -52,12 +56,12 @@ class _BodyState extends State<Body> {
         ),
       ),
       Padding(
-        padding: const EdgeInsets.only(top: 185, left: 10, right: 10),
+        padding: const EdgeInsets.only(top: 135, left: 10, right: 10),
         child: Column(
           // mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(" Appointments List",
+            Text(" Medicine List",
                 style: TextStyle(color: Colors.purple[800], fontSize: 25)),
             Divider(
               color: Colors.blue[900],
@@ -77,7 +81,7 @@ class _BodyState extends State<Body> {
               children: [
                 Expanded(
                   child: ListView.builder(
-                    itemCount: 4,
+                    itemCount: widget.viemodel.medicins.length,
                     itemBuilder: (context, index) {
                       return Padding(
                         padding: const EdgeInsets.only(bottom: 8.0),
@@ -93,8 +97,8 @@ class _BodyState extends State<Body> {
                             children: <Widget>[
                               ListTile(
                                 leading: Icon(Icons.medical_services_outlined ,color: Colors.purple[800])  ,
-                                title: Text('Abdalla - dose 1',style: TextStyle(color: Colors.purple[900]),),
-                                subtitle: Text('14-9-2021'),
+                                title: Text(widget.viemodel.medicins[index].name,style: TextStyle(color: Colors.purple[900]),),
+                                // subtitle: Text('14-9-2021'),
                                 onTap: () {
                                  
                                 },

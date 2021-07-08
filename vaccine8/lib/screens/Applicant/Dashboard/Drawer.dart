@@ -2,11 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:vaccine8/models/Patient.dart';
 import 'package:vaccine8/models/mock_data.dart';
 
-class Draw extends StatelessWidget {
+class Draw extends StatefulWidget {
   // Patient pateint = new Patient(
       // name: patientList[0].name,
       // photoUrl: patientList[0].photoUrl,
       // address: patientList[0].address);
+  @override
+  _DrawState createState() => _DrawState();
+}
+
+class _DrawState extends State<Draw> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
