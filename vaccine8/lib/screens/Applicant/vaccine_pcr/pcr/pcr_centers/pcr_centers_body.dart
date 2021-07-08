@@ -5,7 +5,7 @@ import 'package:vaccine8/components/constants/const.dart';
 import 'package:vaccine8/components/widgets/center_card.dart';
 import 'package:vaccine8/components/widgets/custom_clipper.dart';
 import 'package:vaccine8/models/Centers.dart';
-import 'package:vaccine8/models/Patient.dart';
+import 'package:vaccine8/models/user.dart';
 import 'package:vaccine8/screens/Applicant/vaccine_pcr/pcr/pcr_centers/pcr_viewmodel.dart';
 import 'package:vaccine8/screens/Applicant/vaccine_pcr/pcr/pick_appontment/pick_ppointment.dart';
 
@@ -16,7 +16,6 @@ class Body extends StatefulWidget {
       this.centers,
       // {@required this.patient}
       this.viewmodel);
-
 
   @override
   _BodyState createState() => _BodyState();
@@ -29,12 +28,12 @@ class _BodyState extends State<Body> {
   //       MaterialPageRoute(
   //           builder: (context) =>
   //               PickAppointmentScreen(widget.centers[index], widget.patient)));
-    // Navigator.pushNamed(context, pcrAppointmentRoute,
-    // arguments: widget.centers[index], Patient.copy(widget.patient) );
+  // Navigator.pushNamed(context, pcrAppointmentRoute,
+  // arguments: widget.centers[index], Patient.copy(widget.patient) );
 
-    // if (result != null) {
-    //   setState(() => widget.patient = result);
-    // }
+  // if (result != null) {
+  //   setState(() => widget.patient = result);
+  // }
   // }
 
   @override
@@ -99,7 +98,8 @@ class _BodyState extends State<Body> {
                             onChanged: (date) {},
                             onConfirm: (date) {
                               widget.viewmodel.appointment.day = date;
-                              widget.viewmodel.appointment.centerId = widget.viewmodel.center.name;
+                              widget.viewmodel.appointment.centerId =
+                                  widget.viewmodel.center.name;
                               widget.viewmodel.appointment.type = "pcr";
                               widget.viewmodel.appointment.applicantId =
                                   widget.viewmodel.userId;
@@ -145,4 +145,3 @@ class _BodyState extends State<Body> {
     );
   }
 }
-

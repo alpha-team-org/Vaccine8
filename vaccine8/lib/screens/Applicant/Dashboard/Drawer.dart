@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:vaccine8/models/Patient.dart';
+import 'package:vaccine8/models/user.dart';
 import 'package:vaccine8/models/mock_data.dart';
 
 class Draw extends StatefulWidget {
   // Patient pateint = new Patient(
-      // name: patientList[0].name,
-      // photoUrl: patientList[0].photoUrl,
-      // address: patientList[0].address);
+  // name: patientList[0].name,
+  // photoUrl: patientList[0].photoUrl,
+  // address: patientList[0].address);
   @override
   _DrawState createState() => _DrawState();
 }
@@ -61,7 +61,7 @@ class _DrawState extends State<Draw> {
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           // Image.asset(
-            // pateint.photoUrl,
+          // pateint.photoUrl,
           //   width: 80,
           //   height: 80,
           // ),

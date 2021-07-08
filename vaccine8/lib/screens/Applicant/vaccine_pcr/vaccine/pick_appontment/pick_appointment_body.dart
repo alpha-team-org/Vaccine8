@@ -5,10 +5,10 @@ import 'package:vaccine8/components/constants/const.dart';
 import 'package:vaccine8/components/widgets/appointment_days.dart';
 import 'package:vaccine8/components/widgets/day_card.dart';
 import 'package:vaccine8/components/widgets/custom_clipper.dart';
-import 'package:vaccine8/models/Appointment.dart';
+import 'package:vaccine8/models/appointment.dart';
 import 'package:vaccine8/models/Centers.dart';
 import 'package:intl/intl.dart';
-import 'package:vaccine8/models/Patient.dart';
+import 'package:vaccine8/models/user.dart';
 
 class Body extends StatefulWidget {
   Centers centers;

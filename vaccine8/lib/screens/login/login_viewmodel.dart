@@ -1,4 +1,4 @@
-import 'package:vaccine8/models/Patient.dart';
+import 'package:vaccine8/models/user.dart';
 import 'package:vaccine8/services/rest.dart';
 import '../../app/dependencies.dart';
 import '../../services/auth/auth_service.dart';

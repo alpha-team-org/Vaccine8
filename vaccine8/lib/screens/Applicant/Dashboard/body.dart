@@ -4,11 +4,11 @@ import 'package:vaccine8/components/widgets/card_main.dart';
 import 'package:vaccine8/components/widgets/card_section.dart';
 import 'package:vaccine8/components/widgets/custom_clipper.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:vaccine8/models/Patient.dart';
+import 'package:vaccine8/models/user.dart';
 
 class Body extends StatefulWidget {
   User patient;
-  Body({@required this.patient});
+  Body({this.patient});
   @override
   _BodyState createState() => _BodyState();
 }

@@ -1,5 +1,5 @@
 import 'package:vaccine8/app/dependencies.dart';
-import 'package:vaccine8/models/Appointment.dart';
+import 'package:vaccine8/models/appointment.dart';
 import 'package:vaccine8/models/Centers.dart';
 import 'package:vaccine8/screens/Applicant/vaccine_pcr/vaccine/vaccine_board/vaccine_dash_viewmodel.dart';
 import 'package:vaccine8/screens/login/login_viewmodel.dart';
@@ -29,20 +29,17 @@ class VaccineViewModel extends Viewmodel {
     return pcrCenters;
   }
 
-  int userId ;
+  int userId;
   get id => userId;
-    Appointment  app =  dependency<VaccineDashboardViewmodel>().checkAppointment;
-
+  Appointment app = dependency<VaccineDashboardViewmodel>().checkAppointment;
 
   Future<void> addAppointment() async {
     turnBusy();
 
     dynamic p;
-    if (app == null) 
-    {
+    if (app == null) {
       p = await service.pickapp(appointment);
-    } else 
-    {
+    } else {
       app.day = appointment.day;
       p = await service.updateapp(app);
     }

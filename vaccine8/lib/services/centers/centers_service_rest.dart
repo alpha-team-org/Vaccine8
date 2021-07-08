@@ -1,5 +1,5 @@
 import 'package:vaccine8/app/dependencies.dart';
-import 'package:vaccine8/models/Appointment.dart';
+import 'package:vaccine8/models/appointment.dart';
 import 'package:vaccine8/models/Centers.dart';
 
 import 'package:vaccine8/services/centers/centers_service.dart';
@@ -20,7 +20,7 @@ class CenterServiceRest implements CenterService {
   }
 
   Future<Appointment> updateapp(Appointment appointment) async {
-    final json = await rest.put("appointment/${appointment.id}",
-        data: appointment);
+    final json =
+        await rest.put("appointment/${appointment.id}", data: appointment);
   }
 }

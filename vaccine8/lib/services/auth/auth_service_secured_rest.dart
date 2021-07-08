@@ -1,7 +1,7 @@
-import 'package:vaccine8/models/Patient.dart';
+import 'package:vaccine8/models/user.dart';
 
 import '../../app/dependencies.dart';
-import '../../models/Patient.dart';
+import '../../models/user.dart';
 import '../rest.dart';
 import 'auth_service.dart';
 
@@ -23,8 +23,8 @@ class AuthServiceSecuredRest implements AuthService {
       // Get the access token and let the rest object stores that
       rest.openSession(json['idToken']);
 
-      final _patient = User.fromJson(json);
-      return _patient;
+      final _user = User.fromJson(json);
+      return _user;
     } catch (e) {
       return null;
     }

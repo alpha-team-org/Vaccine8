@@ -3,7 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:vaccine8/components/constants/const.dart';
 import 'package:vaccine8/components/widgets/custom_clipper.dart';
-import 'package:vaccine8/models/Appointment.dart';
+import 'package:vaccine8/models/appointment.dart';
 
 import '../symptoms_viewmodel.dart';
 

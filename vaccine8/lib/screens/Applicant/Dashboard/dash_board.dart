@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vaccine8/components/widgets/bottom_navigation_bar.dart';
-import 'package:vaccine8/models/Patient.dart';
+import 'package:vaccine8/models/user.dart';
 import 'package:vaccine8/screens/Applicant/Dashboard/body.dart';
 import 'Drawer.dart';
 

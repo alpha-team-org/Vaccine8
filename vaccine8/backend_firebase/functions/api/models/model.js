@@ -63,7 +63,6 @@ class Model {
     // Get a document given its id from the collection
     async getDocument(documentId) {
         if (!documentId) return _EMPTY_OBJECT
-
         const documentRef = await this.collectionRef.doc(documentId).get()
         return this._documentRefToData(documentRef)
     }

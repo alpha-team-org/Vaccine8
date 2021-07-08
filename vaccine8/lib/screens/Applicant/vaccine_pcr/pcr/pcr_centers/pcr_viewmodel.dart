@@ -1,5 +1,5 @@
 import 'package:vaccine8/app/dependencies.dart';
-import 'package:vaccine8/models/Appointment.dart';
+import 'package:vaccine8/models/appointment.dart';
 import 'package:vaccine8/models/Centers.dart';
 import 'package:vaccine8/screens/Applicant/vaccine_pcr/pcr/pcr_board/pcr_dash_viewnodel.dart';
 import 'package:vaccine8/screens/Applicant/vaccine_pcr/vaccine/vaccine_board/vaccine_dash_viewmodel.dart';

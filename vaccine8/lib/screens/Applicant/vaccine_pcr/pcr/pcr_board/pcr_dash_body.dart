@@ -5,7 +5,7 @@ import 'package:vaccine8/components/constants/const.dart';
 import 'package:vaccine8/components/widgets/appointment_card.dart';
 import 'package:vaccine8/components/widgets/card_items.dart';
 import 'package:vaccine8/components/widgets/custom_clipper.dart';
-import 'package:vaccine8/models/Patient.dart';
+import 'package:vaccine8/models/user.dart';
 import 'package:vaccine8/screens/Applicant/vaccine_pcr/pcr/pcr_board/pcr_dash_viewnodel.dart';
 import 'package:vaccine8/screens/Applicant/vaccine_pcr/vaccine/vaccine_board/vaccine_dash_viewmodel.dart';
 

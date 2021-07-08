@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vaccine8/components/widgets/custom_clipper.dart';
-import 'package:vaccine8/models/Appointment.dart';
+import 'package:vaccine8/models/appointment.dart';
 
 class AppointmentCard extends StatelessWidget {
   final String center;
@@ -114,20 +114,22 @@ class AppointmentCard extends StatelessWidget {
                                   fontSize: 18, color: Color(0xFF486581)),
                             ),
                             SizedBox(width: 30),
-                           ((appointment.day.isAfter(DateTime.now()))&& appointment.approve && !appointment.disapprove )?
-
-                            ElevatedButton(
-                              onPressed: onTap,
-                              style: ButtonStyle(
-                                backgroundColor: MaterialStateProperty.all(
-                                    Color.fromRGBO(42, 42, 192, .7)),
-                              ),
-                              child: Text(
-                                'Edit',
-                                style: TextStyle(fontSize: 16),
-                              ),
-                            ):
-                            Container()
+                            ((appointment.day.isAfter(DateTime.now())) &&
+                                    appointment.approve &&
+                                    !appointment.disapprove)
+                                ? ElevatedButton(
+                                    onPressed: onTap,
+                                    style: ButtonStyle(
+                                      backgroundColor:
+                                          MaterialStateProperty.all(
+                                              Color.fromRGBO(42, 42, 192, .7)),
+                                    ),
+                                    child: Text(
+                                      'Edit',
+                                      style: TextStyle(fontSize: 16),
+                                    ),
+                                  )
+                                : Container()
                           ],
                         ),
                       ),

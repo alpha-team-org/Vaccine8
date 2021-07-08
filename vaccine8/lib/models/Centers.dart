@@ -1,4 +1,4 @@
-import 'package:vaccine8/models/Appointment.dart';
+import 'package:vaccine8/models/appointment.dart';
 
 class Centers {
   int id;
@@ -6,7 +6,12 @@ class Centers {
   String address;
   List<Appointment> appointments;
   String imgRout;
-  Centers({this.id, this.name ="", this.address="", this.appointments=null, this.imgRout=""});
+  Centers(
+      {this.id,
+      this.name = "",
+      this.address = "",
+      this.appointments = null,
+      this.imgRout = ""});
 
   // Centers.copy(Centers from)
   //     : this(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vaccine8/models/Patient.dart';
+import 'package:vaccine8/models/user.dart';
 import 'package:vaccine8/models/mock_data.dart';
 
 class Draw extends StatelessWidget {

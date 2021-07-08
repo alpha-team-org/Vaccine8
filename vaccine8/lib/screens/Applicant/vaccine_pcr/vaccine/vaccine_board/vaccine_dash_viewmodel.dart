@@ -1,5 +1,5 @@
 import 'package:vaccine8/app/dependencies.dart';
-import 'package:vaccine8/models/Appointment.dart';
+import 'package:vaccine8/models/appointment.dart';
 import 'package:vaccine8/models/medicine.dart';
 import 'package:vaccine8/screens/Applicant/vaccine_pcr/vaccine/vaccine_centers/vaccine_viewmodel.dart';
 import 'package:vaccine8/screens/login/login_viewmodel.dart';
@@ -17,6 +17,7 @@ class VaccineDashboardViewmodel extends Viewmodel {
     else
       return appointment[0];
   }
+
   get userId => dependency<LoginViewmodel>().user.id;
 
   bool checkAppointmentType() {
@@ -41,15 +42,12 @@ class VaccineDashboardViewmodel extends Viewmodel {
     turnIdle();
   }
 
-//medicine part 
-List<Medicine> medicins;
+//medicine part
+  List<Medicine> medicins;
 
-MedicineService get  medicineService =>dependency();
+  MedicineService get medicineService => dependency();
 
-Future<void> getMedicines()async{
-  medicins = await medicineService.getMedicineList(appointment[0].id);
-}
-
-
-
+  Future<void> getMedicines() async {
+    medicins = await medicineService.getMedicineList(appointment[0].id);
+  }
 }
