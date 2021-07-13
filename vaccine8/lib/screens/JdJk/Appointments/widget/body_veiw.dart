@@ -151,13 +151,25 @@ Widget _buildPopupDialog(BuildContext context, Appointment app,
     DrAppointmentViewmodel viewmodel) {
   return Dialog(
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
-    elevation: 16,
+    elevation: 0,
+    
     child: Container(
         height: 400.0,
         width: 360.0,
+         decoration: BoxDecoration(
+            shape: BoxShape.rectangle,
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(40),
+            boxShadow: [
+              BoxShadow(color: Colors.black,offset: Offset(0,10),
+              blurRadius: 10
+              ),
+            ]
+          ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
+          
           children: [
             
             Text('Date :${app.day.year}-${app.day.month}-${app.day.day} ',
@@ -166,25 +178,28 @@ Widget _buildPopupDialog(BuildContext context, Appointment app,
             Text('Time : ${app.day.hour}:${app.day.minute}${app.day.second}',
                 style:
                     TextStyle(color: Colors.blue.withOpacity(1), fontSize: 20)),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                ElevatedButton(
-                    onPressed: () =>
-                        {app.approve = true, viewmodel.updateAppointment(app)
-                        ,Navigator.popAndPushNamed(context, jdjkAppointment)},
-                    child: Text("approve")),
-                ElevatedButton(
-                    onPressed: () => {
-                          app.disapprove = false,
-                          viewmodel.updateAppointment(app)
-                          ,Navigator.popAndPushNamed(context, jdjkAppointment)
-                        },
-                    style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStateProperty.all<Color>(Colors.red)),
-                    child: Text("Disapprove"))
-              ],
+            Padding(
+              padding: const EdgeInsets.only(top:48.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ElevatedButton(
+                      onPressed: () =>
+                          {app.approve = true, viewmodel.updateAppointment(app)
+                          ,Navigator.pop(context, jdjkAppointment)},
+                      child: Text("approve")),
+                  ElevatedButton(
+                      onPressed: () => {
+                            app.disapprove = false,
+                            viewmodel.updateAppointment(app)
+                            ,Navigator.pop(context, jdjkAppointment)
+                          },
+                      style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all<Color>(Colors.red)),
+                      child: Text("Disapprove"))
+                ],
+              ),
             ),
           ],
         )),
