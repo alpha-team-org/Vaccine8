@@ -33,7 +33,7 @@ class PcrViewModel extends Viewmodel {
     return pcrCenters;
   }
 
-  int userId;
+  dynamic userId;
   get id => userId;
   get app => dependency<PcrDashboardViewmodel>().checkAppointment;
 

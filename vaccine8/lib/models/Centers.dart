@@ -1,7 +1,7 @@
 import 'package:vaccine8/models/appointment.dart';
 
 class Centers {
-  int id;
+  dynamic id;
   String name;
   String address;
   List<Appointment> appointments;

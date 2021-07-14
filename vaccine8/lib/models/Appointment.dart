@@ -43,7 +43,6 @@ class Appointment {
             disapprove: json['disapprove']);
 
   Map<String, dynamic> toJson() => {
-        "id": id,
         "centerId": centerId,
         "applicantId": applicantId,
         "type": type,

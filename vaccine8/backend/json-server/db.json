@@ -1,108 +1,103 @@
 {
-  "Applicant": [
-    {
-      "id": 1,
-      "name": "omar",
-      "password": "123",
-      "photoUrl": "assets/profile_picture.png",
-      "address": "",
-      "email": "omar@gmail.com",
-      "isDr": false
-    },
-    {
-      "id": 2,
-      "name": "abdalla",
-      "password": "123",
-      "photoUrl": "assets/profile_picture.png",
-      "address": "",
-      "email": "abdalla@gmail.com",
-      "isDr": true
-    },
-    {
-      "id": 3,
-      "name": "body",
-      "password": "123",
-      "photoUrl": "assets/profile_picture.png",
-      "address": "",
-      "email": "body@gmail.com",
-      "isDr": false
-    }
-  ],
-  "Centers": [
-    {
-      "id": 1,
-      "name": "perdana hospital",
-      "address": "perdana",
-      "imgRoute": "assets/hospital.jpg"
-    }
-  ],
-  "Appointment": [
-    {
-      "id": 1,
-      "centerId": "perdana hospital",
-      "applicantId": 1,
-      "type": "vaccine",
-      "day": "2021-07-05 09:00:00.000Z",
-      "symptoms": null,
-      "reply": null,
-      "approve": true,
-      "disapprove": true
-    },
-    {
-      "id": 2,
-      "centerId": "perdana hospital",
-      "applicantId": 3,
-      "type": "vaccine",
-      "day": "2021-07-03 09:00:00.000Z",
-      "symptoms": "fever",
-      "reply": "u ca",
-      "approve": true,
-      "disapprove": true
-    },
-    {
-      "id": 3,
-      "centerId": "perdana hospital",
-      "applicantId": 3,
-      "type": "pcr",
-      "day": "2021-07-12 00:00:00.000Z",
-      "symptoms": null,
-      "reply": null,
-      "approve": false,
-      "disapprove": true
-    },
-    {
-      "id": 4,
-      "centerId": "perdana hospital",
-      "applicantId": 3,
-      "type": "pcr",
-      "day": "2021-07-11 00:00:00.000Z",
-      "symptoms": null,
-      "reply": null,
-      "approve": false,
-      "disapprove": true
-    },
-    {
-      "id": 5,
-      "centerId": "perdana hospital",
-      "applicantId": 1,
-      "type": "pcr",
-      "day": "2021-07-25 00:00:00.000Z",
-      "symptoms": null,
-      "reply": null,
-      "approve": true,
-      "disapprove": true
-    }
-  ],
-  "medicine": [
-    {
-      "id": 1,
-      "appointmentId": 2,
-      "name": "panadol"
-    },
-    {
-      "id": 2,
-      "appointmentId": 2,
-      "name": "prophine"
-    }
-  ]
+    "Applicant": [{
+            "id": 1,
+            "name": "omar",
+            "password": "123",
+            "photoUrl": "https://randomuser.me/api/portraits/thumb/men/75.jpg",
+            "address": "",
+            "email": "omar@gmail.com",
+            "isDr": false
+        },
+        {
+            "id": 2,
+            "name": "abdalla",
+            "password": "123",
+            "photoUrl": "https://randomuser.me/api/portraits/thumb/women/75.jpg",
+            "address": "",
+            "email": "abdalla@gmail.com",
+            "isDr": true
+        },
+        {
+            "id": 3,
+            "name": "body",
+            "password": "123",
+            "photoUrl": "assets/profile_picture.png",
+            "address": "",
+            "email": "body@gmail.com",
+            "isDr": false
+        }
+    ],
+    "Centers": [{
+        "id": 1,
+        "name": "perdana hospital",
+        "address": "perdana",
+        "imgRoute": "assets/hospital.jpg"
+    }],
+    "Appointment": [{
+            "id": 1,
+            "centerId": "perdana hospital",
+            "applicantId": 1,
+            "type": "vaccine",
+            "day": "2021-07-05 09:00:00.000Z",
+            "symptoms": null,
+            "reply": null,
+            "approve": true,
+            "disapprove": true
+        },
+        {
+            "id": 2,
+            "centerId": "perdana hospital",
+            "applicantId": 3,
+            "type": "vaccine",
+            "day": "2021-07-03 09:00:00.000Z",
+            "symptoms": "fever",
+            "reply": "u ca",
+            "approve": true,
+            "disapprove": true
+        },
+        {
+            "id": 3,
+            "centerId": "perdana hospital",
+            "applicantId": 3,
+            "type": "pcr",
+            "day": "2021-07-12 00:00:00.000Z",
+            "symptoms": null,
+            "reply": null,
+            "approve": false,
+            "disapprove": true
+        },
+        {
+            "id": 4,
+            "centerId": "perdana hospital",
+            "applicantId": 3,
+            "type": "pcr",
+            "day": "2021-07-11 00:00:00.000Z",
+            "symptoms": null,
+            "reply": null,
+            "approve": false,
+            "disapprove": true
+        },
+        {
+            "id": 5,
+            "centerId": "perdana hospital",
+            "applicantId": 1,
+            "type": "pcr",
+            "day": "2021-07-25 00:00:00.000Z",
+            "symptoms": null,
+            "reply": null,
+            "approve": true,
+            "disapprove": true
+        }
+    ],
+    "medicine": [{
+            "id": 1,
+            "appointmentId": 2,
+            "name": "panadol"
+        },
+        {
+            "id": 2,
+            "appointmentId": 2,
+            "name": "prophine"
+        }
+    ]
 }

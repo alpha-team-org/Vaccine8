@@ -5,6 +5,7 @@ import 'package:vaccine8/components/widgets/card_section.dart';
 import 'package:vaccine8/components/widgets/custom_clipper.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:vaccine8/models/user.dart';
+import 'package:vaccine8/screens/login/login_viewmodel.dart';
 
 class Body extends StatefulWidget {
   User patient;
@@ -25,7 +26,7 @@ class _BodyState extends State<Body> {
 
   void _vaccineNavigate() async {
     final result = await Navigator.pushNamed(context, vaccineRoute,
-        arguments: widget.patient);
+        arguments: LoginViewmodel().user);
 
     if (result != null) {
       setState(() => widget.patient = result);

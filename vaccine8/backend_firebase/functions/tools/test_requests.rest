@@ -5,29 +5,59 @@
 # @baseUrl = http://192.168.0.5:3000
 
 # Local Firebase Emulator 
-# @baseUrl = http://192.168.0.5:5001/mvvm-frontend-and-mvc-backend/us-central1/api
+@baseUrl = http://192.168.100.40:5001/vaccine8-dcf02/us-central1/api
 
 # Live Firebase
-@baseUrl = https://us-central1-mvvm-frontend-and-mvc-backend.cloudfunctions.net/api
+# @baseUrl = https://us-central1-mvvm-frontend-and-mvc-backend.cloudfunctions.net/api
 
 ### Request 1 : Get a user whose correct 'login' and 'password'
 ### Purpose   : To simulate the authentication process. 
-GET {{baseUrl}}/users?login=alex&password=123
+GET {{baseUrl}}/medicines?appointmentId=2
 
 ### Request 2 : Get the counter data  for a given user
-GET {{baseUrl}}/counters?user=user2
+GET {{baseUrl}}/appointments?type=vaccine&applicantId=LHG216ZbBqfw3DpCCtxregwTzjq1
 
 ### Request 3 : Update the information of a given counter
-PUT {{baseUrl}}/counters/counter1
+PUT {{baseUrl}}/appointments/3
 Content-Type: application/json
 
 {
-    "user": "user1",
-    "counter": 2
+    "centerId": "perdana hospital",
+    "applicantId": "LHG216ZbBqfw3DpCCtxregwTzjq1",
+    "type": "pcr",
+    "day": "2021-07-12 00:00:00.000Z",
+    "symptoms": null,
+    "reply": null,
+    "approve": false,
+    "disapprove": true
+}
+
+### Request 3 : Update the information of a given counter
+POST {{baseUrl}}/appointments
+Content-Type: application/json
+
+{
+    "centerId": "perdana hospital",
+    "applicantId": "LHG216ZbBqfw3DpCCtxregwTzjq1",
+    "type": "pcr",
+    "day": "2021-07-12 00:00:00.000Z",
+    "symptoms": null,
+    "reply": null,
+    "approve": false,
+    "disapprove": true
+}
+
+
+### Request 3 : Update the information of a given counter
+PATCH {{baseUrl}}/appointments/3
+Content-Type: application/json
+
+{
+    "type": "vaccine"
 }
 
 ### Request: Get all users
-GET {{baseUrl}}/users
+GET {{baseUrl}}/centers
 
 ### Request: Add a new user
 POST {{baseUrl}}/users

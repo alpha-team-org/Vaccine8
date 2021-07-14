@@ -32,8 +32,7 @@ Route<dynamic> createRoute(RouteSettings settings) {
 
 // PCR Section
     case pcrRoute:
-      return MaterialPageRoute(
-          builder: (context) => PcrBoardScreen());
+      return MaterialPageRoute(builder: (context) => PcrBoardScreen());
     // case pcrAppointmentRoute:
     //   return MaterialPageRoute(
     //       builder: (context) =>
@@ -41,8 +40,7 @@ Route<dynamic> createRoute(RouteSettings settings) {
     case successfullRoute:
       return MaterialPageRoute(builder: (context) => SuccessfullPickedScreen());
     case centersRoute:
-      return MaterialPageRoute(
-          builder: (context) => CentersScreen(patient: settings.arguments));
+      return MaterialPageRoute(builder: (context) => CentersScreen());
 
 // Vaccine Section
     case vaccineRoute:
@@ -50,9 +48,7 @@ Route<dynamic> createRoute(RouteSettings settings) {
           builder: (context) =>
               VaccineBoardScreen(patient: settings.arguments));
     case vaccineCentersRoute:
-      return MaterialPageRoute(
-          builder: (context) =>
-              VaccineCentersScreen(patient: settings.arguments));
+      return MaterialPageRoute(builder: (context) => VaccineCentersScreen());
     case vaccineAppointmentRoute:
       return MaterialPageRoute(
           builder: (context) => PickVaccineAppointmentScreen(

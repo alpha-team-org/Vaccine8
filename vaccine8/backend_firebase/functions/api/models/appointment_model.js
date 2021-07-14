@@ -6,7 +6,7 @@ const Model = require('./model')
 
 class AppointmentModel extends Model {
     constructor() {
-        super('Appointments')
+        super('appointments')
         if (this.instance) return this.instance
         AppointmentModel.instance = this
     }

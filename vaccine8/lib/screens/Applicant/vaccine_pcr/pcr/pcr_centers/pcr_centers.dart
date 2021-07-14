@@ -11,8 +11,8 @@ import 'package:vaccine8/screens/view.dart';
 import 'pcr_viewmodel.dart';
 
 class CentersScreen extends StatelessWidget {
-  User patient;
-  CentersScreen({@required this.patient});
+  // User patient;
+  // CentersScreen({@required this.patient});
 
   @override
   Widget build(BuildContext context) {

@@ -134,7 +134,7 @@ class _BodyState extends State<Body> {
                   SizedBox(height: 40),
                   widget.viewmodel.checkAppointmentType()
                       ? (widget.viewmodel.appointment[0].day
-                              .isBefore(DateTime.now()))
+                              .isAfter(DateTime.now()))
                           ? Column(
                               children: [
                                 ElevatedButton(

@@ -10,32 +10,65 @@ class AppointmentServiceRest implements AppointmentService {
   RestService get rest => dependency();
 
   Future<List<Appointment>> getPcrAppoinments(userId) async {
-    final List json =
-        await rest.get("Appointment?type=pcr&applicantId=${userId}");
-    if (json.length == 0) return null;
-    return json.map((e) => Appointment.fromJson(e)).toList();
+    try {
+      final List json =
+          await rest.get("appointments?type=pcr&applicantId=$userId");
+
+      if (json.length == 0) return null;
+
+      return json.map((e) => Appointment.fromJson(e)).toList();
+    } catch (e) {
+      return null;
+    }
   }
 
   Future<List<Appointment>> getVacAppoinments(userId) async {
-    final List json =
-        await rest.get("Appointment?type=vaccine&applicantId=${userId}");
-    if (json.length == 0) return null;
-    return json.map((e) => Appointment.fromJson(e)).toList();
+    try {
+      final List json =
+          await rest.get("appointments?type=vaccine&applicantId=$userId");
+
+      if (json == null || json.length == 0) return null;
+
+      return json.map((e) => Appointment.fromJson(e)).toList();
+    } catch (e) {
+      return null;
+    }
   }
 
   Future<Appointment> updateApp(appointment) async {
-    final json =
-        await rest.put("appointment/${appointment.id}", data: appointment);
+    try {
+      final json =
+          await rest.patch("appointments/${appointment.id}", data: appointment);
+
+      if (json == null) return null;
+
+      return Appointment.fromJson(json);
+    } catch (e) {
+      return null;
+    }
   }
 
   Future<List<Appointment>> getAllAppoinments() async {
-    final List json = await rest.get("appointment");
-    final app = json.map((e) => Appointment.fromJson(e)).toList();
-    return app;
+    try {
+      final List json = await rest.get("appointments");
+
+      if (json == null || json.length == 0) return null;
+
+      return json.map((e) => Appointment.fromJson(e)).toList();
+    } catch (e) {
+      return null;
+    }
   }
 
   Future<User> getUserById(userId) async {
-    final json = await rest.get("Applicant/${userId}");
-    return User.fromJson(json);
+    try {
+      final json = await rest.get("users/$userId");
+
+      if (json == null || json.length == 0) return null;
+
+      return User.fromJson(json);
+    } catch (e) {
+      return null;
+    }
   }
 }

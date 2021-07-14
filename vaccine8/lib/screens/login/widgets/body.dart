@@ -10,7 +10,7 @@ import '../login_viewmodel.dart';
 
 class Body extends StatelessWidget {
   void _onLogin(BuildContext context, LoginViewmodel viewmodel) async {
-    final User _user = await viewmodel.login();
+    final User _user = await viewmodel.authenticate();
 
     if (_user != null) {
       (_user.isDr)

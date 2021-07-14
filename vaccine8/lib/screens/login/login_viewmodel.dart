@@ -6,13 +6,13 @@ import '../viewmodel.dart';
 
 class LoginViewmodel extends Viewmodel {
   AuthService get _service => dependency();
-  User _patient;
+  User _user;
   bool _showPassword = false;
   bool _showErrorMessage = false;
   String name;
   String _password;
-  get user => _patient;
-  set user(value) => _patient = value;
+  get user => _user;
+  set user(value) => _user = value;
 
   get showPassword => _showPassword;
   set showPassword(value) {
@@ -39,17 +39,16 @@ class LoginViewmodel extends Viewmodel {
   Future<User> login() async {
     turnBusy();
     final p = await _service.login(username, password);
-    _patient = p;
+    _user = p;
     turnIdle();
     return p;
   }
 
   Future<User> authenticate() async {
     turnBusy();
-    final User _patient =
-        await _service.authenticate(login: username, password: password);
-    if (_patient == null) _showErrorMessage = true;
+    user = await _service.authenticate(login: username, password: password);
+    if (user == null) _showErrorMessage = true;
     turnIdle();
-    return _patient;
+    return user;
   }
 }

@@ -6,12 +6,27 @@ import 'package:vaccine8/services/rest.dart';
 class MedicineServiceRest extends MedicineService {
   RestService get rest => dependency();
 
-  Future<List<Medicine>> getMedicineList(int appoinmentId) async {
-    final List json = await rest.get("medicine?appoinmentId=${appoinmentId}");
-    return json.map((e) => Medicine.fromJson(e)).toList();
+  Future<List<Medicine>> getMedicineList(appoinmentId) async {
+    try {
+      final List json = await rest.get("medicines?appointmentId=$appoinmentId");
+
+      if (json == null || json.length == 0) return null;
+
+      return json.map((e) => Medicine.fromJson(e)).toList();
+    } catch (e) {
+      return null;
+    }
   }
 
   Future<Medicine> addMedicineList(Medicine medicine) async {
-    final p = await rest.post("medicine", data: medicine);
+    try {
+      final json = await rest.post("medicines", data: medicine);
+
+      if (json == null) return null;
+
+      return Medicine.fromJson(json);
+    } catch (e) {
+      return null;
+    }
   }
 }

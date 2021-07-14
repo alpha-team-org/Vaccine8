@@ -10,17 +10,41 @@ class CenterServiceRest implements CenterService {
   RestService get rest => dependency();
 
   Future<List<Centers>> getCenters() async {
-    final List json = await rest.get("Centers");
-    final p = json.map((e) => Centers.fromJson(e)).toList();
-    return p;
+    try {
+      final List json = await rest.get("centers");
+
+      if (json == null || json.length == 0) return null;
+
+      final centersList = json.map((e) => Centers.fromJson(e)).toList();
+
+      return centersList;
+    } catch (e) {
+      return null;
+    }
   }
 
   Future<Appointment> pickapp(appointment) async {
-    final json = await rest.post("Appointment", data: appointment);
+    try {
+      final json = await rest.post("appointments", data: appointment);
+
+      if (json == null) return null;
+
+      return Appointment.fromJson(json);
+    } catch (e) {
+      return null;
+    }
   }
 
   Future<Appointment> updateapp(Appointment appointment) async {
-    final json =
-        await rest.put("appointment/${appointment.id}", data: appointment);
+    try {
+      final json =
+          await rest.patch("appointments/${appointment.id}", data: appointment);
+
+      if (json == null) return null;
+
+      return Appointment.fromJson(json);
+    } catch (e) {
+      return null;
+    }
   }
 }
