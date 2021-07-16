@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
+import 'package:vaccine8/components/constants/const.dart';
 import 'package:vaccine8/components/widgets/custom_clipper.dart';
 import 'package:vaccine8/models/appointment.dart';
 
@@ -54,32 +55,31 @@ class Body extends StatelessWidget {
             ],
           ),
         ),
-          Padding(
-            padding: const EdgeInsets.only(top:135,left:10,right:10),
-            child: Column(
-              // mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(" Appointments List",
-                            style: TextStyle(color: Colors.purple[900], fontSize: 25)),
-                             Divider(
-                      color: Colors.blue[900],
-                      thickness: 2,
-                    ),
-              ],
-            ),
+        Padding(
+          padding: const EdgeInsets.only(top: 135, left: 10, right: 10),
+          child: Column(
+            // mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(" Appointments List",
+                  style: TextStyle(
+                      color: Color.fromRGBO(42, 42, 192, .7), fontSize: 25)),
+              Divider(
+                color: Color.fromRGBO(42, 42, 192, .7),
+                thickness: 2,
+              ),
+            ],
           ),
-                 
+        ),
         Padding(
           padding: const EdgeInsets.only(top: 135.0),
           child: Container(
             child: Padding(
-              padding: const EdgeInsets.only(top: 60.0, left: 10, right: 10),
+              padding: const EdgeInsets.only(top: 55.0, left: 10, right: 10),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                
                   Expanded(
                     child: ListView.builder(
                       itemCount: viewmodel.appointments.length,
@@ -94,30 +94,57 @@ class Body extends StatelessWidget {
                             child: Column(
                               mainAxisSize: MainAxisSize.min,
                               children: <Widget>[
-                              (!viewmodel.appointments[index].approve && viewmodel.appointments[index].disapprove)?
-                                
-                                   ListTile(
-                                  leading: Icon(Icons.assignment,color: Colors.purple[900]),
+                                ListTile(
+                                  leading: Icon(Icons.assignment,
+                                      color: Color.fromRGBO(42, 42, 192, .7)),
                                   title: Text(
-                                   "${viewmodel.user[index+1].name}-${viewmodel.appointments[index].type}"
-                                     
-                                    
-                                  
-                                  ,style: TextStyle(color: Colors.purple[900])),
+                                      "${viewmodel.user[index + 1].name}-${viewmodel.appointments[index].type}",
+                                      style: TextStyle(
+                                          color:
+                                              Color.fromRGBO(42, 42, 192, .7),
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 18)),
                                   subtitle: Text(DateFormat('yyyy-MM-dd')
-                                      .format(viewmodel.appointments[index].day)),
-                                  onTap: () {
-                                    showDialog(
-                                      context: context,
-                                      builder: (BuildContext context) {
-  
-                                         return  _buildPopupDialog(context,viewmodel.appointments[index], viewmodel);
-                                          
-                                          
-                                          },
-                                    );
-                                  },
-                                ) :Container()
+                                      .format(
+                                          viewmodel.appointments[index].day)),
+                                  onTap: (!viewmodel
+                                              .appointments[index].approve &&
+                                          viewmodel
+                                              .appointments[index].disapprove)
+                                      ? () {
+                                          showDialog(
+                                            context: context,
+                                            builder: (BuildContext context) {
+                                              return _buildPopupDialog(
+                                                context,
+                                                viewmodel.appointments[index],
+                                                viewmodel,
+                                                // viewmodel.user[index + 1],
+                                              );
+                                            },
+                                          );
+                                        }
+                                      : null,
+                                  trailing: (viewmodel
+                                              .appointments[index].approve ==
+                                          true)
+                                      ? Text(
+                                          "Approved",
+                                          style: TextStyle(
+                                              color: Colors.green,
+                                              fontSize: 22,
+                                              fontWeight: FontWeight.bold),
+                                        )
+                                      : (viewmodel.appointments[index]
+                                                  .disapprove ==
+                                              false)
+                                          ? Text("Disapproved",
+                                              style: TextStyle(
+                                                  color: Colors.red,
+                                                  fontSize: 22,
+                                                  fontWeight: FontWeight.bold))
+                                          : null,
+                                )
                               ],
                             ),
                           ),
@@ -135,41 +162,56 @@ class Body extends StatelessWidget {
   }
 }
 
-Widget _buildPopupDialog(BuildContext context,Appointment app,DrAppointmentViewmodel viewmodel) {
+Widget _buildPopupDialog(
+    BuildContext context, Appointment app, DrAppointmentViewmodel viewmodel) {
   return Dialog(
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
-    elevation: 16,
+    elevation: 0,
     child: Container(
         height: 400.0,
         width: 360.0,
+        decoration: BoxDecoration(
+            shape: BoxShape.rectangle,
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(40),
+            boxShadow: [
+              BoxShadow(
+                  color: Colors.black, offset: Offset(0, 10), blurRadius: 10),
+            ]),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Date : ',
+            Text('Date :${app.day.year}-${app.day.month}-${app.day.day} ',
                 style:
                     TextStyle(color: Colors.blue.withOpacity(1), fontSize: 20)),
-            Text('Time : ',
+            Text('Time : ${app.day.hour}:${app.day.minute}${app.day.second}',
                 style:
                     TextStyle(color: Colors.blue.withOpacity(1), fontSize: 20)),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                ElevatedButton(onPressed: () => {
-                  app.approve=true,
-                  viewmodel.updateAppointment(app)
-
-                }, child: Text("approve")),
-                ElevatedButton(
-                    onPressed: () => {
-                      app.disapprove=false,
-                  viewmodel.updateAppointment(app)
-                    },
-                    style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStateProperty.all<Color>(Colors.red)),
-                    child: Text("Disapprove"))
-              ],
+            Padding(
+              padding: const EdgeInsets.only(top: 48.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ElevatedButton(
+                      onPressed: () => {
+                            app.approve = true,
+                            viewmodel.updateAppointment(app),
+                            Navigator.pop(context, jdjkAppointment)
+                          },
+                      child: Text("approve")),
+                  ElevatedButton(
+                      onPressed: () => {
+                            app.disapprove = false,
+                            viewmodel.updateAppointment(app),
+                            Navigator.pop(context, jdjkAppointment)
+                          },
+                      style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all<Color>(Colors.red)),
+                      child: Text("Disapprove"))
+                ],
+              ),
             ),
           ],
         )),
