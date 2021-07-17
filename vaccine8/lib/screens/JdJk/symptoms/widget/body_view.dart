@@ -8,10 +8,9 @@ import 'package:vaccine8/models/appointment.dart';
 import '../symptoms_viewmodel.dart';
 
 class Body extends StatelessWidget {
-  
   SymptomsViewmodel viewmodel;
   Body(this.viewmodel);
-  
+
   @override
   Widget build(BuildContext context) {
     double statusBarHeight = MediaQuery.of(context).padding.top;
@@ -83,68 +82,74 @@ class Body extends StatelessWidget {
                 children: [
                   Expanded(
                     child: ListView.builder(
-                      itemCount: viewmodel.appointments.length,
-                      itemBuilder: (context, index)=>
-                        
-                        
-                        Padding(
-                          padding: const EdgeInsets.only(top: 14.0),
-                          child: Card(
-                            elevation: 4,
-                            shadowColor: Colors.black,
-                            
-                            shape: RoundedRectangleBorder(
-                              side: BorderSide(color: Colors.white70, width: 1),
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child:
-                        (viewmodel.appointments[index].getSymptoms!=null)?
-                             Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: <Widget>[
-                                Row(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: CircleAvatar(
-                                        backgroundImage: AssetImage(
-                                            viewmodel.user[index+1].photoUrl),
-                                      ),
-                                    ),
-                                    Text(viewmodel.user[index+1].name)
-                                  ],
+                        itemCount: viewmodel.appointments.length,
+                        itemBuilder: (context, index) => Padding(
+                              padding: const EdgeInsets.only(top: 14.0),
+                              child: Card(
+                                elevation: 4,
+                                shadowColor: Colors.black,
+                                shape: RoundedRectangleBorder(
+                                  side: BorderSide(
+                                      color: Colors.white70, width: 1),
+                                  borderRadius: BorderRadius.circular(10),
                                 ),
-                                
-                                ListTile(
-                                  // leading: Icon(Icons.assignment),
-                                  title: Text(viewmodel.appointments[index].symptoms),
-                                  subtitle: Text(DateFormat('yyyy-MM-dd')
-                                      .format(viewmodel.appointments[index].day)),
+                                child: (viewmodel
+                                            .appointments[index].getSymptoms !=
+                                        null)
+                                    ? Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: <Widget>[
+                                          Row(
+                                            children: [
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
+                                                child: CircleAvatar(
+                                                  backgroundImage: NetworkImage(
+                                                      viewmodel.user[index + 1]
+                                                          .photoUrl),
+                                                ),
+                                              ),
+                                              Text(viewmodel
+                                                  .user[index + 1].name)
+                                            ],
+                                          ),
+                                          ListTile(
+                                            // leading: Icon(Icons.assignment),
+                                            title: Text(viewmodel
+                                                .appointments[index].symptoms),
+                                            subtitle: Text(
+                                                DateFormat('yyyy-MM-dd').format(
+                                                    viewmodel
+                                                        .appointments[index]
+                                                        .day)),
 
-                                  onTap: () async {
-                                    viewmodel.index = index;
-                                    await Navigator.pushNamed(
-                                        context, medicine);
-                                  },
-                                ),
-                                new TextButton(
-                                  child: Text('reply'),
-                                  onPressed: () {
-                                    showDialog(
-                                      context: context,
-                                      builder: (BuildContext context) =>
-                                          _buildPopupDialog(context,viewmodel,viewmodel.appointments[index]),
-                                    );
-                                  },
-                                )
-                              ],
-                            ):
-                            
-                        Container(),
-                          ),
-                        )
-                      
-                    ),
+                                            onTap: () async {
+                                              viewmodel.index = index;
+                                              await Navigator.pushNamed(
+                                                  context, medicine);
+                                            },
+                                          ),
+                                          new TextButton(
+                                            child: Text('reply'),
+                                            onPressed: () {
+                                              showDialog(
+                                                context: context,
+                                                builder: (BuildContext
+                                                        context) =>
+                                                    _buildPopupDialog(
+                                                        context,
+                                                        viewmodel,
+                                                        viewmodel.appointments[
+                                                            index]),
+                                              );
+                                            },
+                                          )
+                                        ],
+                                      )
+                                    : Container(),
+                              ),
+                            )),
                   )
                 ],
               ),
@@ -156,7 +161,8 @@ class Body extends StatelessWidget {
   }
 }
 
-Widget _buildPopupDialog(BuildContext context,SymptomsViewmodel viewmodel,Appointment appointment) {
+Widget _buildPopupDialog(BuildContext context, SymptomsViewmodel viewmodel,
+    Appointment appointment) {
   return Dialog(
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
     elevation: 16,
@@ -171,17 +177,15 @@ Widget _buildPopupDialog(BuildContext context,SymptomsViewmodel viewmodel,Appoin
               child: TextField(
                 maxLines: null,
                 expands: true,
-                onChanged: ( value) => {
-                  appointment.reply =value
-                },
+                onChanged: (value) => {appointment.reply = value},
               ),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                ElevatedButton(onPressed: () => {
-                  viewmodel.updateSymptoms(appointment)
-                }, child: Text("reply")),
+                ElevatedButton(
+                    onPressed: () => {viewmodel.updateSymptoms(appointment)},
+                    child: Text("reply")),
                 ElevatedButton(
                     onPressed: () => {},
                     style: ButtonStyle(

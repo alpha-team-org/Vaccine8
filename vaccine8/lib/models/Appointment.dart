@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class Appointment {
   dynamic id;
   dynamic centerId;
@@ -15,7 +13,7 @@ class Appointment {
   set setSymptoms(value) => symptoms = value;
   set userId(value) => applicantId = value;
   Appointment({
-    this.day = null,
+    this.day,
     this.id,
     this.centerId,
     this.applicantId,
@@ -25,10 +23,6 @@ class Appointment {
     this.approve = false,
     this.disapprove = true,
   });
-  // Appointment.copy(Appointment from)
-  //     : this(
-  //         day: from.day,
-  //       );
 
   Appointment.fromJson(Map<String, dynamic> json)
       : this(

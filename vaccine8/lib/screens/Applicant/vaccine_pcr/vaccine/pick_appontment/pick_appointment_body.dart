@@ -2,12 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:vaccine8/components/constants/const.dart';
-import 'package:vaccine8/components/widgets/appointment_days.dart';
-import 'package:vaccine8/components/widgets/day_card.dart';
 import 'package:vaccine8/components/widgets/custom_clipper.dart';
 import 'package:vaccine8/models/appointment.dart';
 import 'package:vaccine8/models/Centers.dart';
-import 'package:intl/intl.dart';
 import 'package:vaccine8/models/user.dart';
 
 class Body extends StatefulWidget {

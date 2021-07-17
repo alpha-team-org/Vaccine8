@@ -1,5 +1,4 @@
 import 'package:vaccine8/models/user.dart';
-import 'package:vaccine8/services/rest.dart';
 import '../../app/dependencies.dart';
 import '../../services/auth/auth_service.dart';
 import '../viewmodel.dart';
@@ -42,6 +41,12 @@ class LoginViewmodel extends Viewmodel {
     _user = p;
     turnIdle();
     return p;
+  }
+
+  Future<void> loginGoogle() async {
+    turnBusy();
+    await _service.loginGoogle();
+    turnIdle();
   }
 
   Future<User> authenticate() async {

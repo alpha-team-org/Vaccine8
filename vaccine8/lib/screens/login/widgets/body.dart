@@ -133,7 +133,9 @@ class Body extends StatelessWidget {
               SizedBox(height: 20),
               SignInButton(
                 Buttons.Google,
-                onPressed: () {},
+                onPressed: () async {
+                  return await viewmodel.loginGoogle();
+                },
               ),
             ],
           ),

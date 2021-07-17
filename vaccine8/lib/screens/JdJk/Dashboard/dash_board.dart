@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vaccine8/components/widgets/bottom_navigation_bar.dart';
-
-import 'package:vaccine8/models/user.dart';
-
 import './widget/Drawer.dart';
-
 import 'widget/body.dart';
 
 class JDJKDasboardScreen extends StatelessWidget {

@@ -68,7 +68,7 @@ class CenterCard extends StatelessWidget {
                           Text(
                             '$title',
                             style: TextStyle(
-                                fontSize: 20,
+                                fontSize: 18,
                                 fontWeight: FontWeight.bold,
                                 color: Color(0xFF486581)),
                           ),

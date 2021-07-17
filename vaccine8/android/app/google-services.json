@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "955801570511",
+    "firebase_url": "https://vaccine8-dcf02-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "vaccine8-dcf02",
+    "storage_bucket": "vaccine8-dcf02.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:955801570511:android:f89dbe4e8039f539a33bba",
+        "android_client_info": {
+          "package_name": "com.example.vaccine8"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "955801570511-9iql59ed0t1dvij3oke2e9tc76489p75.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.vaccine8",
+            "certificate_hash": "9bab65dca903db837b33712dba80563b96f77d57"
+          }
+        },
+        {
+          "client_id": "955801570511-4aa44m0iqisg2ro27pnv2o832nud4db6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPeHgZzb-m0j21N70_Lu_C_chRl-VWEVc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "955801570511-4aa44m0iqisg2ro27pnv2o832nud4db6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

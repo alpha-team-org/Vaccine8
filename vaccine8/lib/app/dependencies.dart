@@ -40,12 +40,6 @@ void init() {
   dependency
       .registerLazySingleton<MedicineService>(() => MedicineServiceRest());
 
-  // dependency.registerLazySingleton<CounterService>(() => CounterServiceSecuredRest());
-  // dependency.registerLazySingleton<CounterService>(() => CounterServiceRest());
-  // dependency.registerLazySingleton<AuthService>(() => AuthServiceRest());
-  // dependency.registerLazySingleton<CounterService>(() => CounterServiceMock());
-  // dependency.registerLazySingleton<AuthService>(() => AuthServiceMock());
-
   // Viewmodels
   // dependency.registerLazySingleton(() => UserViewmodel());
   // dependency.registerLazySingleton(() => PcrViewModel());

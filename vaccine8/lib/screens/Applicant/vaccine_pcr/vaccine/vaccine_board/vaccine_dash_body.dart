@@ -5,7 +5,6 @@ import 'package:vaccine8/components/constants/const.dart';
 import 'package:vaccine8/components/widgets/appointment_card.dart';
 import 'package:vaccine8/components/widgets/card_items.dart';
 import 'package:vaccine8/components/widgets/custom_clipper.dart';
-import 'package:vaccine8/models/user.dart';
 import 'package:vaccine8/screens/Applicant/vaccine_pcr/vaccine/vaccine_board/vaccine_dash_viewmodel.dart';
 
 class Body extends StatefulWidget {
@@ -20,24 +19,11 @@ class _BodyState extends State<Body> {
   @override
   Widget build(BuildContext context) {
     void _navigate() async {
-      final result = await Navigator.pushNamed(
+      await Navigator.pushNamed(
         context,
         vaccineCentersRoute,
       );
-
-      // if (result != null) {
-      //   setState(() => widget.patient = result);
-      // }
     }
-
-    // void _navigateEdit() async {
-    //   final result = await Navigator.pushNamed(context, vaccineCentersRoute,
-    //       arguments: widget.patient);
-
-    //   if (result != null) {
-    //     setState(() => widget.patient = result);
-    //   }
-    // }
 
     double statusBarHeight = MediaQuery.of(context).padding.top;
     return Stack(
@@ -86,7 +72,11 @@ class _BodyState extends State<Body> {
             Padding(
               padding: EdgeInsets.only(top: 200, left: 15),
               child: MainCard(
-                height: widget.viewmodel.appointment != null ? 460 : 220,
+                height: widget.viewmodel.appointment != null &&
+                        (widget.viewmodel.appointment[0].day
+                            .isBefore(DateTime.now()))
+                    ? 460
+                    : 240,
                 children: [
                   (widget.viewmodel.appointment == null)
                       ? ButtonCard(
@@ -104,12 +94,8 @@ class _BodyState extends State<Body> {
                                 ),
                                 date: DateFormat('yyyy-MM-dd').format(
                                     widget.viewmodel.appointment[0].day),
-                                time: DateFormat('kk:mm')
-                                    .format(widget.viewmodel.appointment[0].day)
-                                // ? widget.patient.pcrAppointment.hour < 12
-                                // ? "${DateFormat('kk:mm').format(widget.patient.pcrAppointment)} AM"
-                                // : "${DateFormat('kk:mm').format(widget.patient.pcrAppointment)} PM"
-                                ,
+                                time: DateFormat('kk:mm').format(
+                                    widget.viewmodel.appointment[0].day),
                                 isDone: true,
                                 icon: (!(widget.viewmodel.appointment[0].day
                                                 .isAfter(DateTime.now()) &&
@@ -134,7 +120,7 @@ class _BodyState extends State<Body> {
                   SizedBox(height: 40),
                   widget.viewmodel.checkAppointmentType()
                       ? (widget.viewmodel.appointment[0].day
-                              .isAfter(DateTime.now()))
+                              .isBefore(DateTime.now()))
                           ? Column(
                               children: [
                                 ElevatedButton(

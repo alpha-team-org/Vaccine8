@@ -21,7 +21,7 @@ class MedicineViewmodel extends Viewmodel {
   Future<void> addMedicine() async {
     turnBusy();
     medicin.appointmentId = appointment.id;
-    final p = await service.addMedicineList(medicin);
+    await service.addMedicineList(medicin);
     turnIdle();
   }
 }

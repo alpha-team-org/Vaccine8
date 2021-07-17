@@ -4,10 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:vaccine8/components/constants/const.dart';
 import 'package:vaccine8/components/widgets/center_card.dart';
 import 'package:vaccine8/components/widgets/custom_clipper.dart';
-import 'package:vaccine8/models/appointment.dart';
 import 'package:vaccine8/models/Centers.dart';
-import 'package:vaccine8/models/user.dart';
-import 'package:vaccine8/screens/Applicant/vaccine_pcr/vaccine/pick_appontment/pick_ppointment.dart';
 import 'package:vaccine8/screens/Applicant/vaccine_pcr/vaccine/vaccine_centers/vaccine_viewmodel.dart';
 
 class Body extends StatefulWidget {
@@ -24,20 +21,6 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
-  void _navigate(int index) async {
-    // final result = await Navigator.push(
-    //     context,
-    //     MaterialPageRoute(
-    //         builder: (context) => PickVaccineAppointmentScreen(
-    //             widget.centers[index], widget.patient)));
-    // // Navigator.pushNamed(context, pcrAppointmentRoute,
-    // // arguments: widget.centers[index], Patient.copy(widget.patient) );
-
-    // if (result != null) {
-    //   setState(() => widget.patient = result);
-    // }
-  }
-
   @override
   Widget build(BuildContext context) {
     double statusBarHeight = MediaQuery.of(context).padding.top;
@@ -128,9 +111,11 @@ class _BodyState extends State<Body> {
                           });
                         },
                         child: CenterCard(
-                          image: Image.asset(widget.centers[index].imgRout),
+                          image: Image.asset(
+                            widget.centers[index].imgRout,
+                          ),
                           title: widget.centers[index].name,
-                          value: "750",
+                          value: "10",
                           unit: "km",
                         ),
                       );

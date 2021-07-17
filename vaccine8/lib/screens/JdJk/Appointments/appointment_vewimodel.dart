@@ -23,7 +23,7 @@ class DrAppointmentViewmodel extends Viewmodel {
 
   Future<void> updateAppointment(Appointment app) async {
     turnBusy();
-    final appoint = await service.updateApp(app);
+    await service.updateApp(app);
     turnIdle();
   }
 }

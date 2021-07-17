@@ -1,19 +1,8 @@
-// TODO Complete the file, main/float.dart
-//-----------------------------------------------------------------------------------------------------------------------------
-//? Things to do:
-//   1. Perform the following operations:
-//        a. Add a new todo  - i.e. when the user taps on the 'plus' button
-//           This operation will navigate to the '/new' route.
-//        b. Refresh the screen - i.e. when the user taps on the 'Refresh' button
-//-----------------------------------------------------------------------------------------------------------------------------
-
 import 'package:flutter/material.dart';
-
 import '../medicine_viewmodel.dart';
 
 class Float extends StatelessWidget {
-
-  MedicineViewmodel viemodel ;
+  final MedicineViewmodel viemodel;
   Float(this.viemodel);
 
   @override
@@ -21,25 +10,23 @@ class Float extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        
         FloatingActionButton(
           backgroundColor: Colors.purple[700],
           tooltip: 'Add a new todo',
           child: Icon(Icons.add),
           heroTag: null,
-          onPressed: ()=>  showDialog(
-                                    context: context,
-                                    builder: (BuildContext context) =>
-                                        _buildPopupDialog(context,viemodel),
-                                  ),
+          onPressed: () => showDialog(
+            context: context,
+            builder: (BuildContext context) =>
+                _buildPopupDialog(context, viemodel),
+          ),
         ),
-      
       ],
     );
   }
 }
-  
-Widget _buildPopupDialog(BuildContext context,MedicineViewmodel viewmodel ) {
+
+Widget _buildPopupDialog(BuildContext context, MedicineViewmodel viewmodel) {
   return Dialog(
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
     elevation: 16,
@@ -52,22 +39,20 @@ Widget _buildPopupDialog(BuildContext context,MedicineViewmodel viewmodel ) {
           children: [
             TextFormField(
               decoration: InputDecoration(
-                  border: UnderlineInputBorder(),
-                  labelText: 'Enter new medicine',
-                  
-                  ),
-                  onChanged: (value)=>viewmodel.medicin.name=value,
+                border: UnderlineInputBorder(),
+                labelText: 'Enter new medicine',
+              ),
+              onChanged: (value) => viewmodel.medicin.name = value,
             ),
             Padding(
-              padding: const EdgeInsets.only(top:8.0),
+              padding: const EdgeInsets.only(top: 8.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  ElevatedButton(onPressed: () => {
-                    viewmodel.addMedicine(),
-                    viewmodel.getMedicines()
-                    
-                  }, child: Text("Add")),
+                  ElevatedButton(
+                      onPressed: () =>
+                          {viewmodel.addMedicine(), viewmodel.getMedicines()},
+                      child: Text("Add")),
                   ElevatedButton(
                       onPressed: () => {},
                       style: ButtonStyle(

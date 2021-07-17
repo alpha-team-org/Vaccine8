@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:vaccine8/components/widgets/appointment_card.dart';
 import 'package:vaccine8/components/widgets/custom_clipper.dart';
 
 class MainCard extends StatelessWidget {

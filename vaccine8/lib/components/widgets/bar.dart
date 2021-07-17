@@ -3,13 +3,11 @@ import 'package:flutter/material.dart';
 class Bar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Size get preferredSize => Size.fromHeight(50.0);
-  Color c;
+  final Color c;
   Bar(this.c);
   Widget build(BuildContext context) {
     return AppBar(
-      
       backgroundColor: c,
-     
       title: Column(
         children: [
           Image.asset(

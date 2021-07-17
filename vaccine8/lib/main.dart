@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:vaccine8/components/constants/const.dart';
 import 'app/dependencies.dart' as di;
@@ -6,6 +7,8 @@ import './app/router.dart' as router;
 
 void main() async {
   di.init();
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 

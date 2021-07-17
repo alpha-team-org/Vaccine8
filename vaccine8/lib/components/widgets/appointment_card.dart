@@ -11,7 +11,7 @@ class AppointmentCard extends StatelessWidget {
   final Icon icon;
   final bool isDone;
   final Function onTap;
-  Appointment appointment;
+  final Appointment appointment;
 
   AppointmentCard(
       {Key key,
@@ -84,7 +84,7 @@ class AppointmentCard extends StatelessWidget {
                         center,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
-                            fontSize: 20,
+                            fontSize: 18,
                             fontWeight: FontWeight.bold,
                             color: Color(0xFF486581)),
                       ),

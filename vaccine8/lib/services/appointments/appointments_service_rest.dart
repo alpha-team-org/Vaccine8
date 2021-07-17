@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:vaccine8/app/dependencies.dart';
 import 'package:vaccine8/models/appointment.dart';
 import 'package:vaccine8/models/user.dart';

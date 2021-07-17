@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vaccine8/app/dependencies.dart';
 import 'package:vaccine8/components/widgets/bottom_navigation_bar.dart';
-import 'package:vaccine8/models/user.dart';
-import 'package:vaccine8/models/mock_data.dart';
 import 'package:vaccine8/screens/Applicant/vaccine_pcr/pcr/pcr_centers/pcr_centers_body.dart';
 import 'package:vaccine8/screens/login/login_viewmodel.dart';
 import 'package:vaccine8/screens/view.dart';

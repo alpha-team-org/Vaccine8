@@ -5,9 +5,7 @@ import 'package:vaccine8/components/constants/const.dart';
 import 'package:vaccine8/components/widgets/appointment_card.dart';
 import 'package:vaccine8/components/widgets/card_items.dart';
 import 'package:vaccine8/components/widgets/custom_clipper.dart';
-import 'package:vaccine8/models/user.dart';
 import 'package:vaccine8/screens/Applicant/vaccine_pcr/pcr/pcr_board/pcr_dash_viewnodel.dart';
-import 'package:vaccine8/screens/Applicant/vaccine_pcr/vaccine/vaccine_board/vaccine_dash_viewmodel.dart';
 
 class Body extends StatefulWidget {
   PcrDashboardViewmodel viewmodel;
@@ -21,24 +19,11 @@ class _BodyState extends State<Body> {
   @override
   Widget build(BuildContext context) {
     void _navigate() async {
-      final result = await Navigator.pushNamed(
+      await Navigator.pushNamed(
         context,
         centersRoute,
       );
-
-      // if (result != null) {
-      //   setState(() => widget.patient = result);
-      // }
     }
-
-    // void _navigateEdit() async {
-    //   final result = await Navigator.pushNamed(context, vaccineCentersRoute,
-    //       arguments: widget.patient);
-
-    //   if (result != null) {
-    //     setState(() => widget.patient = result);
-    //   }
-    // }
 
     double statusBarHeight = MediaQuery.of(context).padding.top;
     return Stack(
@@ -104,12 +89,8 @@ class _BodyState extends State<Body> {
                                 ),
                                 date: DateFormat('yyyy-MM-dd').format(
                                     widget.viewmodel.appointment[0].day),
-                                time: DateFormat('kk:mm')
-                                    .format(widget.viewmodel.appointment[0].day)
-                                // ? widget.patient.pcrAppointment.hour < 12
-                                // ? "${DateFormat('kk:mm').format(widget.patient.pcrAppointment)} AM"
-                                // : "${DateFormat('kk:mm').format(widget.patient.pcrAppointment)} PM"
-                                ,
+                                time: DateFormat('kk:mm').format(
+                                    widget.viewmodel.appointment[0].day),
                                 isDone: true,
                                 icon: (!(widget.viewmodel.appointment[0].day
                                                 .isAfter(DateTime.now()) &&

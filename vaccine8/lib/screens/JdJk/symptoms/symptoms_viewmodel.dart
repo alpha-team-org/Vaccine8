@@ -1,7 +1,6 @@
 import 'package:vaccine8/app/dependencies.dart';
 import 'package:vaccine8/models/appointment.dart';
 import 'package:vaccine8/models/user.dart';
-import 'package:vaccine8/screens/JdJk/Appointments/appointment_vewimodel.dart';
 import 'package:vaccine8/screens/viewmodel.dart';
 import 'package:vaccine8/services/appointments/appointments_service.dart';
 
@@ -29,7 +28,7 @@ class SymptomsViewmodel extends Viewmodel {
 
   Future<void> updateSymptoms(Appointment appointment) async {
     turnBusy();
-    final app = await service.updateApp(appointment);
+    await service.updateApp(appointment);
     turnIdle();
   }
 }

@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:vaccine8/components/constants/const.dart';
-import 'package:vaccine8/components/widgets/card_main.dart';
 import 'package:vaccine8/components/widgets/card_section.dart';
 import 'package:vaccine8/components/widgets/custom_clipper.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:vaccine8/models/user.dart';
 
 class Body extends StatefulWidget {
   // Patient patient;
@@ -17,22 +15,14 @@ class Body extends StatefulWidget {
 
 class _BodyState extends State<Body> {
   void _symptom() async {
-    final result = await Navigator.pushNamed(context, jdjkSymptoms);
-
-    // if (result != null) {
-    //   setState(() => widget.patient = result);
-    // }
+    await Navigator.pushNamed(context, jdjkSymptoms);
   }
 
   void _appointment() async {
-    final result = await Navigator.pushNamed(
+    await Navigator.pushNamed(
       context,
       jdjkAppointment,
     );
-
-    // if (result != null) {
-    //   setState(() => widget.patient = result);
-    // }
   }
 
   @override

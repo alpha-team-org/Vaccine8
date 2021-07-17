@@ -5,9 +5,7 @@ import 'package:vaccine8/components/constants/const.dart';
 import 'package:vaccine8/components/widgets/center_card.dart';
 import 'package:vaccine8/components/widgets/custom_clipper.dart';
 import 'package:vaccine8/models/Centers.dart';
-import 'package:vaccine8/models/user.dart';
 import 'package:vaccine8/screens/Applicant/vaccine_pcr/pcr/pcr_centers/pcr_viewmodel.dart';
-import 'package:vaccine8/screens/Applicant/vaccine_pcr/pcr/pick_appontment/pick_ppointment.dart';
 
 class Body extends StatefulWidget {
   List<Centers> centers;
@@ -128,7 +126,7 @@ class _BodyState extends State<Body> {
                         child: CenterCard(
                           image: Image.asset(widget.centers[index].imgRout),
                           title: widget.centers[index].name,
-                          value: "750",
+                          value: "10",
                           unit: "km",
                         ),
                       );
