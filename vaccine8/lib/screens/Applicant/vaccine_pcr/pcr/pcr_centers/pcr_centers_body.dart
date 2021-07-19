@@ -8,8 +8,8 @@ import 'package:vaccine8/models/Centers.dart';
 import 'package:vaccine8/screens/Applicant/vaccine_pcr/pcr/pcr_centers/pcr_viewmodel.dart';
 
 class Body extends StatefulWidget {
-  List<Centers> centers;
-  PcrViewModel viewmodel;
+  final List<Centers> centers;
+  final PcrViewModel viewmodel;
   Body(
       this.centers,
       // {@required this.patient}
@@ -105,17 +105,22 @@ class _BodyState extends State<Body> {
                               Navigator.pushNamed(context, pcrRoute);
                             },
                             minTime: DateTime.utc(
-                                DateTime.now().year,
-                                DateTime.now().month,
-                                DateTime.now().day + 1,
-                                09,
-                                00),
+                              DateTime.now().year,
+                              DateTime.now().month,
+                              DateTime.now().day + 1,
+                              09,
+                              00,
+                            ),
                             maxTime: DateTime.utc(
-                                DateTime.now().year,
-                                DateTime.now().month + 1,
-                                DateTime.now().day,
-                                20,
-                                00),
+                              DateTime.now().year,
+                              DateTime.now().month + 1,
+                              DateTime.now().day,
+                              20,
+                              00,
+                            ),
+                            theme: DatePickerTheme(
+                              backgroundColor: Colors.white,
+                            ),
                           );
 
                           setState(() {
@@ -126,8 +131,8 @@ class _BodyState extends State<Body> {
                         child: CenterCard(
                           image: Image.asset(widget.centers[index].imgRout),
                           title: widget.centers[index].name,
-                          value: "10",
-                          unit: "km",
+                          value: "location",
+                          unit: widget.centers[index].location,
                         ),
                       );
                     },

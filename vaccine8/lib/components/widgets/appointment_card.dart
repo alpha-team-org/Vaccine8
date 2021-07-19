@@ -32,7 +32,7 @@ class AppointmentCard extends StatelessWidget {
       child: Container(
         margin: const EdgeInsets.only(right: 15.0),
         width: MediaQuery.of(context).size.width,
-        decoration: new BoxDecoration(
+        decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(10.0)),
           shape: BoxShape.rectangle,
           color: Colors.white,
@@ -84,7 +84,7 @@ class AppointmentCard extends StatelessWidget {
                         center,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
-                            fontSize: 18,
+                            fontSize: 17.5,
                             fontWeight: FontWeight.bold,
                             color: Color(0xFF486581)),
                       ),

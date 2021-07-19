@@ -1,6 +1,6 @@
 import 'package:vaccine8/app/dependencies.dart';
 import 'package:vaccine8/models/appointment.dart';
-import 'package:vaccine8/screens/Applicant/vaccine_pcr/pcr/pcr_centers/pcr_viewmodel.dart';
+import 'package:vaccine8/screens/login/login_viewmodel.dart';
 import 'package:vaccine8/screens/viewmodel.dart';
 import 'package:vaccine8/services/appointments/appointments_service.dart';
 
@@ -8,14 +8,15 @@ class PcrDashboardViewmodel extends Viewmodel {
   AppointmentService service = dependency();
 
   List<Appointment> appointment;
-  get checkAppointment {
+  Appointment get checkAppointment {
     if (appointment == null)
       return null;
     else
       return appointment[0];
   }
 
-  get userId => dependency<PcrViewModel>().id;
+  get userId => dependency<LoginViewmodel>().user.id;
+  get userName => dependency<LoginViewmodel>().user.name;
 
   bool checkAppointmentType() {
     bool check;

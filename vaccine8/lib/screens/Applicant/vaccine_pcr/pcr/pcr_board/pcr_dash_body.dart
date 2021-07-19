@@ -8,7 +8,7 @@ import 'package:vaccine8/components/widgets/custom_clipper.dart';
 import 'package:vaccine8/screens/Applicant/vaccine_pcr/pcr/pcr_board/pcr_dash_viewnodel.dart';
 
 class Body extends StatefulWidget {
-  PcrDashboardViewmodel viewmodel;
+  final PcrDashboardViewmodel viewmodel;
   Body({@required this.viewmodel});
 
   @override
@@ -70,9 +70,9 @@ class _BodyState extends State<Body> {
         Column(
           children: [
             Padding(
-              padding: EdgeInsets.only(top: 200, left: 15),
+              padding: EdgeInsets.only(top: 300, left: 15),
               child: MainCard(
-                height: widget.viewmodel.appointment != null ? 460 : 220,
+                height: widget.viewmodel.appointment != null ? 240 : 220,
                 children: [
                   (widget.viewmodel.appointment == null)
                       ? ButtonCard(
@@ -113,63 +113,8 @@ class _BodyState extends State<Body> {
                           ],
                         ),
                   SizedBox(height: 40),
-                  // widget.viewmodel.checkAppointmentType()
-                  //     ?
-                  // Column(
-                  //   children: [
-                  //     ElevatedButton(
-                  //       onPressed: () {
-                  //         // showDialog(
-                  //         //           context: context,
-                  //         //           builder: (BuildContext context) =>
-                  //         //               _buildPopupDialog(context,widget.viewmodel),
-                  //         //         );
-                  //       },
-                  //       style: ButtonStyle(
-                  //         minimumSize: MaterialStateProperty.all(
-                  //             Size(MediaQuery.of(context).size.width, 90)),
-                  //         backgroundColor: MaterialStateProperty.all(
-                  //             Color.fromRGBO(42, 42, 192, .7)),
-                  //         shape: MaterialStateProperty.all(
-                  //           RoundedRectangleBorder(
-                  //             borderRadius: BorderRadius.circular(12.0),
-                  //           ),
-                  //         ),
-                  //       ),
-                  //       child: Text(
-                  //         'Register Symptoms',
-                  //         style: TextStyle(fontSize: 25),
-                  //       ),
-                  //     ),
-                  //     SizedBox(height: 20),
-                  //     ElevatedButton(
-                  //       onPressed: () {},
-                  //       style: ButtonStyle(
-                  //         minimumSize: MaterialStateProperty.all(
-                  //             Size(MediaQuery.of(context).size.width, 90)),
-                  //         backgroundColor: MaterialStateProperty.all(
-                  //             Color.fromRGBO(42, 42, 192, .7)),
-                  //         shape: MaterialStateProperty.all(
-                  //           RoundedRectangleBorder(
-                  //             borderRadius: BorderRadius.circular(12.0),
-                  //           ),
-                  //         ),
-                  //       ),
-                  //       child: Text(
-                  //         'View Medical Report',
-                  //         style: TextStyle(fontSize: 25),
-                  //       ),
-                  //     ),
-                  //   ],
-                  // )
-                  // : Container(),
-
-                  // ButtonCard(
-                  //   onTap: () {},
-                  //   title: "View Medical Report",
-                  // ),
                 ],
-                title: 'OMAR',
+                title: widget.viewmodel.userName,
                 icon: Icon(
                   FontAwesomeIcons.userAlt,
                   size: 28,

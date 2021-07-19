@@ -12,7 +12,7 @@ class AppointmentServiceRest implements AppointmentService {
       final List json =
           await rest.get("appointments?type=pcr&applicantId=$userId");
 
-      if (json.length == 0) return null;
+      if (json.length == 0 || json.length == 0) return null;
 
       return json.map((e) => Appointment.fromJson(e)).toList();
     } catch (e) {

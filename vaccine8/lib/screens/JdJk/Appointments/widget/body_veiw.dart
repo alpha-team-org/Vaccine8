@@ -8,7 +8,7 @@ import 'package:vaccine8/models/appointment.dart';
 import '../appointment_vewimodel.dart';
 
 class Body extends StatelessWidget {
-  DrAppointmentViewmodel viewmodel;
+  final DrAppointmentViewmodel viewmodel;
   Body(this.viewmodel);
   @override
   Widget build(BuildContext context) {

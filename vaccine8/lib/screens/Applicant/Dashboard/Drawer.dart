@@ -53,7 +53,7 @@ class _SideDrawerState extends State<SideDrawer> {
                 leading: Icon(Icons.logout, size: 30),
                 title: Text("Log Out"),
                 onTap: () {
-                  dependency<LoginViewmodel>().user = null;
+                  dependency<LoginViewmodel>().signout();
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => LoginScreen()));
                 }),

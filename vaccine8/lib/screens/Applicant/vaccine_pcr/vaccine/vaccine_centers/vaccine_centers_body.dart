@@ -9,8 +9,8 @@ import 'package:vaccine8/screens/Applicant/vaccine_pcr/vaccine/vaccine_centers/v
 
 class Body extends StatefulWidget {
   // Patient patient;
-  List<Centers> centers;
-  VaccineViewModel viewmodel;
+  final List<Centers> centers;
+  final VaccineViewModel viewmodel;
   Body(
       this.centers,
       // {@required this.patient}
@@ -103,6 +103,9 @@ class _BodyState extends State<Body> {
                                 DateTime.now().day,
                                 20,
                                 00),
+                            theme: DatePickerTheme(
+                              backgroundColor: Colors.white,
+                            ),
                           );
 
                           setState(() {
@@ -115,8 +118,8 @@ class _BodyState extends State<Body> {
                             widget.centers[index].imgRout,
                           ),
                           title: widget.centers[index].name,
-                          value: "10",
-                          unit: "km",
+                          value: "location",
+                          unit: widget.centers[index].location,
                         ),
                       );
                     },

@@ -5,7 +5,6 @@ import 'package:vaccine8/screens/Applicant/Dashboard/dash_board.dart';
 import 'package:vaccine8/screens/Applicant/vaccine_pcr/pcr/pcr_board/pcr_dashboard.dart';
 import 'package:vaccine8/screens/Applicant/vaccine_pcr/pcr/pcr_centers/pcr_centers.dart';
 import 'package:vaccine8/screens/Applicant/vaccine_pcr/pcr/successful_picked/successful_picked.dart';
-import 'package:vaccine8/screens/Applicant/vaccine_pcr/vaccine/pick_appontment/pick_ppointment.dart';
 import 'package:vaccine8/screens/Applicant/vaccine_pcr/vaccine/successful_picked/successful_picked.dart';
 import 'package:vaccine8/screens/Applicant/vaccine_pcr/vaccine/vaccine_board/vaccine_dashboard.dart';
 import 'package:vaccine8/screens/Applicant/vaccine_pcr/vaccine/vaccine_centers/vaccine_centers.dart';
@@ -42,15 +41,13 @@ Route<dynamic> createRoute(RouteSettings settings) {
 
 // Vaccine Section
     case vaccineRoute:
-      return MaterialPageRoute(
-          builder: (context) =>
-              VaccineBoardScreen(patient: settings.arguments));
+      return MaterialPageRoute(builder: (context) => VaccineBoardScreen());
     case vaccineCentersRoute:
       return MaterialPageRoute(builder: (context) => VaccineCentersScreen());
-    case vaccineAppointmentRoute:
-      return MaterialPageRoute(
-          builder: (context) => PickVaccineAppointmentScreen(
-              settings.arguments, settings.arguments));
+    // case vaccineAppointmentRoute:
+    //   return MaterialPageRoute(
+    //       builder: (context) => PickVaccineAppointmentScreen(
+    //           settings.arguments, settings.arguments));
     case successfullVaccineRoute:
       return MaterialPageRoute(
           builder: (context) => SuccessfullPickedVaccineScreen());

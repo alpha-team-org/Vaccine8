@@ -8,7 +8,7 @@ import 'package:vaccine8/models/appointment.dart';
 import '../symptoms_viewmodel.dart';
 
 class Body extends StatelessWidget {
-  SymptomsViewmodel viewmodel;
+  final SymptomsViewmodel viewmodel;
   Body(this.viewmodel);
 
   @override

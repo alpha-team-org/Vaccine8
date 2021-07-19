@@ -18,6 +18,7 @@ class VaccineDashboardViewmodel extends Viewmodel {
   }
 
   get userId => dependency<LoginViewmodel>().user.id;
+  get userName => dependency<LoginViewmodel>().user.name;
 
   bool checkAppointmentType() {
     bool check;
@@ -32,6 +33,9 @@ class VaccineDashboardViewmodel extends Viewmodel {
   Future<void> appointmentList() async {
     turnBusy();
     appointment = await service.getVacAppoinments(userId);
+    if (appointment != null) {
+      medicins = await medicineService.getMedicineList(appointment[0].id);
+    }
     turnIdle();
   }
 

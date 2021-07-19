@@ -8,7 +8,7 @@ import 'package:vaccine8/components/widgets/custom_clipper.dart';
 import 'package:vaccine8/screens/Applicant/vaccine_pcr/vaccine/vaccine_board/vaccine_dash_viewmodel.dart';
 
 class Body extends StatefulWidget {
-  VaccineDashboardViewmodel viewmodel;
+  final VaccineDashboardViewmodel viewmodel;
   Body({@required this.viewmodel});
 
   @override
@@ -68,6 +68,7 @@ class _BodyState extends State<Body> {
           ),
         ),
         Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Padding(
               padding: EdgeInsets.only(top: 200, left: 15),
@@ -76,7 +77,7 @@ class _BodyState extends State<Body> {
                         (widget.viewmodel.appointment[0].day
                             .isBefore(DateTime.now()))
                     ? 460
-                    : 240,
+                    : 250,
                 children: [
                   (widget.viewmodel.appointment == null)
                       ? ButtonCard(
@@ -85,6 +86,7 @@ class _BodyState extends State<Body> {
                               "Book and View COVID-19 Vaccine\n Appointments",
                         )
                       : Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             AppointmentCard(
                                 center:
@@ -121,56 +123,232 @@ class _BodyState extends State<Body> {
                   widget.viewmodel.checkAppointmentType()
                       ? (widget.viewmodel.appointment[0].day
                               .isBefore(DateTime.now()))
-                          ? Column(
-                              children: [
-                                ElevatedButton(
-                                  onPressed: () {
-                                    showDialog(
-                                      context: context,
-                                      builder: (BuildContext context) =>
-                                          _buildPopupDialog(
-                                              context, widget.viewmodel),
-                                    );
-                                  },
-                                  style: ButtonStyle(
-                                    minimumSize: MaterialStateProperty.all(Size(
-                                        MediaQuery.of(context).size.width, 90)),
-                                    backgroundColor: MaterialStateProperty.all(
-                                        Color.fromRGBO(42, 42, 192, .7)),
-                                    shape: MaterialStateProperty.all(
-                                      RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(12.0),
+                          ? widget.viewmodel.appointment[0].symptoms == null
+                              ? Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    ElevatedButton(
+                                      onPressed: () {
+                                        showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) =>
+                                              _buildPopupDialog(
+                                                  context, widget.viewmodel),
+                                        );
+                                      },
+                                      style: ButtonStyle(
+                                        minimumSize: MaterialStateProperty.all(
+                                            Size(
+                                                MediaQuery.of(context)
+                                                    .size
+                                                    .width,
+                                                90)),
+                                        backgroundColor:
+                                            MaterialStateProperty.all(
+                                                Color.fromRGBO(
+                                                    42, 42, 192, .7)),
+                                        shape: MaterialStateProperty.all(
+                                          RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(12.0),
+                                          ),
+                                        ),
+                                      ),
+                                      child: Text(
+                                        'Register Symptoms',
+                                        style: TextStyle(fontSize: 25),
                                       ),
                                     ),
-                                  ),
-                                  child: Text(
-                                    'Register Symptoms',
-                                    style: TextStyle(fontSize: 25),
-                                  ),
-                                ),
-                                SizedBox(height: 20),
-                                ElevatedButton(
-                                  onPressed: () {},
-                                  style: ButtonStyle(
-                                    minimumSize: MaterialStateProperty.all(Size(
-                                        MediaQuery.of(context).size.width, 90)),
-                                    backgroundColor: MaterialStateProperty.all(
-                                        Color.fromRGBO(42, 42, 192, .7)),
-                                    shape: MaterialStateProperty.all(
-                                      RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(12.0),
+                                    SizedBox(height: 20),
+                                    ElevatedButton(
+                                      onPressed: () {},
+                                      style: ButtonStyle(
+                                        minimumSize: MaterialStateProperty.all(
+                                            Size(
+                                                MediaQuery.of(context)
+                                                    .size
+                                                    .width,
+                                                90)),
+                                        backgroundColor:
+                                            MaterialStateProperty.all(
+                                                Color.fromRGBO(
+                                                    42, 42, 192, .7)),
+                                        shape: MaterialStateProperty.all(
+                                          RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(12.0),
+                                          ),
+                                        ),
+                                      ),
+                                      child: Text(
+                                        'View Medical Report',
+                                        style: TextStyle(fontSize: 25),
                                       ),
                                     ),
+                                  ],
+                                )
+                              : Align(
+                                  alignment: Alignment.topLeft,
+                                  child: Container(
+                                    margin: const EdgeInsets.only(right: 15.0),
+                                    width: MediaQuery.of(context).size.width,
+                                    decoration: new BoxDecoration(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(10.0)),
+                                      shape: BoxShape.rectangle,
+                                      color: Colors.white,
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.grey.withOpacity(0.5),
+                                          spreadRadius: 5,
+                                          blurRadius: 7,
+                                          offset: Offset(0,
+                                              3), // changes position of shadow
+                                        ),
+                                      ],
+                                    ),
+                                    child: Material(
+                                      child: InkWell(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(10.0)),
+                                        child: Stack(
+                                          children: <Widget>[
+                                            Positioned(
+                                              child: ClipPath(
+                                                clipper: MyCustomClipper(
+                                                    clipType:
+                                                        ClipType.semiCircle),
+                                                child: Container(
+                                                  decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.all(
+                                                            Radius.circular(
+                                                                10.0)),
+                                                    color: Colors.black
+                                                        .withOpacity(0.03),
+                                                  ),
+                                                  height: 120,
+                                                  width: 120,
+                                                ),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsets.all(20.0),
+                                              child: Column(
+                                                // crossAxisAlignment:
+                                                //     CrossAxisAlignment.start,
+                                                children: <Widget>[
+                                                  // Icon and Hearbeat
+                                                  Row(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .center,
+                                                    children: <Widget>[
+                                                      Icon(
+                                                        Icons.comment_outlined,
+                                                        color:
+                                                            Color(0xFF486581),
+                                                      ),
+                                                      SizedBox(
+                                                        width: 10,
+                                                      ),
+                                                      Expanded(
+                                                        child: Text(
+                                                          'Doctor reply',
+                                                          overflow: TextOverflow
+                                                              .ellipsis,
+                                                          style: TextStyle(
+                                                              fontSize: 20,
+                                                              color: Color(
+                                                                  0xFF486581)),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  SizedBox(height: 15),
+                                                  Text(
+                                                    widget
+                                                                .viewmodel
+                                                                .appointment[0]
+                                                                .reply !=
+                                                            null
+                                                        ? widget
+                                                            .viewmodel
+                                                            .appointment[0]
+                                                            .reply
+                                                        : "The Doctor didn't reply yet",
+                                                    style: TextStyle(
+                                                      fontSize: 20,
+                                                      fontWeight:
+                                                          FontWeight.w800,
+                                                      color: Color(0xFF486581),
+                                                    ),
+                                                  ),
+                                                  widget.viewmodel.medicins !=
+                                                              null ||
+                                                          widget
+                                                                  .viewmodel
+                                                                  .medicins
+                                                                  .length !=
+                                                              0
+                                                      ? Column(
+                                                          children: [
+                                                            SizedBox(
+                                                                height: 40),
+                                                            Row(
+                                                              children: [
+                                                                Icon(
+                                                                  Icons
+                                                                      .medical_services_outlined,
+                                                                  color: Color(
+                                                                      0xFF486581),
+                                                                ),
+                                                                SizedBox(
+                                                                  width: 10,
+                                                                ),
+                                                                Text(
+                                                                  'Medicines',
+                                                                  overflow:
+                                                                      TextOverflow
+                                                                          .ellipsis,
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          20,
+                                                                      color: Color(
+                                                                          0xFF486581)),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                            SizedBox(
+                                                                height: 15),
+                                                            Text(
+                                                              widget
+                                                                  .viewmodel
+                                                                  .medicins[0]
+                                                                  .name,
+                                                              style: TextStyle(
+                                                                fontSize: 20,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w800,
+                                                                color: Color(
+                                                                    0xFF486581),
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        )
+                                                      : Container(),
+                                                ],
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        onTap: () {},
+                                      ),
+                                      color: Colors.transparent,
+                                    ),
                                   ),
-                                  child: Text(
-                                    'View Medical Report',
-                                    style: TextStyle(fontSize: 25),
-                                  ),
-                                ),
-                              ],
-                            )
+                                )
                           : Container()
                       : Container(),
 
@@ -179,7 +357,7 @@ class _BodyState extends State<Body> {
                   //   title: "View Medical Report",
                   // ),
                 ],
-                title: 'OMAR',
+                title: widget.viewmodel.userName,
                 icon: Icon(
                   FontAwesomeIcons.userAlt,
                   size: 28,

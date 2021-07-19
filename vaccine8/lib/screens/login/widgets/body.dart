@@ -14,8 +14,8 @@ class Body extends StatelessWidget {
 
     if (_user != null) {
       (_user.isDr)
-          ? Navigator.pushNamed(context, jdjkdashboardRout)
-          : Navigator.pushNamed(context, dashboardRoute);
+          ? Navigator.pushReplacementNamed(context, jdjkdashboardRout)
+          : Navigator.pushReplacementNamed(context, dashboardRoute);
     }
     if (_user == null) print('user null');
   }
@@ -80,7 +80,7 @@ class Body extends StatelessWidget {
               // ElevatedButton(
               //   onPressed: () => {},
               //   style: ButtonStyle(
-              //     minimumSize: MaterialStateProperty.all(Size(200, 60)),
+              // minimumSize: MaterialStateProperty.all(Size(200, 60)),
               //     backgroundColor:
               //         MaterialStateProperty.all(Color.fromRGBO(42, 42, 192, 1)),
               //   ),
@@ -100,25 +100,33 @@ class Body extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () => {},
-                style: ButtonStyle(
-                  minimumSize: MaterialStateProperty.all(Size(360, 60)),
-                  backgroundColor:
-                      MaterialStateProperty.all(Color.fromRGBO(58, 85, 159, 1)),
-                ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(FontAwesomeIcons.facebookF),
-                    SizedBox(width: 20),
-                    Text(
-                      'Sign in with Facebook',
-                      style: TextStyle(fontSize: 20),
+              SignInButtonBuilder(
+                elevation: 2.0,
+                key: ValueKey("Facebook"),
+                text: 'Sign in with Facebook',
+                fontSize: 20,
+                icon: FontAwesomeIcons.facebookF,
+                image: ClipRRect(
+                  child: Image(
+                    image: AssetImage(
+                      'assets/logos/facebook_new.png',
+                      package: 'flutter_signin_button',
                     ),
-                  ],
+                    height: 30.0,
+                    width: 30.0,
+                  ),
                 ),
+                backgroundColor: Color(0xFF3B5998),
+                innerPadding: EdgeInsets.fromLTRB(12, 0, 11, 0),
+                onPressed: () async {
+                  final User _user = await viewmodel.facebookLogin();
+                  if (_user != null) {
+                    Navigator.pushReplacementNamed(context, dashboardRoute);
+                  } else
+                    print('user null');
+                },
+                width: 360,
+                height: 60,
               ),
               // SizedBox(height: 20),
               // Text(
@@ -131,12 +139,47 @@ class Body extends StatelessWidget {
               //   ),
               // ),
               SizedBox(height: 20),
-              SignInButton(
-                Buttons.Google,
+              SignInButtonBuilder(
+                elevation: 2,
+                key: ValueKey("Google"),
+                text: 'Sign in with Google',
+                fontSize: 20,
+                textColor: Color.fromRGBO(0, 0, 0, 0.54),
+                image: Container(
+                  margin: EdgeInsets.fromLTRB(0.0, 0.0, 3.0, 0.0),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(8.0),
+                    child: Image(
+                      image: AssetImage(
+                        'assets/logos/google_light.png',
+                        package: 'flutter_signin_button',
+                      ),
+                      // height: 50.0,
+                      // width: 50.0,
+                    ),
+                  ),
+                ),
+                backgroundColor: Color(0xFFFFFFFF),
                 onPressed: () async {
-                  return await viewmodel.loginGoogle();
+                  final User _user = await viewmodel.loginGoogle();
+                  if (_user != null) {
+                    Navigator.pushReplacementNamed(context, dashboardRoute);
+                  } else
+                    print('user null');
                 },
-              ),
+                width: 360,
+                height: 60,
+              )
+              // SignInButton(
+              //   Buttons.Google,
+              //   onPressed: () async {
+              //     final User _user = await viewmodel.loginGoogle();
+              //     if (_user != null) {
+              //       Navigator.pushReplacementNamed(context, dashboardRoute);
+              //     } else
+              //       print('user null');
+              //   },
+              // ),
             ],
           ),
         ),

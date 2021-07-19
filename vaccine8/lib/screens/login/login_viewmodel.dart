@@ -1,3 +1,4 @@
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:vaccine8/models/user.dart';
 import '../../app/dependencies.dart';
 import '../../services/auth/auth_service.dart';
@@ -12,6 +13,11 @@ class LoginViewmodel extends Viewmodel {
   String _password;
   get user => _user;
   set user(value) => _user = value;
+
+  get userID async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getString('userID');
+  }
 
   get showPassword => _showPassword;
   set showPassword(value) {
@@ -35,18 +41,27 @@ class LoginViewmodel extends Viewmodel {
     _password = value;
   }
 
-  Future<User> login() async {
+  Future<User> getUser(String userID) async {
     turnBusy();
-    final p = await _service.login(username, password);
-    _user = p;
+    user = await _service.getUser(userID);
     turnIdle();
-    return p;
+    return user;
   }
 
-  Future<void> loginGoogle() async {
+  Future<User> loginGoogle() async {
     turnBusy();
-    await _service.loginGoogle();
+    user = await _service.loginGoogle();
+    if (user == null) _showErrorMessage = true;
     turnIdle();
+    return user;
+  }
+
+  Future<User> facebookLogin() async {
+    turnBusy();
+    user = await _service.facebookLogin();
+    if (user == null) _showErrorMessage = true;
+    turnIdle();
+    return user;
   }
 
   Future<User> authenticate() async {
@@ -55,5 +70,11 @@ class LoginViewmodel extends Viewmodel {
     if (user == null) _showErrorMessage = true;
     turnIdle();
     return user;
+  }
+
+  Future<void> signout() async {
+    turnBusy();
+    await _service.signout();
+    turnIdle();
   }
 }

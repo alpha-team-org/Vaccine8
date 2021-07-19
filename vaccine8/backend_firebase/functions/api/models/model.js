@@ -148,6 +148,7 @@ class Model {
 
     // Create a new document into the collection
     async createDocument(documentData, documentId) {
+        delete documentData.id
         const documentRef = (documentId !== undefined) ? await this.collectionRef.doc(documentId).set(documentData) :
             await this.collectionRef.add(documentData)
         documentData.id = documentRef.id

@@ -25,14 +25,16 @@ class RestService {
       : _baseUrl = baseUrl,
         _session = enableSession ? SessionService() : null;
 
-  Future<void> openSession(token) async {
+  Future<void> openSession(token, userID) async {
     if (_session == null) return;
     await _session.setToken(token);
+    await _session.setUser(userID);
   }
 
   Future<void> closeSession() async {
     if (_session == null) return;
     await _session.setToken(null);
+    await _session.setUser(null);
   }
 
   Future<Map<String, String>> get _defaultHeaders async {
@@ -83,29 +85,20 @@ class RestService {
       headers: headers);
 
   // Send a POST request to add a new in the REST server
-  // post(String endpoint,
-  //         {dynamic data, Map<String, String> headers, Encoding encoding}) =>
-  //     _httpRequest(
-  //         (uri, headers, data, encoding) => http.post(
-  //               uri,
-  //               headers: headers,
-  //               body: data,
-  //               encoding: encoding,
-  //             ),
-  //         endpoint,
-  //         headers: headers,
-  //         data: data,
-  //         encoding: encoding,
-  //         successCode: 201);
-  Future post(String endpoint, {dynamic data}) async {
-    final response = await http.post(Uri.parse('$_baseUrl/$endpoint'),
-        headers: {'Content-Type': 'application/json'}, body: jsonEncode(data));
-
-    if (response.statusCode == 201) {
-      return jsonDecode(response.body);
-    }
-    throw response;
-  }
+  post(String endpoint,
+          {dynamic data, Map<String, String> headers, Encoding encoding}) =>
+      _httpRequest(
+          (uri, headers, data, encoding) => http.post(
+                uri,
+                headers: headers,
+                body: data,
+                encoding: encoding,
+              ),
+          endpoint,
+          headers: headers,
+          data: data,
+          encoding: encoding,
+          successCode: 201);
 
   // Send a PUT request to add a new in the REST server
   put(String endpoint,

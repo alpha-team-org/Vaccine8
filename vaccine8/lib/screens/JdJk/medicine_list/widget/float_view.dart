@@ -11,7 +11,7 @@ class Float extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         FloatingActionButton(
-          backgroundColor: Colors.purple[700],
+          backgroundColor: Color.fromRGBO(42, 42, 192, .7),
           tooltip: 'Add a new todo',
           child: Icon(Icons.add),
           heroTag: null,

@@ -5,7 +5,7 @@ import 'package:vaccine8/components/widgets/custom_clipper.dart';
 import '../medicine_viewmodel.dart';
 
 class Body extends StatefulWidget {
-  MedicineViewmodel viemodel ;
+  final MedicineViewmodel viemodel;
   Body(this.viemodel);
   @override
   _BodyState createState() => _BodyState();
@@ -62,9 +62,10 @@ class _BodyState extends State<Body> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(" Medicine List",
-                style: TextStyle(color: Colors.purple[800], fontSize: 25)),
+                style: TextStyle(
+                    color: Color.fromRGBO(42, 42, 192, .7), fontSize: 25)),
             Divider(
-              color: Colors.blue[900],
+              color: Color.fromRGBO(42, 42, 192, .7),
               thickness: 2,
             ),
           ],
@@ -87,7 +88,7 @@ class _BodyState extends State<Body> {
                         padding: const EdgeInsets.only(bottom: 8.0),
                         child: Card(
                           elevation: 4,
-                            shadowColor: Colors.black,
+                          shadowColor: Colors.black,
                           shape: RoundedRectangleBorder(
                             side: BorderSide(color: Colors.white70, width: 1),
                             borderRadius: BorderRadius.circular(10),
@@ -96,12 +97,14 @@ class _BodyState extends State<Body> {
                             mainAxisSize: MainAxisSize.min,
                             children: <Widget>[
                               ListTile(
-                                leading: Icon(Icons.medical_services_outlined ,color: Colors.purple[800])  ,
-                                title: Text(widget.viemodel.medicins[index].name,style: TextStyle(color: Colors.purple[900]),),
+                                leading: Icon(Icons.medical_services_outlined,
+                                    color: Colors.purple[800]),
+                                title: Text(
+                                  widget.viemodel.medicins[index].name,
+                                  style: TextStyle(color: Colors.purple[900]),
+                                ),
                                 // subtitle: Text('14-9-2021'),
-                                onTap: () {
-                                 
-                                },
+                                onTap: () {},
                               ),
                             ],
                           ),
@@ -118,4 +121,3 @@ class _BodyState extends State<Body> {
     ]);
   }
 }
-

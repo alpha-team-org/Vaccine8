@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:vaccine8/components/widgets/custom_clipper.dart';
 
 class CenterCard extends StatelessWidget {
@@ -72,11 +73,13 @@ class CenterCard extends StatelessWidget {
                                 fontWeight: FontWeight.bold,
                                 color: Color(0xFF486581)),
                           ),
-                          Text(
-                            '$value $unit',
-                            style: TextStyle(
-                                fontSize: 15, color: Color(0xFF486581)),
-                          ),
+                          InkWell(
+                              child: Text(
+                                '$value',
+                                style: TextStyle(
+                                    fontSize: 15, color: Color(0xFF3459D4)),
+                              ),
+                              onTap: () => launch(unit)),
                         ],
                       ),
                     ],

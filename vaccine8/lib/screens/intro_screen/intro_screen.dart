@@ -60,14 +60,14 @@ class _IntroScreenStateState extends State<IntroScreenState> {
     );
     slides.add(
       Slide(
-        title: "COFFEE SHOP",
+        title:
+            "Connect to your Google Fit application and track physical fitness activities ",
         styleTitle: TextStyle(
             color: Color.fromRGBO(42, 42, 192, .7),
             fontSize: 20.0,
             fontWeight: FontWeight.bold,
             fontFamily: 'RobotoMono'),
-        description:
-            "Much evil soon high in hope do view. Out may few northward believing attempted. Yet timed being songs marry one defer men our. Although finished blessing do of",
+        description: "",
         styleDescription: TextStyle(
           color: Color.fromRGBO(42, 42, 192, .7),
           fontSize: 20.0,
@@ -75,7 +75,7 @@ class _IntroScreenStateState extends State<IntroScreenState> {
           fontFamily: 'Raleway',
           fontWeight: FontWeight.bold,
         ),
-        pathImage: "assets/vaccine.jpg",
+        pathImage: "assets/Google-Fit.jpg",
       ),
     );
   }
@@ -166,7 +166,6 @@ class _IntroScreenStateState extends State<IntroScreenState> {
                   fit: BoxFit.contain,
                 ),
               ),
-              Image.asset('assets/clip.png'),
             ],
           ),
         ),

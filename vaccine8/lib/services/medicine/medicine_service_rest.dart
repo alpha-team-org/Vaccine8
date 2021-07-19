@@ -10,7 +10,7 @@ class MedicineServiceRest extends MedicineService {
     try {
       final List json = await rest.get("medicines?appointmentId=$appoinmentId");
 
-      if (json == null || json.length == 0) return null;
+      if (json == null) return null;
 
       return json.map((e) => Medicine.fromJson(e)).toList();
     } catch (e) {
