@@ -285,7 +285,7 @@ class _BodyState extends State<Body> {
                                                     ),
                                                   ),
                                                   widget.viewmodel.medicins !=
-                                                              null ||
+                                                              null &&
                                                           widget
                                                                   .viewmodel
                                                                   .medicins
